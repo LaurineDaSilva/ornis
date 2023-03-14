@@ -1,11 +1,16 @@
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      birds: ['Pigeon', 'Moineau', 'Pie', 'Mésange', 'Hulotte', 'Coucou'],
+    };
+  },
+};
+</script>
 
 <template>
+  <h1>Birds of France</h1>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">Pigeon</li>
-    <li class="list-group-item">Moineau</li>
-    <li class="list-group-item">Pie</li>
-    <li class="list-group-item">Mésange</li>
-    <li class="list-group-item">Hulotte</li>
+    <li v-for="bird in birds">{{ bird }}</li>
   </ul>
 </template>
