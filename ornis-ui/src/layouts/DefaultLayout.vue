@@ -1,9 +1,9 @@
 <script setup>
-import Header from '../components/commons/Header.vue';
+import HeaderBar from '@/components/commons/HeaderBar.vue';
 </script>
 
 <template>
-  <Header />
+  <HeaderBar />
   <main class="container-xl">
     <RouterView />
   </main>
