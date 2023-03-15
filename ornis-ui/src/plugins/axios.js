@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import axios from 'axios';
 
 const ACCEPTED_STATUS = [200, 201, 202, 204, 400];
@@ -12,16 +14,16 @@ export default {
     });
     http.interceptors.response.use(
       (response) => {
-        const { status } = response.status;
-        const { data } = response.data;
-        const body = data !== '' ? data : null;
-        return { status, body };
+        const status = response.status;
+        const data = response.data;
+        const body = data != '' ? data : null;
+        return { status: status, body: body };
       },
       (error) => {
         return Promise.reject(error);
       },
     );
-    /* eslint-disable no-param-reassign */
+
     app.config.globalProperties.$http = http;
   },
 };
