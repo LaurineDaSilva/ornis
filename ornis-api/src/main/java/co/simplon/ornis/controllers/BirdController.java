@@ -26,4 +26,8 @@ public class BirdController {
 	return service.getAll();
     }
 
+    @GetMapping("/selected")
+    public Object[] findFrenchBirds() {
+	return service.findFrenchBirds();
+    }
 }

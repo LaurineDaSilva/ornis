@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get('/birds');
+      const resp = await this.$http.get('/birds/selected');
       this.birds = await resp.body;
     },
   },
@@ -21,6 +21,6 @@ export default {
 <template>
   <h1>Birds of France</h1>
   <ul class="list-group list-group-flush">
-    <li v-for="bird in birds" :key="bird" class="list-group-item">{{ bird.vernacularName }}</li>
+    <li v-for="bird in birds" :key="bird" class="list-group-item">{{ bird.comName }}</li>
   </ul>
 </template>

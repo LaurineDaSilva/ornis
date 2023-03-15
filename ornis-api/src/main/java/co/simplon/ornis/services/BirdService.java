@@ -8,4 +8,6 @@ public interface BirdService {
 
     Collection<BirdView> getAll();
 
+    Object[] findFrenchBirds();
+
 }
