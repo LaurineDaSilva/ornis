@@ -1,0 +1,35 @@
+body {
+  background-color: #fefefd;
+}
+
+h1 {
+  color: #2d5958;
+}
+
+.navbar {
+  background-color: #d5dede;
+}
+
+.list-group-item {
+  border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
+
+@media (min-width: 768px) {
+  .container-xl {
+    margin-top: 3rem;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-xl {
+    margin-top: 1rem;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+}
