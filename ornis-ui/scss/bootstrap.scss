@@ -1,0 +1,10 @@
+$primary: #2d5958;
+$secondary: #ff864a;
+$tertiary: #00c9ca;
+$light: #f1f1e6;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+h1 {
+  color: $primary;
+}

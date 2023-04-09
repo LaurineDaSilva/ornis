@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg bg-primary text-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Ornis</a>
+      <a class="navbar-brand text-light" href="#">Ornis</a>
       <button
         class="navbar-toggler"
         type="button"
