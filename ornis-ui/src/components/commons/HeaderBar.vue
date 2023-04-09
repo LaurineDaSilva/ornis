@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-primary text-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-light">
     <div class="container-fluid">
       <a class="navbar-brand text-light" href="#">Ornis</a>
       <button
