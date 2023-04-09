@@ -5,6 +5,10 @@ $light: #f1f1e6;
 
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+body {
+  background-color: $light;
+}
+
 h1 {
   color: $primary;
 }

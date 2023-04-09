@@ -19,8 +19,14 @@ export default {
 </script>
 
 <template>
-  <h1>Birds of France</h1>
-  <ul class="list-group list-group-flush">
-    <li v-for="bird in birds" :key="bird" class="list-group-item">{{ bird.comName }}</li>
-  </ul>
+  <section>
+    <h1>Birds of France</h1>
+    <div class="card bg-white">
+      <ul class="list-group list-group-flush">
+        <li v-for="bird in birds" :key="bird" class="list-group-item bg-white">
+          {{ bird.comName }}
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
