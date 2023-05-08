@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get('/birds/selected');
+      const resp = await this.$http.get('/birds');
       this.birds = await resp.body;
     },
   },
@@ -24,7 +24,7 @@ export default {
     <div class="card shadow-sm bg-white m-5">
       <ul class="list-group list-group-flush">
         <li v-for="bird in birds" :key="bird" class="list-group-item bg-white">
-          {{ bird.comName }}
+          {{ bird.vernacularName }}, <span class="fst-italic">({{ bird.scientificName }})</span>
         </li>
       </ul>
     </div>
