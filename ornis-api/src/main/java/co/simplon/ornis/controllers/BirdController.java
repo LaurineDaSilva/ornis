@@ -2,7 +2,6 @@ package co.simplon.ornis.controllers;
 
 import java.util.Collection;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +11,6 @@ import co.simplon.ornis.services.BirdService;
 
 @RestController
 @RequestMapping("/birds")
-@CrossOrigin
 public class BirdController {
 
     private final BirdService service;
