@@ -14,11 +14,7 @@ public class Bird extends AbstractEntity {
     @Column(name = "scientific_name")
     private String scientificName;
 
-    @Column(name = "image_url")
-    private String imageUrl;
-
     public Bird() {
-	// TODO Auto-generated constructor stub
     }
 
     public String getVernacularName() {
@@ -37,19 +33,11 @@ public class Bird extends AbstractEntity {
 	this.scientificName = scientificName;
     }
 
-    public String getImageUrl() {
-	return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-	this.imageUrl = imageUrl;
-    }
-
     @Override
     public String toString() {
 	return "{vernacularName=" + vernacularName
 		+ ", scientificName=" + scientificName
-		+ ", imageUrl=" + imageUrl + "}";
+		+ "}";
     }
 
 }
