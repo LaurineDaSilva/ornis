@@ -14,9 +14,9 @@ The name _Ornis_ comes from the Ancient Greek word for "bird".
 
 **Front-end:**
 
--VueJS
+- VueJS
 
--Bootstrap
+- Bootstrap
 
 **Back-end:**
 
