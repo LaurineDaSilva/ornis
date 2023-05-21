@@ -2,6 +2,16 @@ import { createI18n } from 'vue-i18n';
 import enMessages from './en';
 import frMessages from './fr';
 
+const browserLanguage = window.navigator.language;
+
+let lang = '';
+
+if (browserLanguage.startsWith('fr')) {
+  lang = 'fr';
+} else {
+  lang = 'en';
+}
+
 const shortDatetimeFormat = {
   year: 'numeric',
   month: 'numeric',
@@ -24,8 +34,8 @@ const datetimeFormats = {
 };
 
 const i18n = createI18n({
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: lang,
+  fallbackLocale: lang,
   messages: {
     en: enMessages,
     fr: frMessages,
