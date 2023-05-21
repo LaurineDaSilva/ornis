@@ -20,7 +20,18 @@ export default {
 
 <template>
   <section>
-    <h1 class="mt-5 mb-4">Oiseaux de France</h1>
+    <div class="locale-changer">
+      <select v-model="$i18n.locale" class="rounded">
+        <option
+          v-for="locale in $i18n.availableLocales"
+          :key="`locale-${locale}`"
+          :value="locale"
+        >
+          {{ locale }}
+        </option>
+      </select>
+    </div>
+    <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
     <div class="card shadow-sm bg-white m-5">
       <ul class="list-group list-group-flush">
         <li v-for="bird in birds" :key="bird" class="list-group-item bg-white">
