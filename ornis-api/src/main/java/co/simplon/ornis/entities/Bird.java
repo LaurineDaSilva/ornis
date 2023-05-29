@@ -8,8 +8,8 @@ import javax.persistence.Table;
 @Table(name = "birds")
 public class Bird extends AbstractEntity {
 
-    @Column(name = "vernacular_name")
-    private String vernacularName;
+    @Column(name = "species_code")
+    private String speciesCode;
 
     @Column(name = "scientific_name")
     private String scientificName;
@@ -17,12 +17,12 @@ public class Bird extends AbstractEntity {
     public Bird() {
     }
 
-    public String getVernacularName() {
-	return vernacularName;
+    public String getSpeciesCode() {
+	return speciesCode;
     }
 
-    public void setVernacularName(String vernacularName) {
-	this.vernacularName = vernacularName;
+    public void setSpeciesCode(String speciesCode) {
+	this.speciesCode = speciesCode;
     }
 
     public String getScientificName() {
@@ -35,7 +35,7 @@ public class Bird extends AbstractEntity {
 
     @Override
     public String toString() {
-	return "{vernacularName=" + vernacularName
+	return "{speciesCode=" + speciesCode
 		+ ", scientificName=" + scientificName
 		+ "}";
     }
