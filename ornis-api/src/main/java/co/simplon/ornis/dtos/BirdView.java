@@ -4,7 +4,7 @@ public interface BirdView {
 
     Long getId();
 
-    String getVernacularName();
+    String getSpeciesCode();
 
     String getScientificName();
 
