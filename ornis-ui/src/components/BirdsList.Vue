@@ -35,7 +35,8 @@ export default {
     <div class="card shadow-sm bg-white m-5">
       <ul class="list-group list-group-flush">
         <li v-for="bird in birds" :key="bird" class="list-group-item bg-white">
-          {{ bird.speciesCode }}, <span class="fst-italic">({{ bird.scientificName }})</span>
+          {{ $t(`birdsCommonNames.${bird.speciesCode}`) }},
+          <span class="fst-italic">({{ bird.scientificName }})</span>
         </li>
       </ul>
     </div>
