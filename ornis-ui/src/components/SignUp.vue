@@ -8,7 +8,7 @@
         <label for="usernameInput" class="form-label"
           >{{ $t('signUp.username.label') }}<span class="text-secondary">*</span></label
         >
-        <input type="text" id="usernameInput" class="form-control" />
+        <input id="usernameInput" class="form-control" type="text" />
         <div id="usernameInputHelpText" class="form-text">
           {{ $t('signUp.username.helpText') }}
         </div>
@@ -17,14 +17,14 @@
         <label for="emailInput" class="form-label"
           >{{ $t('signUp.email.label') }}<span class="text-secondary">*</span></label
         >
-        <input type="email" id="emailInput" class="form-control" />
+        <input id="emailInput" class="form-control" type="email" />
         <div id="emailHelpText" class="form-text">{{ $t('signUp.email.helpText') }}</div>
       </div>
       <div class="mb-3">
         <label for="passwordInput" class="form-label"
           >{{ $t('signUp.password.label') }}<span class="text-secondary">*</span></label
         >
-        <input type="password" id="passwordInput" class="form-control" />
+        <input id="passwordInput" class="form-control" type="password" />
         <div id="passwordHelpText" class="form-text">
           {{ $t('signUp.password.helpText') }} "<span class="fst-italic">%*!</span>".
         </div>
