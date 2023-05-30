@@ -24,7 +24,12 @@ export default {
       <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
 
       <ul class="list-group">
-        <div v-for="bird in birds" :key="bird" class="card mb-3" style="max-width: 540px">
+        <div
+          v-for="bird in birds"
+          :key="bird"
+          class="card mb-3 mx-auto"
+          style="max-width: 540px"
+        >
           <div class="row g-0">
             <div class="col-md-4">
               <img
