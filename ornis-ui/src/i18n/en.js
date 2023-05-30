@@ -48,6 +48,7 @@ const messages = {
       label: 'Password',
       helpText: '8 chars min. Must include one lowercase letter, one uppercase and one of',
     },
+    submit: 'Sign up',
   },
 };
 
