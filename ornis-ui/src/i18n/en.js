@@ -1,6 +1,7 @@
 const messages = {
   birdsList: {
     title: 'List of Birds from France',
+    imageAlt: '(picture)',
   },
   birdsCommonNames: {
     eurmag1: 'Eurasian Magpie',
