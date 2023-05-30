@@ -1,6 +1,7 @@
 const messages = {
   birdsList: {
     title: 'Liste des oiseaux de France',
+    imageAlt: '(photo)',
   },
   birdsCommonNames: {
     eurmag1: 'Pie bavarde',
