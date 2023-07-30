@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.ornis.dtos.BirdView;
+import co.simplon.ornis.dtos.BirdViewEn;
+import co.simplon.ornis.dtos.BirdViewFr;
 import co.simplon.ornis.services.BirdService;
 
 @RestController
@@ -19,8 +20,13 @@ public class BirdController {
 	this.service = service;
     }
 
-    @GetMapping
-    public Collection<BirdView> getAll() {
-	return service.getAll();
+    @GetMapping("/en")
+    public Collection<BirdViewEn> getAllEn() {
+	return service.getAllEn();
+    }
+
+    @GetMapping("/fr")
+    public Collection<BirdViewFr> getAllFr() {
+	return service.getAllFr();
     }
 }

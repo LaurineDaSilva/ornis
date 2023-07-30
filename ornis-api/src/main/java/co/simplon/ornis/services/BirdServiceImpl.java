@@ -4,21 +4,31 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
-import co.simplon.ornis.dtos.BirdView;
-import co.simplon.ornis.repositories.BirdRepository;
+import co.simplon.ornis.dtos.BirdViewEn;
+import co.simplon.ornis.dtos.BirdViewFr;
+import co.simplon.ornis.repositories.BirdRepositoryEn;
+import co.simplon.ornis.repositories.BirdRepositoryFr;
 
 @Service
 public class BirdServiceImpl implements BirdService {
 
-    private BirdRepository birds;
+    private BirdRepositoryEn birdsEn;
+    private BirdRepositoryFr birdsFr;
 
-    public BirdServiceImpl(BirdRepository birds) {
-	this.birds = birds;
+    public BirdServiceImpl(BirdRepositoryEn birdsEn,
+	    BirdRepositoryFr birdsFr) {
+	this.birdsEn = birdsEn;
+	this.birdsFr = birdsFr;
     }
 
     @Override
-    public Collection<BirdView> getAll() {
-	return birds.findAllProjectedBy();
+    public Collection<BirdViewEn> getAllEn() {
+	return birdsEn.findAllProjectedBy();
+    }
+
+    @Override
+    public Collection<BirdViewFr> getAllFr() {
+	return birdsFr.findAllProjectedBy();
     }
 
 }
