@@ -2,4 +2,4 @@
 
 ## Zoning and wireframe
 
-![sign-up wireframe and zoning](../../../images/sign-up/sign_up_01.jpg)
+![sign-up wireframe and zoning](../../../images/zonings-wireframes/sign-up/sign_up_01.jpg)
