@@ -4,7 +4,7 @@ Ornis will have a multilayer architecture.
 
 ## A Three-layer Architecture
 
-![three-layer-architecture](https://user-images.githubusercontent.com/107263089/197194002-cd466244-7c87-4458-8e8e-7048c5d5d5c2.jpg)
+![three-layer-architecture](documentation/images/architecture/architecture_01.jpg)
 
 ### Presentation Layer
 
