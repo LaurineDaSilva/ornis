@@ -16,19 +16,19 @@ Orange: #FF864A
 
 From the larger palette underneath, I got this simpler palette using [mycolor.space](https://mycolor.space/):
 
-![inspired-from-kingfisher-green](https://user-images.githubusercontent.com/107263089/224476756-177b3484-866c-4769-a269-4372d51b724c.jpg)
+![inspired-from-kingfisher-green](../images/graphic-charter/graphic_charter_01.jpg)
 
 The teal, turquoise and orange of kingfishers remain, with more harmony than the former palette. I'll use a variant of the cream colour for the background, or white.
 
 ### Palette colour variants
 
-![teal-variants](https://user-images.githubusercontent.com/107263089/225875745-12cc2b92-968f-410f-9180-417e6571f812.jpg)
+![teal-variants](../images/graphic-charter/graphic_charter_02.jpg)
 
-![orange-variants](https://user-images.githubusercontent.com/107263089/225875773-371d3c9d-03af-46c1-8469-8cbe1bac2c61.jpg)
+![orange-variants](../images/graphic-charter/graphic_charter_03.jpg)
 
-![turquoise-variants](https://user-images.githubusercontent.com/107263089/225875787-792c24a9-12cb-4f27-bfa2-41ad279c69e3.jpg)
+![turquoise-variants](../images/graphic-charter/graphic_charter_04.jpg)
 
-![cream-variants](https://user-images.githubusercontent.com/107263089/225875820-10358566-0784-407c-8858-eef926bada1f.jpg)
+![cream-variants](../images/graphic-charter/graphic_charter_05.jpg)
 
 ## Colour scheme accessibility
 
@@ -37,7 +37,7 @@ The teal, turquoise and orange of kingfishers remain, with more harmony than the
 Using [Adobe Color](https://color.adobe.com), I tested this palette for accessibility. This is the result of the simulation of the different types of colourblindness:
 
 
-![kingfisher-simulateur-daltonisme](https://user-images.githubusercontent.com/107263089/224478672-47de407f-98ba-4226-a446-0880104b1e55.jpg)
+![kingfisher-simulateur-daltonisme](../images/graphic-charter/graphic_charter_06.jpg)
 
 Because the website asked for 5 different colours to create a palette, I put white as a last colour. This is the reason there is a flag for colour conflict, between the white and the cream colours.
 
@@ -47,31 +47,31 @@ With the tests I realized white would be a better choice than cream for my colou
 
 - For a cream background with teal text: [passes]
 
-![teal-cream-contrast](https://user-images.githubusercontent.com/107263089/224478930-5aab631d-1276-4a50-923e-6ab06a4dca20.png)
+![teal-cream-contrast](../images/graphic-charter/graphic_charter_07.jpg)
 
 - For a cream background with turquoise text: [fails]
 
-![turquoise-cream-contrast](https://user-images.githubusercontent.com/107263089/224479051-c36249d0-8a4f-4513-9b47-890645fcd9ef.jpg)
+![turquoise-cream-contrast](../images/graphic-charter/graphic_charter_08.jpg)
 
 - For a cream background with orange text: [fails]
 
-![orange-cream-contrast](https://user-images.githubusercontent.com/107263089/224479162-1a0db695-f649-4e30-a5ef-8cfd6e653a76.jpg)
+![orange-cream-contrast](../images/graphic-charter/graphic_charter_09.jpg)
 
 - For an orange background with teal text: [passes partially]
 
-![orange-teal-contrast01](https://user-images.githubusercontent.com/107263089/224479414-3d73d83e-39c6-4687-923f-e1a7cc6b38d0.jpg)
+![orange-teal-contrast01](../images/graphic-charter/graphic_charter_10.jpg)
 
 - For a teal background with orange text: [passes partially]
 
-![orange-teal-contrast02](https://user-images.githubusercontent.com/107263089/224479483-a80865e8-2fea-41bf-9392-693d6256de4a.jpg)
+![orange-teal-contrast02](../images/graphic-charter/graphic_charter_11.jpg)
 
 - For a teal background with turquoise text: [passes partially]
 
-![turquoise-teal-contrast01](https://user-images.githubusercontent.com/107263089/224479636-af70abf4-ca19-488f-8a17-d5659ade97c5.jpg)
+![turquoise-teal-contrast01](../images/graphic-charter/graphic_charter_12.jpg)
 
 - For a turquoise background with teal text: [passes partially]
 
-![turquoise-teal-contrast02](https://user-images.githubusercontent.com/107263089/224479656-916cf278-42bf-4e88-a380-dc2d3d1819e1.jpg)
+![turquoise-teal-contrast02](../images/graphic-charter/graphic_charter_13.jpg)
 
 - Orange vs turquoise tests fail in both ways, these two colours should not be associated.
 
@@ -95,7 +95,7 @@ Therefore they help convey emotions I want to convey with Ornis too. This app sh
 
 This was the former palette:
 
-![kingfisher-bird-by-schemecolor](https://user-images.githubusercontent.com/107263089/224267747-c7711c5e-2637-4fac-9e05-c5a404e47296.png)
+![kingfisher-bird-by-schemecolor](../images/graphic-charter/graphic_charter_14.jpg)
 
 [Find various shades on schemecolor.com](https://www.schemecolor.com/kingfisher-bird.php).
 
