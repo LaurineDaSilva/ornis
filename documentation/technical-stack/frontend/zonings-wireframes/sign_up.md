@@ -2,4 +2,4 @@
 
 ## Zoning and wireframe
 
-![20230529_173255](../images/sign-up/sign_up_01.jpg)
+![sign-up wireframe and zoning](../../../images/sign-up/sign_up_01.jpg)

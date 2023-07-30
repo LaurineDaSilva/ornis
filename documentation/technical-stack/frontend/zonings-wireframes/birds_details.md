@@ -2,8 +2,8 @@
 
 ## Zoning
 
-![bird-focus-zoning](../images/birds-details/birds_details_01.jpg)
+![bird-focus-zoning](../../../images/birds-details/birds_details_01.jpg)
 
 ## Wireframe
 
-![bird-focus-wireframe](../images/birds-details/birds_details_02.jpg)
+![bird-focus-wireframe](../../../images/birds-details/birds_details_02.jpg)
