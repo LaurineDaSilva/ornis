@@ -4,7 +4,7 @@
 
 => Cors requests made by browsers.
 
-![image](.../images/security/security_01.jpg)
+![image](../../images/security/security_01.jpg)
 
 BE CAREFUL: it is a security concept **BUT** it does not protect any intrusions in the URL.
 
@@ -21,8 +21,8 @@ Link: https://www.baeldung.com/spring-cors
 
 However, it is not a good practice to put the URL directly in the code. So the best practice is to inform the URL in the application.properties file.
 
-![image](.../images/security/security_02.jpg)
+![image](../../images/security/security_02.jpg)
 
 It can have many properties which will contain a key and a value.
 
-![image](.../images/security/security_03.jpg)
+![image](../../images/security/security_03.jpg)
