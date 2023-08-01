@@ -1,6 +1,6 @@
 package co.simplon.ornis.dtos;
 
-public interface BirdViewFr {
+public interface BirdView {
 
     Long getId();
 
@@ -8,6 +8,6 @@ public interface BirdViewFr {
 
     String getScientificName();
 
-    String getFrenchName();
+    String getcommonName();
 
 }

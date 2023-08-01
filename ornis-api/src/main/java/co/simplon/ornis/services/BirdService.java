@@ -2,13 +2,12 @@ package co.simplon.ornis.services;
 
 import java.util.Collection;
 
-import co.simplon.ornis.dtos.BirdViewEn;
-import co.simplon.ornis.dtos.BirdViewFr;
+import co.simplon.ornis.dtos.BirdView;
 
 public interface BirdService {
 
-    Collection<BirdViewEn> getAllEn();
+    Collection<BirdView> getAllEn();
 
-    Collection<BirdViewFr> getAllFr();
+    Collection<BirdView> getAllFr();
 
 }

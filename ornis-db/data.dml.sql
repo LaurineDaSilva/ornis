@@ -2,7 +2,7 @@ DELETE from birds;
 DELETE from english_messages;
 DELETE from french_messages;
 
-INSERT INTO english_messages(species_code, english_name)
+INSERT INTO english_messages(species_code, common_name)
 VALUES
 ('eurmag1', 'Eurasian Magpie'),
 ('bltacc1', 'Black-throated Accentor'),
@@ -34,7 +34,7 @@ VALUES
 ('waldra1', 'Northern Bald Ibis'),
 ('gretit1', 'Great Tit');
 
-INSERT INTO french_messages(species_code, french_name)
+INSERT INTO french_messages(species_code, common_name)
 VALUES
 ('eurmag1', 'Pie bavarde'),
 ('bltacc1', 'Accenteur à gorge noire'),
