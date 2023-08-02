@@ -11,7 +11,7 @@ export default {
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get('/birds');
+      const resp = await this.$http.get(`/birds/${this.$i18n.locale}`);
       this.birds = await resp.body;
     },
   },
@@ -26,14 +26,14 @@ export default {
         <div class="row g-0">
           <div class="col-md-4">
             <img
-              :src="'/images/bird_pictures/' + bird.speciesCode + '.jpg'"
+              :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
               class="img-fluid rounded-start"
-              :alt="$t(`birdsCommonNames.${bird.speciesCode}`) + ' ' + $t(`birdsList.imageAlt`)"
+              :alt="$t(bird.commonName + $t(`birdsList.imageAlt`))"
             />
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              <h5 class="card-title">{{ $t(`birdsCommonNames.${bird.speciesCode}`) }}</h5>
+              <h5 class="card-title">{{ bird.commonName }}</h5>
               <p class="card-text fst-italic">
                 {{ bird.scientificName }}
               </p>
