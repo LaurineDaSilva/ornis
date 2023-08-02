@@ -1,3 +1,5 @@
+SET CLIENT_ENCODING TO 'UTF-8';
+
 DROP TABLE IF EXISTS birds;
 DROP TABLE IF EXISTS english_messages;
 DROP TABLE IF EXISTS french_messages;
