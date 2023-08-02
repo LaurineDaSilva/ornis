@@ -1,7 +1,7 @@
 const messages = {
   birdsList: {
     title: 'Liste des oiseaux de France',
-    imageAlt: ' (photo)',
+    imageAlt: '{name} (photo)',
   },
   signUp: {
     title: 'Inscription',

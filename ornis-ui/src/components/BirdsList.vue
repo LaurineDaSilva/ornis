@@ -28,7 +28,7 @@ export default {
             <img
               :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
               class="img-fluid rounded-start"
-              :alt="$t(bird.commonName + $t(`birdsList.imageAlt`))"
+              :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
             />
           </div>
           <div class="col-md-8">
