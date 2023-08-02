@@ -8,4 +8,6 @@ public interface BirdView {
 
     String getScientificName();
 
+    String getCommonName();
+
 }

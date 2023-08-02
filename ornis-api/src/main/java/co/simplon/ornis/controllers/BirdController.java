@@ -19,8 +19,13 @@ public class BirdController {
 	this.service = service;
     }
 
-    @GetMapping
-    public Collection<BirdView> getAll() {
-	return service.getAll();
+    @GetMapping("/en")
+    public Collection<BirdView> getAllEn() {
+	return service.getAllEn();
+    }
+
+    @GetMapping("/fr")
+    public Collection<BirdView> getAllFr() {
+	return service.getAllFr();
     }
 }

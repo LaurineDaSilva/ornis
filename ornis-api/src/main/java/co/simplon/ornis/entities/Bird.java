@@ -14,6 +14,9 @@ public class Bird extends AbstractEntity {
     @Column(name = "scientific_name")
     private String scientificName;
 
+    @Column(name = "common_name")
+    private String commonName;
+
     public Bird() {
     }
 
@@ -33,11 +36,19 @@ public class Bird extends AbstractEntity {
 	this.scientificName = scientificName;
     }
 
+    public String getCommonName() {
+	return commonName;
+    }
+
+    public void setCommonName(String commonName) {
+	this.commonName = commonName;
+    }
+
     @Override
     public String toString() {
 	return "{speciesCode=" + speciesCode
 		+ ", scientificName=" + scientificName
-		+ "}";
+		+ ", commonName=" + commonName + "}";
     }
 
 }

@@ -1,4 +1,70 @@
 DELETE from birds;
+DELETE from english_messages;
+DELETE from french_messages;
+
+INSERT INTO english_messages(species_code, common_name)
+VALUES
+('eurmag1', 'Eurasian Magpie'),
+('bltacc1', 'Black-throated Accentor'),
+('alpacc1', 'Alpine Accentor'),
+('dunnoc1', 'Dunnock'), 
+('rutscr1', 'Rufous-tailed Scrub-Robin'), 
+('booeag1', 'Booted Eagle'), 
+('grseag1', 'Greater Spotted Eagle'), 
+('boneag2', 'Bonelli''s Eagle'), 
+('steeag1', 'Steppe Eagle'),
+('spaeag1', 'Spanish Eagle'), 
+('impeag1', 'Imperial Eagle'),
+('whisto1', 'White Stork'), 
+('whoswa', 'Whooper Swan'), 
+('grefla3', 'Greater Flamingo'), 
+('kumgul1', 'Iceland Gull (kumlieni)'),
+('blhher1', 'Black-headed Heron'), 
+('comkin1', 'Common Kingfisher'), 
+('litswi1', 'Little Swift'),
+('eurbla', 'Eurasian Blackbird'), 
+('lottit1', 'Long-tailed Tit'), 
+('houspa', 'House Sparrow'),
+('grswoo', 'Great Spotted Woodpecker'), 
+('eugwoo2', 'Eurasian Green Woodpecker'), 
+('rocpig', 'Rock Pigeon'), 
+('cowpig1', 'Common Wood-Pigeon'),
+('razorb', 'Razorbill'),
+('comnig1', 'Common Nightingale'),
+('waldra1', 'Northern Bald Ibis'),
+('gretit1', 'Great Tit');
+
+INSERT INTO french_messages(species_code, common_name)
+VALUES
+('eurmag1', 'Pie bavarde'),
+('bltacc1', 'Accenteur à gorge noire'),
+('alpacc1', 'Accenteur alpin'),
+('dunnoc1', 'Accenteur mouchet'), 
+('rutscr1', 'Agrobate roux'), 
+('booeag1', 'Aigle botté'), 
+('grseag1', 'Aigle criard'), 
+('boneag2', 'Aigle de Bonelli'), 
+('steeag1', 'Aigle des steppes'),
+('spaeag1', 'Aigle ibérique'), 
+('impeag1', 'Aigle impérial'),
+('whisto1', 'Cigogne blanche'), 
+('whoswa', 'Cygne chanteur'), 
+('grefla3', 'Flamant rose'), 
+('kumgul1', 'Goéland arctique (kumlieni)'),
+('blhher1',  'Héron mélanocéphale'), 
+('comkin1', 'Martin-pêcheur d''Europe'), 
+('litswi1', 'Martinet des maisons'),
+('eurbla', 'Merle noir'), 
+('lottit1', 'Orite à longue queue'), 
+('houspa', 'Moineau domestique'),
+('grswoo', 'Pic épeiche'), 
+('eugwoo2', 'Pic vert'), 
+('rocpig', 'Pigeon biset'), 
+('cowpig1', 'Pigeon ramier'),
+('razorb', 'Pingouin torda'),
+('comnig1', 'Rossignol philomèle'),
+('waldra1', 'Ibis chauve'),
+('gretit1', 'Mésange charbonnière');
 
 INSERT INTO birds (species_code, scientific_name)
 VALUES

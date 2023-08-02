@@ -6,6 +6,8 @@ import co.simplon.ornis.dtos.BirdView;
 
 public interface BirdService {
 
-    Collection<BirdView> getAll();
+    Collection<BirdView> getAllEn();
+
+    Collection<BirdView> getAllFr();
 
 }
