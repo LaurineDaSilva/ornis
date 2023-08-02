@@ -18,12 +18,12 @@ public class BirdServiceImpl implements BirdService {
 
     @Override
     public Collection<BirdView> getAllEn() {
-	return birds.findAllBirdsEnglish();
+	return birds.findAllBirdsEn();
     }
 
     @Override
     public Collection<BirdView> getAllFr() {
-	return birds.findAllBirdsFrench();
+	return birds.findAllBirdsFr();
     }
 
 }

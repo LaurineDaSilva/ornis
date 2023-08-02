@@ -13,9 +13,9 @@ public interface BirdRepository
 
     @Query(value = "SELECT b.id as id, b.species_code as speciesCode, b.scientific_name as scientificName, en.common_name as commonName FROM birds b "
 	    + "LEFT OUTER JOIN english_messages en on b.species_code = en.species_code;", nativeQuery = true)
-    Collection<BirdView> findAllBirdsEnglish();
+    Collection<BirdView> findAllBirdsEn();
 
     @Query(value = "SELECT b.id as id, b.species_code as speciesCode, b.scientific_name as scientificName, fr.common_name as commonName FROM birds b "
 	    + "LEFT OUTER JOIN french_messages fr on b.species_code = fr.species_code;", nativeQuery = true)
-    Collection<BirdView> findAllBirdsFrench();
+    Collection<BirdView> findAllBirdsFr();
 }
