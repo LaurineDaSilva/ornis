@@ -21,22 +21,26 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
-    <ul class="list-group">
-      <div v-for="bird in birds" :key="bird" class="card mb-3 mx-auto" style="max-width: 540px">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
-              class="img-fluid rounded-start"
-              :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ bird.commonName }}</h5>
-              <p class="card-text fst-italic">
-                {{ bird.scientificName }}
-              </p>
+    <ul class="list-group birds-list">
+      <div class="row justify-content-between">
+        <div v-for="bird in birds" :key="bird" class="col-md-6 mb-4" style="max-width: 540px">
+          <div class="card h-100 shadow-sm">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
+                  class="img-fluid h-100 rounded-start"
+                  :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ bird.commonName }}</h5>
+                  <p class="card-text fst-italic">
+                    {{ bird.scientificName }}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -44,3 +48,12 @@ export default {
     </ul>
   </section>
 </template>
+
+<style>
+@media (min-width: 992px) {
+  .birds-list {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+</style>
