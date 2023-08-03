@@ -21,14 +21,9 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
-    <ul class="list-group">
-      <div class="row">
-        <div
-          v-for="bird in birds"
-          :key="bird"
-          class="col-md-6 mb-4 mx-auto"
-          style="max-width: 540px"
-        >
+    <ul class="list-group birds-list">
+      <div class="row justify-content-between">
+        <div v-for="bird in birds" :key="bird" class="col-md-6 mb-4" style="max-width: 540px">
           <div class="card h-100 shadow-sm">
             <div class="row g-0">
               <div class="col-md-4">
@@ -53,3 +48,12 @@ export default {
     </ul>
   </section>
 </template>
+
+<style>
+@media (min-width: 992px) {
+  .birds-list {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+</style>
