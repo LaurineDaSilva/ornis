@@ -4,6 +4,7 @@ export default {
     return {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
       birds: [],
+      loaded: false,
     };
   },
   beforeMount() {
@@ -13,6 +14,7 @@ export default {
     async initBirdsList() {
       const resp = await this.$http.get(`/birds/${this.$i18n.locale}`);
       this.birds = await resp.body;
+      this.loaded = true;
     },
   },
 };
@@ -22,7 +24,7 @@ export default {
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
     <ul class="list-group birds-list">
-      <div class="row justify-content-between">
+      <div v-if="loaded" class="row justify-content-between">
         <div v-for="bird in birds" :key="bird" class="col-md-6 mb-4" style="max-width: 540px">
           <div class="card h-100 shadow-sm">
             <div class="row g-0">
@@ -43,6 +45,11 @@ export default {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div v-else class="d-flex mx-auto my-5">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </ul>
