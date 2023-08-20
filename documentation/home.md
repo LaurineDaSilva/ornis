@@ -7,21 +7,3 @@ Want to see more birds? Use _Ornis_'s map system to know the general location of
 Made with the intent of protecting fauna in mind, _Ornis_ allows you to help ornithologists and bird protection societies by registering where you met a bird.
 
 The name _Ornis_ comes from the Ancient Greek word for "bird".
-
-## Project Setup
-
-### Technical stack:
-
-**Front-end:**
-
-- VueJS
-
-- Bootstrap
-
-**Back-end:**
-
-- Java Spring Boot
-
-**Database:**
-
-- PostgreSQL
