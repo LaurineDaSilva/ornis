@@ -46,9 +46,10 @@ public class Bird extends AbstractEntity {
 
     @Override
     public String toString() {
-	return "{speciesCode=" + speciesCode
-		+ ", scientificName=" + scientificName
-		+ ", commonName=" + commonName + "}";
+	return String.format(
+		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s}",
+		getId(), speciesCode, scientificName,
+		commonName);
     }
 
 }
