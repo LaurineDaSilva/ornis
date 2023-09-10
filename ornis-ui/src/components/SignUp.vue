@@ -56,8 +56,8 @@ export default {
           >{{ $t('signUp.username.label') }}<span class="text-secondary">*</span></label
         >
         <input
-          v-model="inputs.username"
           id="username"
+          v-model="inputs.username"
           class="form-control"
           name="username"
           type="text"
@@ -74,8 +74,8 @@ export default {
           >{{ $t('signUp.email.label') }}<span class="text-secondary">*</span></label
         >
         <input
-          v-model="inputs.emailAddress"
           id="email"
+          v-model="inputs.emailAddress"
           class="form-control"
           name="email"
           type="email"
@@ -90,8 +90,8 @@ export default {
           >{{ $t('signUp.password.label') }}<span class="text-secondary">*</span></label
         >
         <input
-          v-model="inputs.password"
           id="password"
+          v-model="inputs.password"
           class="form-control"
           name="password"
           type="password"
