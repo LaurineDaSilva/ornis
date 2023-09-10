@@ -26,8 +26,8 @@ CREATE TABLE birds (
 
 CREATE TABLE user_accounts (
     id SERIAL PRIMARY KEY, 
-    email_address VARCHAR(50) UNIQUE NOT NULL, 
-    username VARCHAR(10) UNIQUE NOT NULL, 
+    email_address VARCHAR(100) UNIQUE NOT NULL, 
+    username VARCHAR(20) UNIQUE NOT NULL, 
     password VARCHAR(1000), 
     roles VARCHAR(11)
 );
