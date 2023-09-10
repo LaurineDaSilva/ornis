@@ -1,6 +1,7 @@
 package co.simplon.ornis.services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.ornis.dtos.CreateUserAccount;
 import co.simplon.ornis.entities.UserAccount;
@@ -8,6 +9,7 @@ import co.simplon.ornis.repositories.UserAccountRepository;
 import co.simplon.ornis.security.AuthenticationHelper;
 
 @Service
+@Transactional(readOnly = true)
 public class UserAccountAuthenticationServiceImpl
 	implements UserAccountAuthenticationService {
 
@@ -21,6 +23,7 @@ public class UserAccountAuthenticationServiceImpl
 	this.userAccounts = userAccounts;
     }
 
+    @Transactional
     @Override
     public void signUp(CreateUserAccount inputs) {
 	UserAccount userAccount = new UserAccount();
@@ -30,6 +33,7 @@ public class UserAccountAuthenticationServiceImpl
 	String hashedPassword = authenticationHelper
 		.encode(inputs.getPassword());
 	userAccount.setPassword(hashedPassword);
+	userAccount.setRoles("ROLE_USER");
 	userAccounts.save(userAccount);
     }
 
