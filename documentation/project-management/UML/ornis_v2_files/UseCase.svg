@@ -1,0 +1,16 @@
+<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <defs>
+  <linearGradient y2="0.5" x2="1.00003" y1="0.5" x1="0.00002" id="svg_5">
+   <stop stop-color="#67A8DC" offset="0"/>
+   <stop stop-color="#276DB6" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_9">
+   <ellipse transform="matrix(0.340414, 0, 0, 0.340414, -16.532, -16.5335)" id="svg_7" ry="11.96" rx="22.685" cy="75.21897" cx="74.19021" stroke-width="3" stroke="#276DB6" fill="#689CCF"/>
+   <ellipse transform="matrix(0.340414, 0, 0, 0.340414, -16.532, -16.5335)" id="svg_8" ry="10.204" rx="20.378" cy="75.21897" cx="74.19021" fill="url(#svg_5)"/>
+  </g>
+ </g>
+</svg>
