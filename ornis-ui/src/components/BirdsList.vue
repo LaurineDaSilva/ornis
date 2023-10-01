@@ -36,6 +36,13 @@ export default {
             <p class="card-text fst-italic">
               {{ bird.scientificName }}
             </p>
+            <!-- <RouterLink
+              :to="{ name: 'detail', params: { id: bird.id } }"
+              class="ms-auto"
+              title="Details..."
+            >
+              <i class="bi bi-three-dots fs-5 text-primary"></i>
+            </RouterLink> -->
           </div>
         </li>
       </ul>
