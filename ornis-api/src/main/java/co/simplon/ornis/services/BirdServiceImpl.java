@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
+import co.simplon.ornis.dtos.BirdDetail;
 import co.simplon.ornis.dtos.BirdView;
 import co.simplon.ornis.repositories.BirdRepository;
 
@@ -24,6 +25,11 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public Collection<BirdView> getAllFr() {
 	return birds.findAllBirdsFr();
+    }
+
+    @Override
+    public BirdDetail detail(Long id) {
+	return birds.findProjectedDetailById(id);
     }
 
 }
