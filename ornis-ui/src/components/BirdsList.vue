@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get(`/birds`);
+      const resp = await this.$http.get(`/birds/list`);
       this.birds = await resp.body;
       this.loaded = true;
     },
