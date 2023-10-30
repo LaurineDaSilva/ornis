@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import BirdsList from '@/components/BirdsList.vue';
 import SignUp from '@/components/SignUp.vue';
-import BirdDetails from '@/components/BirdDetails.vue';
+import BirdDetail from '@/components/BirdDetail.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,9 +17,9 @@ const router = createRouter({
       component: SignUp,
     },
     {
-      path: '/bird/:id/detail',
+      path: '/birds/:id/detail',
       name: 'bird-detail',
-      component: BirdDetails,
+      component: BirdDetail,
     },
   ],
 });

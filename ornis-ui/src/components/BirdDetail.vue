@@ -13,25 +13,34 @@ export default {
       bird: {},
     };
   },
+  beforeMount() {
+    this.initBird();
+  },
+  methods: {
+    async initBird() {
+      const resp = await this.$http.get(`/birds/${this.id}/detail`);
+      this.bird = resp.body;
+    },
+  },
 };
 </script>
 
 <template>
   <section>
-    <h1>Steppe Eagle</h1>
-    <p class="fw-light fst-italic">Scientific name</p>
+    <h1>{{ bird.commonName }}</h1>
+    <p class="fw-light fst-italic">{{ bird.scientificName }}</p>
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            src="/images/bird_pictures/steeag1.jpg"
-            class="img-fluid rounded-start"
-            alt="bird picture"
+            :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
+            class="img-fluid rounded-start bird-detail"
+            :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">Description</h5>
+            <h5 class="card-title">{{ $t('birdDetail.description.title') }}</h5>
             <p class="card-text">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut hic ipsa placeat optio
               debitis accusantium praesentium quis. Ducimus corrupti iste quia, suscipit numquam
@@ -69,3 +78,10 @@ export default {
     </div>
   </section>
 </template>
+
+<style>
+.bird-detail {
+  width: 60rem;
+  height: 20rem;
+}
+</style>

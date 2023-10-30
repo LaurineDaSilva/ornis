@@ -3,6 +3,11 @@ const messages = {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
   },
+  birdDetail: {
+    description: {
+      title: 'Description',
+    },
+  },
   signUp: {
     title: 'Inscription',
     username: {
