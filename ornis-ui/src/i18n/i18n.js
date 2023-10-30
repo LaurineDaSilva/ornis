@@ -1,16 +1,7 @@
 import { createI18n } from 'vue-i18n';
-import enMessages from './en';
-import frMessages from './fr';
+import messages from './messages';
 
-const browserLanguage = window.navigator.language;
-
-let lang = '';
-
-if (browserLanguage.startsWith('fr')) {
-  lang = 'fr';
-} else {
-  lang = 'en';
-}
+let lang = 'fr';
 
 const shortDatetimeFormat = {
   year: 'numeric',
@@ -23,23 +14,14 @@ const longDatetimeFormat = {
   day: 'numeric',
 };
 const datetimeFormats = {
-  en: {
-    short: shortDatetimeFormat,
-    long: longDatetimeFormat,
-  },
-  fr: {
-    short: shortDatetimeFormat,
-    long: longDatetimeFormat,
-  },
+  short: shortDatetimeFormat,
+  long: longDatetimeFormat,
 };
 
 const i18n = createI18n({
   locale: lang,
   fallbackLocale: lang,
-  messages: {
-    en: enMessages,
-    fr: frMessages,
-  },
+  messages: messages,
   datetimeFormats,
 });
 
