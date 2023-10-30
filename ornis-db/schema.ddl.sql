@@ -7,7 +7,8 @@ CREATE TABLE birds (
     id SERIAL PRIMARY KEY,
     species_code VARCHAR(100) UNIQUE NOT NULL,
     scientific_name VARCHAR(100) UNIQUE NOT NULL,
-    common_name VARCHAR(200) UNIQUE NOT NULL
+    common_name VARCHAR(200) UNIQUE NOT NULL,
+    description VARCHAR(1000) NOT NULL
 );
 
 CREATE TABLE user_accounts (

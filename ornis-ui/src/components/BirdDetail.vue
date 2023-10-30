@@ -42,9 +42,7 @@ export default {
           <div class="card-body">
             <h5 class="card-title">{{ $t('birdDetail.description.title') }}</h5>
             <p class="card-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut hic ipsa placeat optio
-              debitis accusantium praesentium quis. Ducimus corrupti iste quia, suscipit numquam
-              minus consectetur labore explicabo ipsa voluptatibus amet.
+              {{ bird.description }}
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
