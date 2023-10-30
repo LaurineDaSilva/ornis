@@ -21,14 +21,9 @@ public class BirdController {
 	this.service = service;
     }
 
-    @GetMapping("/en")
-    public Collection<BirdView> getAllEn() {
-	return service.getAllEn();
-    }
-
-    @GetMapping("/fr")
-    public Collection<BirdView> getAllFr() {
-	return service.getAllFr();
+    @GetMapping("/list")
+    public Collection<BirdView> getAll(Long id) {
+	return service.getAll(id);
     }
 
     @GetMapping("/{id}/detail")
