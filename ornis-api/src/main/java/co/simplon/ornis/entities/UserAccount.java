@@ -1,5 +1,7 @@
 package co.simplon.ornis.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -53,6 +55,27 @@ public class UserAccount extends AbstractEntity {
 
     public void setRoles(String roles) {
 	this.roles = roles;
+    }
+
+    @Override
+    public int hashCode() {
+	return Objects.hash(emailAddress);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) {
+	    return true;
+	}
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	UserAccount other = (UserAccount) obj;
+	return Objects.equals(emailAddress,
+		other.emailAddress);
     }
 
     @Override

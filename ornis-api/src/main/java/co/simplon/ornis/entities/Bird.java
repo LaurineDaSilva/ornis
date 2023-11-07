@@ -1,5 +1,7 @@
 package co.simplon.ornis.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -53,6 +55,27 @@ public class Bird extends AbstractEntity {
 
     public void setDescription(String description) {
 	this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+	return Objects.hash(scientificName);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) {
+	    return true;
+	}
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	Bird other = (Bird) obj;
+	return Objects.equals(scientificName,
+		other.scientificName);
     }
 
     @Override
