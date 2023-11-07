@@ -32,17 +32,12 @@ export default {
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
           <div class="card-body col-md-8">
-            <h5 class="card-title">{{ bird.commonName }}</h5>
-            <p class="card-text fst-italic">
-              {{ bird.scientificName }}
-            </p>
-            <!-- <RouterLink
-              :to="{ name: 'detail', params: { id: bird.id } }"
-              class="ms-auto"
-              title="Details..."
+            <RouterLink :to="{ name: 'bird-detail', params: { id: bird.id } }" class="ms-auto">
+              <h5 class="card-title">{{ bird.commonName }}</h5>
+              <p class="card-text fst-italic">
+                {{ bird.scientificName }}
+              </p></RouterLink
             >
-              <i class="bi bi-three-dots fs-5 text-primary"></i>
-            </RouterLink> -->
           </div>
         </li>
       </ul>
