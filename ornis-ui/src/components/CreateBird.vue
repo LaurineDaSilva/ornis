@@ -6,21 +6,30 @@
     <form>
       <div class="mb-3">
         <label for="scientificName" class="form-label"
-          >{{ $t('createBird.labels.scientificName')
+          >{{ $t('createBird.scientificName.label')
           }}<span class="text-secondary">*</span></label
         >
         <input id="scientificName" type="text" class="form-control" />
         <p class="form-text">
-          {{ $t('createBird.helpTexts.scientificName') }}
+          {{ $t('createBird.scientificName.helpText') }}
         </p>
       </div>
       <div class="mb-3">
         <label for="commonName" class="form-label"
-          >{{ $t('createBird.labels.commonName') }}<span class="text-secondary">*</span></label
+          >{{ $t('createBird.commonName.label') }}<span class="text-secondary">*</span></label
         >
         <input id="commonName" type="text" class="form-control" />
         <p class="form-text">
-          {{ $t('createBird.helpTexts.commonName') }}
+          {{ $t('createBird.commonName.helpText') }}
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label"
+          >{{ $t('createBird.description.label') }}<span class="text-secondary">*</span></label
+        >
+        <input id="description" type="textarea" class="form-control" />
+        <p class="form-text">
+          {{ $t('createBird.description.helpText') }}
         </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -29,3 +38,9 @@
     </form>
   </section>
 </template>
+
+<style>
+#description {
+  height: 100px;
+}
+</style>

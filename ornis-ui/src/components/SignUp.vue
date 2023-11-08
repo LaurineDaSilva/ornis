@@ -53,7 +53,7 @@ export default {
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
         <label for="username" class="form-label"
-          >{{ $t('signUp.labels.username') }}<span class="text-secondary">*</span></label
+          >{{ $t('signUp.username.label') }}<span class="text-secondary">*</span></label
         >
         <input
           id="username"
@@ -66,12 +66,12 @@ export default {
           }"
         />
         <p class="form-text">
-          {{ $t('signUp.helpTexts.username') }}
+          {{ $t('signUp.username.helpText') }}
         </p>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label"
-          >{{ $t('signUp.labels.email') }}<span class="text-secondary">*</span></label
+          >{{ $t('signUp.email.label') }}<span class="text-secondary">*</span></label
         >
         <input
           id="email"
@@ -83,11 +83,11 @@ export default {
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
         />
-        <p class="form-text">{{ $t('signUp.helpTexts.email') }}</p>
+        <p class="form-text">{{ $t('signUp.email.helpText') }}</p>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label"
-          >{{ $t('signUp.labels.password') }}<span class="text-secondary">*</span></label
+          >{{ $t('signUp.password.label') }}<span class="text-secondary">*</span></label
         >
         <input
           id="password"
@@ -100,7 +100,7 @@ export default {
           }"
         />
         <p class="form-text">
-          {{ $t('signUp.helpTexts.password') }} "<span class="fst-italic">%*!</span>".
+          {{ $t('signUp.password.helpText') }} "<span class="fst-italic">%*!</span>".
         </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
