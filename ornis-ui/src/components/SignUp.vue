@@ -65,9 +65,9 @@ export default {
             'is-invalid': validator.inputs.username.$error,
           }"
         />
-        <div class="form-text">
+        <p class="form-text">
           {{ $t('signUp.helpTexts.username') }}
-        </div>
+        </p>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label"
@@ -83,7 +83,7 @@ export default {
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
         />
-        <div class="form-text">{{ $t('signUp.helpTexts.email') }}</div>
+        <p class="form-text">{{ $t('signUp.helpTexts.email') }}</p>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label"
@@ -99,9 +99,9 @@ export default {
             'is-invalid': validator.inputs.password.$error,
           }"
         />
-        <div class="form-text">
+        <p class="form-text">
           {{ $t('signUp.helpTexts.password') }} "<span class="fst-italic">%*!</span>".
-        </div>
+        </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="submit" class="btn btn-primary" :disabled="validator.$invalid">

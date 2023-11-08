@@ -12,9 +12,11 @@ const messages = {
     title: "Ajouter une espèce d'oiseau",
     labels: {
       scientificName: 'Nom scientifique',
+      commonName: 'Nom commun',
     },
     helpTexts: {
       scientificName: '150 caractères maximum. Doit être unique.',
+      commonName: '25 caractères maximum. Doit être unique.',
     },
   },
   signUp: {
