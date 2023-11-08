@@ -8,19 +8,26 @@ const messages = {
       title: 'Description',
     },
   },
+  createBird: {
+    title: "Ajouter une espèce d'oiseau",
+    labels: {
+      scientificName: 'Nom scientifique',
+    },
+    helpTexts: {
+      scientificName: '150 caractères maximum. Doit être unique.',
+    },
+  },
   signUp: {
     title: 'Inscription',
-    username: {
-      label: "Nom d'utilisateur",
-      helpText: '20 caractères maximum. Doit être unique.',
+    labels: {
+      username: "Nom d'utilisateur",
+      email: 'Adresse email',
+      password: 'Mot de passe',
     },
-    email: {
-      label: 'Adresse email',
-      helpText: 'Doit être unique.',
-    },
-    password: {
-      label: 'Mot de passe',
-      helpText:
+    helpTexts: {
+      username: '20 caractères maximum. Doit être unique.',
+      email: 'Doit être unique.',
+      password:
         '8 caractères minimum. Doit inclure une lettre minuscule, une lettre majuscule et un symbole parmi',
     },
     submit: "S'inscrire",
