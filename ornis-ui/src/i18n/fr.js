@@ -21,8 +21,8 @@ const messages = {
     description: {
       label: 'Description',
       helpText: '5000 caractères maximum.',
-      submit: "Ajouter l'oiseau",
     },
+    submit: "Ajouter l'oiseau",
   },
   signUp: {
     title: 'Inscription',
