@@ -21,6 +21,7 @@ const messages = {
     description: {
       label: 'Description',
       helpText: '5000 caractères maximum.',
+      submit: "Ajouter l'oiseau",
     },
   },
   signUp: {
@@ -38,8 +39,8 @@ const messages = {
       helpText:
         '8 caractères minimum. Doit inclure une lettre minuscule, une lettre majuscule et un symbole parmi',
     },
+    submit: "S'inscrire",
   },
-  submit: "S'inscrire",
 };
 
 export default messages;
