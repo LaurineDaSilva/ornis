@@ -9,7 +9,7 @@
           >{{ $t('createBird.scientificName.label')
           }}<span class="text-secondary">*</span></label
         >
-        <input id="scientificName" type="text" class="form-control" />
+        <input id="scientificName" type="text" class="form-control shadow-sm" />
         <p class="form-text">
           {{ $t('createBird.scientificName.helpText') }}
         </p>
@@ -18,7 +18,7 @@
         <label for="commonName" class="form-label"
           >{{ $t('createBird.commonName.label') }}<span class="text-secondary">*</span></label
         >
-        <input id="commonName" type="text" class="form-control" />
+        <input id="commonName" type="text" class="form-control shadow-sm" />
         <p class="form-text">
           {{ $t('createBird.commonName.helpText') }}
         </p>
@@ -27,13 +27,13 @@
         <label for="description" class="form-label"
           >{{ $t('createBird.description.label') }}<span class="text-secondary">*</span></label
         >
-        <input id="description" type="textarea" class="form-control" />
+        <input id="description" type="textarea" class="form-control shadow-sm" />
         <p class="form-text">
           {{ $t('createBird.description.helpText') }}
         </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary">Ajouter l'oiseau</button>
+        <button type="submit" class="btn btn-primary shadow-sm">Ajouter l'oiseau</button>
       </div>
     </form>
   </section>

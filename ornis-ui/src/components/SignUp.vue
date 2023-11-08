@@ -58,7 +58,7 @@ export default {
         <input
           id="username"
           v-model="inputs.username"
-          class="form-control"
+          class="form-control shadow-sm"
           name="username"
           type="text"
           :class="{
@@ -76,7 +76,7 @@ export default {
         <input
           id="email"
           v-model="inputs.emailAddress"
-          class="form-control"
+          class="form-control shadow-sm"
           name="email"
           type="email"
           :class="{
@@ -92,7 +92,7 @@ export default {
         <input
           id="password"
           v-model="inputs.password"
-          class="form-control"
+          class="form-control shadow-sm"
           name="password"
           type="password"
           :class="{
@@ -104,7 +104,7 @@ export default {
         </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary" :disabled="validator.$invalid">
+        <button type="submit" class="btn btn-primary shadow-sm" :disabled="validator.$invalid">
           {{ $t('signUp.submit') }}
         </button>
       </div>
