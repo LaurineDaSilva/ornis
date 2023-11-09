@@ -10,8 +10,8 @@ public interface BirdService {
 
     Collection<BirdView> getAll(Long id);
 
-    BirdDetail detail(Long id);
+    BirdDetail getDetail(Long id);
 
-    void create(BirdCreate inputs);
+    void createBird(BirdCreate inputs);
 
 }
