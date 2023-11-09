@@ -25,7 +25,7 @@ const router = createRouter({
     },
     // Pages for admins:
     {
-      path: '/add-bird',
+      path: '/admin/add-bird',
       name: 'add-bird',
       component: CreateBird,
     },
