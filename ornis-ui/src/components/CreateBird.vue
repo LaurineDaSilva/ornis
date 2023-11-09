@@ -26,6 +26,19 @@ export default {
       },
     };
   },
+  methods: {
+    async submit() {
+      const resp = await this.$http.post('/birds/add-bird', this.inputs);
+      if (resp.status === 204) {
+        Object.assign(this.inputs, this.$options.data().inputs);
+        this.validator.$reset();
+        console.log('Bird created with success.');
+      } else {
+        console.error(resp);
+        console.log('Server conversion or validation error.');
+      }
+    },
+  },
 };
 </script>
 
