@@ -14,4 +14,5 @@ public interface BirdRepository
     Collection<BirdView> findAllProjectedBy();
 
     BirdDetail findProjectedDetailById(Long id);
+
 }

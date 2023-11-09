@@ -4,9 +4,13 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 
+import co.simplon.ornis.entities.listeners.BirdListener;
+
 @Entity
+@EntityListeners(BirdListener.class)
 @Table(name = "birds")
 public class Bird extends AbstractEntity {
 

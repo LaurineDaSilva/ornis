@@ -3,12 +3,16 @@ package co.simplon.ornis.services;
 import java.util.Collection;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.ornis.dtos.BirdCreate;
 import co.simplon.ornis.dtos.BirdDetail;
 import co.simplon.ornis.dtos.BirdView;
+import co.simplon.ornis.entities.Bird;
 import co.simplon.ornis.repositories.BirdRepository;
 
 @Service
+@Transactional(readOnly = true)
 public class BirdServiceImpl implements BirdService {
 
     private BirdRepository birds;
@@ -23,8 +27,19 @@ public class BirdServiceImpl implements BirdService {
     }
 
     @Override
-    public BirdDetail detail(Long id) {
+    public BirdDetail getDetail(Long id) {
 	return birds.findProjectedDetailById(id);
+    }
+
+    @Transactional
+    @Override
+    public void createBird(BirdCreate inputs) {
+	Bird entity = new Bird();
+	entity.setCommonName(inputs.getCommonName());
+	entity.setScientificName(
+		inputs.getScientificName());
+	entity.setDescription(inputs.getDescription());
+	birds.save(entity);
     }
 
 }
