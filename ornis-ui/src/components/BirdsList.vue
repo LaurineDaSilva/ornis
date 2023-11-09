@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get(`/birds/${this.$i18n.locale}`);
+      const resp = await this.$http.get(`/birds/list`);
       this.birds = await resp.body;
       this.loaded = true;
     },
@@ -32,10 +32,12 @@ export default {
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
           <div class="card-body col-md-8">
-            <h5 class="card-title">{{ bird.commonName }}</h5>
-            <p class="card-text fst-italic">
-              {{ bird.scientificName }}
-            </p>
+            <RouterLink :to="{ name: 'bird-detail', params: { id: bird.id } }" class="ms-auto">
+              <h5 class="card-title">{{ bird.commonName }}</h5>
+              <p class="card-text fst-italic">
+                {{ bird.scientificName }}
+              </p></RouterLink
+            >
           </div>
         </li>
       </ul>

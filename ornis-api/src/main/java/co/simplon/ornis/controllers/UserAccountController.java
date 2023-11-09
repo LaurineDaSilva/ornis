@@ -1,5 +1,7 @@
 package co.simplon.ornis.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class UserAccountController {
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void signUp(
-	    @RequestBody CreateUserAccount inputs) {
+	    @RequestBody @Valid CreateUserAccount inputs) {
 	service.signUp(inputs);
     }
 

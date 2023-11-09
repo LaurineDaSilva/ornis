@@ -3,6 +3,27 @@ const messages = {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
   },
+  birdDetail: {
+    description: {
+      title: 'Description',
+    },
+  },
+  createBird: {
+    title: "Ajouter une espèce d'oiseau",
+    scientificName: {
+      label: 'Nom scientifique',
+      helpText: '100 caractères maximum. Doit être unique.',
+    },
+    commonName: {
+      label: 'Nom commun',
+      helpText: '200 caractères maximum. Doit être unique.',
+    },
+    description: {
+      label: 'Description',
+      helpText: '5000 caractères maximum.',
+    },
+    submit: "Ajouter l'oiseau",
+  },
   signUp: {
     title: 'Inscription',
     username: {

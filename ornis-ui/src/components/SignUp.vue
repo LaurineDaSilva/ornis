@@ -58,16 +58,16 @@ export default {
         <input
           id="username"
           v-model="inputs.username"
-          class="form-control"
           name="username"
           type="text"
+          class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.username.$error,
           }"
         />
-        <div id="usernameInputHelpText" class="form-text">
+        <p class="form-text">
           {{ $t('signUp.username.helpText') }}
-        </div>
+        </p>
       </div>
       <div class="mb-3">
         <label for="email" class="form-label"
@@ -76,14 +76,14 @@ export default {
         <input
           id="email"
           v-model="inputs.emailAddress"
-          class="form-control"
           name="email"
           type="email"
+          class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
         />
-        <div id="emailHelpText" class="form-text">{{ $t('signUp.email.helpText') }}</div>
+        <p class="form-text">{{ $t('signUp.email.helpText') }}</p>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label"
@@ -92,19 +92,19 @@ export default {
         <input
           id="password"
           v-model="inputs.password"
-          class="form-control"
           name="password"
           type="password"
+          class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.password.$error,
           }"
         />
-        <div id="passwordHelpText" class="form-text">
+        <p class="form-text">
           {{ $t('signUp.password.helpText') }} "<span class="fst-italic">%*!</span>".
-        </div>
+        </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary" :disabled="validator.$invalid">
+        <button type="submit" class="btn btn-primary shadow-sm" :disabled="validator.$invalid">
           {{ $t('signUp.submit') }}
         </button>
       </div>
