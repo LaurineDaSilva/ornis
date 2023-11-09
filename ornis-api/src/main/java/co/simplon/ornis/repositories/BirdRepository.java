@@ -1,7 +1,6 @@
 package co.simplon.ornis.repositories;
 
 import java.util.Collection;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,5 +15,4 @@ public interface BirdRepository
 
     BirdDetail findProjectedDetailById(Long id);
 
-    Optional<Bird> findBySpeciesCode(String speciesCode);
 }
