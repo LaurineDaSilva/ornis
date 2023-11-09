@@ -20,8 +20,8 @@ export default {
   validations() {
     return {
       inputs: {
-        scientificName: { required, maxLength: maxLength(150) },
-        commonName: { required, maxLength: maxLength(25) },
+        scientificName: { required, maxLength: maxLength(100) },
+        commonName: { required, maxLength: maxLength(200) },
         description: { maxLength: maxLength(5000) },
       },
     };
