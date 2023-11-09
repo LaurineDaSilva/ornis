@@ -24,6 +24,22 @@ const messages = {
     },
     submit: "Ajouter l'oiseau",
   },
+  updateBird: {
+    title: "Mettre à jour l'oiseau",
+    scientificName: {
+      label: 'Nom scientifique',
+      helpText: '100 caractères maximum. Doit être unique.',
+    },
+    commonName: {
+      label: 'Nom commun',
+      helpText: '200 caractères maximum. Doit être unique.',
+    },
+    description: {
+      label: 'Description',
+      helpText: '5000 caractères maximum.',
+    },
+    submit: 'Mettre à jour',
+  },
   signUp: {
     title: 'Inscription',
     username: {
