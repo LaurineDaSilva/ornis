@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import co.simplon.ornis.dtos.BirdCreate;
 import co.simplon.ornis.dtos.BirdDetail;
+import co.simplon.ornis.dtos.BirdToUpdate;
 import co.simplon.ornis.dtos.BirdUpdate;
 import co.simplon.ornis.dtos.BirdView;
 
@@ -16,5 +17,7 @@ public interface BirdService {
     void createBird(BirdCreate inputs);
 
     void updateBird(Long id, BirdUpdate inputs);
+
+    BirdToUpdate getBirdToUpdate(Long id);
 
 }

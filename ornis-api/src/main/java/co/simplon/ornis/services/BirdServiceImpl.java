@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.ornis.dtos.BirdCreate;
 import co.simplon.ornis.dtos.BirdDetail;
+import co.simplon.ornis.dtos.BirdToUpdate;
 import co.simplon.ornis.dtos.BirdUpdate;
 import co.simplon.ornis.dtos.BirdView;
 import co.simplon.ornis.entities.Bird;
@@ -51,6 +52,11 @@ public class BirdServiceImpl implements BirdService {
 		inputs.getScientificName());
 	entity.setCommonName(inputs.getCommonName());
 	entity.setDescription(inputs.getDescription());
+    }
+
+    @Override
+    public BirdToUpdate getBirdToUpdate(Long id) {
+	return birds.findProjectedById(id);
     }
 
 }

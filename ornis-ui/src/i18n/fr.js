@@ -25,7 +25,7 @@ const messages = {
     submit: "Ajouter l'oiseau",
   },
   updateBird: {
-    title: "Mettre à jour l'oiseau",
+    title: "Mettre à jour l'espèce",
     scientificName: {
       label: 'Nom scientifique',
       helpText: '100 caractères maximum. Doit être unique.',

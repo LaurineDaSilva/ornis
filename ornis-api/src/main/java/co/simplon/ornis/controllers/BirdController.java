@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.ornis.dtos.BirdCreate;
 import co.simplon.ornis.dtos.BirdDetail;
+import co.simplon.ornis.dtos.BirdToUpdate;
 import co.simplon.ornis.dtos.BirdUpdate;
 import co.simplon.ornis.dtos.BirdView;
 import co.simplon.ornis.services.BirdService;
@@ -47,10 +49,16 @@ public class BirdController {
 	service.createBird(inputs);
     }
 
+    @GetMapping("/{id}/to-update")
+    public BirdToUpdate toUpdate(
+	    @PathVariable("id") Long id) {
+	return service.getBirdToUpdate(id);
+    }
+
     @PutMapping("/update-bird/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id,
-	    @RequestBody @Valid BirdUpdate inputs) {
+	    @ModelAttribute @Valid BirdUpdate inputs) {
 	service.updateBird(id, inputs);
     }
 }
