@@ -1,4 +1,5 @@
 const messages = {
+  // Pages accessible to all users:
   birdsList: {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
@@ -7,6 +8,32 @@ const messages = {
     description: {
       title: 'Description',
     },
+  },
+  // Authentication pages:
+  signUp: {
+    title: 'Inscription',
+    username: {
+      label: "Nom d'utilisateur",
+      helpText: '20 caractères maximum. Doit être unique.',
+    },
+    email: {
+      label: 'Adresse email',
+      helpText: 'Doit être unique.',
+    },
+    password: {
+      label: 'Mot de passe',
+      helpText:
+        '8 caractères minimum. Doit inclure une lettre minuscule, une lettre majuscule et un symbole parmi',
+    },
+    submit: "S'inscrire",
+  },
+  // Admin pages:
+  birdsDashboard: {
+    titles: {
+      h1: 'Tableau de bord',
+      h2: 'Liste des oiseaux répertoriés sur Ornis',
+    },
+    imageAlt: '{name} (photo)',
   },
   createBird: {
     title: "Ajouter une espèce d'oiseau",
@@ -39,23 +66,6 @@ const messages = {
       helpText: '5000 caractères maximum.',
     },
     submit: 'Mettre à jour',
-  },
-  signUp: {
-    title: 'Inscription',
-    username: {
-      label: "Nom d'utilisateur",
-      helpText: '20 caractères maximum. Doit être unique.',
-    },
-    email: {
-      label: 'Adresse email',
-      helpText: 'Doit être unique.',
-    },
-    password: {
-      label: 'Mot de passe',
-      helpText:
-        '8 caractères minimum. Doit inclure une lettre minuscule, une lettre majuscule et un symbole parmi',
-    },
-    submit: "S'inscrire",
   },
 };
 
