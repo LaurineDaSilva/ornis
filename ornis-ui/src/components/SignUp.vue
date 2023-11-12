@@ -1,36 +1,112 @@
-<script></script>
+<script>
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength, maxLength, helpers } from '@vuelidate/validators';
+
+export default {
+  setup() {
+    return {
+      validator: useVuelidate({ $autoDirty: true }),
+    };
+  },
+  data() {
+    return {
+      inputs: {
+        emailAddress: null,
+        username: null,
+        password: null,
+      },
+    };
+  },
+  validations() {
+    return {
+      inputs: {
+        emailAddress: { required, maxLength: maxLength(100) },
+        username: { required, maxLength: maxLength(20) },
+        password: {
+          required,
+          minLength: minLength(8),
+          maxLength: maxLength(42),
+          helpers: helpers.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[%*!"]).{8,}$/),
+        },
+      },
+    };
+  },
+  methods: {
+    async submit() {
+      const resp = await this.$http.post('/join/signup', this.inputs);
+      if (resp.status === 204) {
+        Object.assign(this.inputs, this.$options.data().inputs);
+        this.validator.$reset();
+        console.log('User created with success.');
+      } else {
+        console.error(resp);
+        console.log('Server conversion or validation error.');
+      }
+    },
+  },
+};
+</script>
 
 <template>
   <section>
     <h1>{{ $t('signUp.title') }}</h1>
-    <form>
+    <form novalidate @submit.prevent="submit">
       <div class="mb-3">
-        <label for="usernameInput" class="form-label"
+        <label for="username" class="form-label"
           >{{ $t('signUp.username.label') }}<span class="text-secondary">*</span></label
         >
-        <input id="usernameInput" class="form-control" type="text" />
-        <div id="usernameInputHelpText" class="form-text">
+        <input
+          id="username"
+          v-model="inputs.username"
+          name="username"
+          type="text"
+          class="form-control shadow-sm"
+          :class="{
+            'is-invalid': validator.inputs.username.$error,
+          }"
+        />
+        <p class="form-text">
           {{ $t('signUp.username.helpText') }}
-        </div>
+        </p>
       </div>
       <div class="mb-3">
-        <label for="emailInput" class="form-label"
+        <label for="email" class="form-label"
           >{{ $t('signUp.email.label') }}<span class="text-secondary">*</span></label
         >
-        <input id="emailInput" class="form-control" type="email" />
-        <div id="emailHelpText" class="form-text">{{ $t('signUp.email.helpText') }}</div>
+        <input
+          id="email"
+          v-model="inputs.emailAddress"
+          name="email"
+          type="email"
+          class="form-control shadow-sm"
+          :class="{
+            'is-invalid': validator.inputs.emailAddress.$error,
+          }"
+        />
+        <p class="form-text">{{ $t('signUp.email.helpText') }}</p>
       </div>
       <div class="mb-3">
-        <label for="passwordInput" class="form-label"
+        <label for="password" class="form-label"
           >{{ $t('signUp.password.label') }}<span class="text-secondary">*</span></label
         >
-        <input id="passwordInput" class="form-control" type="password" />
-        <div id="passwordHelpText" class="form-text">
+        <input
+          id="password"
+          v-model="inputs.password"
+          name="password"
+          type="password"
+          class="form-control shadow-sm"
+          :class="{
+            'is-invalid': validator.inputs.password.$error,
+          }"
+        />
+        <p class="form-text">
           {{ $t('signUp.password.helpText') }} "<span class="fst-italic">%*!</span>".
-        </div>
+        </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="submit" class="btn btn-primary">{{ $t('signUp.submit') }}</button>
+        <button type="submit" class="btn btn-primary shadow-sm" :disabled="validator.$invalid">
+          {{ $t('signUp.submit') }}
+        </button>
       </div>
     </form>
   </section>

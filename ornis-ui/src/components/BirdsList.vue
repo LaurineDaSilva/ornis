@@ -1,4 +1,6 @@
 <script>
+import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
+
 export default {
   data() {
     return {
@@ -7,12 +9,15 @@ export default {
       loaded: false,
     };
   },
+  components: {
+    BirdActionsMenu,
+  },
   beforeMount() {
     this.initBirdsList();
   },
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get(`/birds/${this.$i18n.locale}`);
+      const resp = await this.$http.get(`/birds/list`);
       this.birds = await resp.body;
       this.loaded = true;
     },
@@ -23,42 +28,59 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
-    <ul class="list-group birds-list">
-      <div v-if="loaded" class="row justify-content-between">
-        <div v-for="bird in birds" :key="bird" class="col-md-6 mb-4" style="max-width: 540px">
-          <div class="card h-100 shadow-sm">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img
-                  :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
-                  class="img-fluid h-100 rounded-start"
-                  :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
-                />
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{{ bird.commonName }}</h5>
-                  <p class="card-text fst-italic">
-                    {{ bird.scientificName }}
-                  </p>
-                </div>
-              </div>
+    <div class="list-group birds-list-container">
+      <ul v-if="loaded" class="row justify-content-between birds-list">
+        <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
+          <img
+            class="col-4 bird-card-img"
+            :src="`/images/bird_thumbnails/${bird.speciesCode}.jpg`"
+            :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
+          />
+          <div class="card-body col-md-8">
+            <RouterLink :to="{ name: 'bird-detail', params: { id: bird.id } }" class="ms-auto">
+              <h5 class="card-title">{{ bird.commonName }}</h5>
+              <p class="card-text fst-italic">
+                {{ bird.scientificName }}
+              </p></RouterLink
+            >
+            <div class="position-absolute top-0 end-0">
+              <BirdActionsMenu :bird="bird"></BirdActionsMenu>
             </div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
+
       <div v-else class="d-flex mx-auto my-5">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
-    </ul>
+    </div>
   </section>
 </template>
 
 <style>
+.birds-list {
+  gap: 20px;
+}
+
+.bird-cards {
+  max-width: 540px;
+
+  height: 120px;
+  padding: 0;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.bird-card-img {
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
 @media (min-width: 992px) {
-  .birds-list {
+  .birds-list-container {
     padding-left: 5%;
     padding-right: 5%;
   }

@@ -5,7 +5,9 @@
       <div class="col-md-3 text-end">
         <button type="button" class="btn btn-outline-secondary me-2">Login</button>
         <button type="button" class="btn btn-primary">
-          <a href="/sign-up" class="text-light navbar-links">{{ $t('signUp.title') }}</a>
+          <RouterLink :to="{ name: 'sign-up' }" class="text-light navbar-links">
+            {{ $t('signUp.title') }}
+          </RouterLink>
         </button>
       </div>
       <button

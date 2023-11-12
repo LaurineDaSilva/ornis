@@ -1,10 +1,16 @@
 package co.simplon.ornis.entities;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 
+import co.simplon.ornis.entities.listeners.BirdListener;
+
 @Entity
+@EntityListeners(BirdListener.class)
 @Table(name = "birds")
 public class Bird extends AbstractEntity {
 
@@ -16,6 +22,9 @@ public class Bird extends AbstractEntity {
 
     @Column(name = "common_name")
     private String commonName;
+
+    @Column(name = "description")
+    private String description;
 
     public Bird() {
     }
@@ -44,12 +53,41 @@ public class Bird extends AbstractEntity {
 	this.commonName = commonName;
     }
 
+    public String getDescription() {
+	return description;
+    }
+
+    public void setDescription(String description) {
+	this.description = description;
+    }
+
+    @Override
+    public int hashCode() {
+	return Objects.hash(scientificName);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) {
+	    return true;
+	}
+	if (obj == null) {
+	    return false;
+	}
+	if (getClass() != obj.getClass()) {
+	    return false;
+	}
+	Bird other = (Bird) obj;
+	return Objects.equals(scientificName,
+		other.scientificName);
+    }
+
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s}",
+		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s, description=%s}",
 		getId(), speciesCode, scientificName,
-		commonName);
+		commonName, description);
     }
 
 }
