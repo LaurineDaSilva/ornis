@@ -53,7 +53,7 @@ export default {
       });
       console.log('check id before resp ');
       console.log(this.id);
-      const resp = await this.$http.put(`/birds/update-bird/${this.id}`, formData);
+      const resp = await this.$http.put(`/birds/update/${this.id}`, formData);
       console.log('check id after resp ');
       console.log(this.id);
       if (resp.status === 204) {

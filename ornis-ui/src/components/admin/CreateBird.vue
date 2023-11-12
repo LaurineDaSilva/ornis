@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     async submit() {
-      const resp = await this.$http.post('/birds/add-bird', this.inputs);
+      const resp = await this.$http.post('/birds/create', this.inputs);
       if (resp.status === 204) {
         Object.assign(this.inputs, this.$options.data().inputs);
         this.validator.$reset();

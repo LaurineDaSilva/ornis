@@ -44,6 +44,11 @@ public class BirdServiceImpl implements BirdService {
 	birds.save(entity);
     }
 
+    @Override
+    public BirdToUpdate getBirdToUpdate(Long id) {
+	return birds.findProjectedById(id);
+    }
+
     @Transactional
     @Override
     public void updateBird(Long id, BirdUpdate inputs) {
@@ -54,9 +59,11 @@ public class BirdServiceImpl implements BirdService {
 	entity.setDescription(inputs.getDescription());
     }
 
+    @Transactional
     @Override
-    public BirdToUpdate getBirdToUpdate(Long id) {
-	return birds.findProjectedById(id);
+    public void delete(Long id) {
+	Bird entity = birds.findById(id).get();
+	birds.delete(entity);
     }
 
 }

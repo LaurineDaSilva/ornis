@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +43,7 @@ public class BirdController {
 	return service.getDetail(id);
     }
 
-    @PostMapping("/add-bird")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void create(
 	    @RequestBody @Valid BirdCreate inputs) {
@@ -55,10 +56,16 @@ public class BirdController {
 	return service.getBirdToUpdate(id);
     }
 
-    @PutMapping("/update-bird/{id}")
+    @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id,
 	    @ModelAttribute @Valid BirdUpdate inputs) {
 	service.updateBird(id, inputs);
+    }
+
+    @DeleteMapping("delete/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable("id") Long id) {
+	service.delete(id);
     }
 }

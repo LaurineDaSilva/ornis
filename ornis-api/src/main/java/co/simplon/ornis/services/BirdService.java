@@ -16,8 +16,10 @@ public interface BirdService {
 
     void createBird(BirdCreate inputs);
 
+    BirdToUpdate getBirdToUpdate(Long id);
+
     void updateBird(Long id, BirdUpdate inputs);
 
-    BirdToUpdate getBirdToUpdate(Long id);
+    void delete(Long id);
 
 }
