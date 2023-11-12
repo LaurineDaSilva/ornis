@@ -8,6 +8,8 @@ public interface BirdDetail {
 
     String getCommonName();
 
+    String getImageName();
+
     String getDescription();
 
 }
