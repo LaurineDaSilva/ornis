@@ -4,18 +4,11 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 
-import co.simplon.ornis.entities.listeners.BirdListener;
-
 @Entity
-@EntityListeners(BirdListener.class)
 @Table(name = "birds")
 public class Bird extends AbstractEntity {
-
-    @Column(name = "species_code")
-    private String speciesCode;
 
     @Column(name = "scientific_name")
     private String scientificName;
@@ -30,14 +23,6 @@ public class Bird extends AbstractEntity {
     private String description;
 
     public Bird() {
-    }
-
-    public String getSpeciesCode() {
-	return speciesCode;
-    }
-
-    public void setSpeciesCode(String speciesCode) {
-	this.speciesCode = speciesCode;
     }
 
     public String getScientificName() {
@@ -96,9 +81,9 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s}",
-		getId(), speciesCode, scientificName,
-		commonName, imageName, description);
+		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s}",
+		getId(), scientificName, commonName,
+		imageName, description);
     }
 
 }
