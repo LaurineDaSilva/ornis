@@ -2,6 +2,9 @@
 import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
 
 export default {
+  components: {
+    BirdActionsMenu,
+  },
   data() {
     return {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
@@ -9,9 +12,7 @@ export default {
       loaded: false,
     };
   },
-  components: {
-    BirdActionsMenu,
-  },
+
   beforeMount() {
     this.initBirdsList();
   },
@@ -33,7 +34,7 @@ export default {
         <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
           <img
             class="col-4 bird-card-img"
-            :src="`/images/bird_thumbnails/${bird.speciesCode}.jpg`"
+            :src="`/images/bird_thumbnails/${bird.imageName}`"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
           <div class="card-body col-md-8">

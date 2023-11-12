@@ -8,7 +8,8 @@ CREATE TABLE birds (
     species_code VARCHAR(100) UNIQUE NOT NULL,
     scientific_name VARCHAR(100) UNIQUE NOT NULL,
     common_name VARCHAR(200) UNIQUE NOT NULL,
-    description VARCHAR(5000) 
+    image_name VARCHAR(41) UNIQUE NOT NULL,
+    description VARCHAR(5000)
 );
 
 CREATE TABLE user_accounts (

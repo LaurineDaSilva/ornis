@@ -23,6 +23,9 @@ public class Bird extends AbstractEntity {
     @Column(name = "common_name")
     private String commonName;
 
+    @Column(name = "image_name")
+    private String imageName;
+
     @Column(name = "description")
     private String description;
 
@@ -51,6 +54,14 @@ public class Bird extends AbstractEntity {
 
     public void setCommonName(String commonName) {
 	this.commonName = commonName;
+    }
+
+    public String getImageName() {
+	return imageName;
+    }
+
+    public void setImageName(String imageName) {
+	this.imageName = imageName;
     }
 
     public String getDescription() {
@@ -85,9 +96,9 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s, description=%s}",
+		"{id=%s, speciesCode=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s}",
 		getId(), speciesCode, scientificName,
-		commonName, description);
+		commonName, imageName, description);
     }
 
 }
