@@ -28,13 +28,6 @@ const messages = {
     submit: "S'inscrire",
   },
   // Admin pages:
-  birdsDashboard: {
-    titles: {
-      h1: 'Tableau de bord',
-      h2: 'Liste des oiseaux répertoriés sur Ornis',
-    },
-    imageAlt: '{name} (photo)',
-  },
   createBird: {
     title: "Ajouter une espèce d'oiseau",
     scientificName: {

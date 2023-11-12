@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import BirdsList from '@/components/BirdsList.vue';
 import BirdDetail from '@/components/BirdDetail.vue';
 import SignUp from '@/components/SignUp.vue';
-import BirdsDashboard from '@/components/admin/BirdsDashboard.vue';
 import CreateBird from '@/components/admin/CreateBird.vue';
 import UpdateBird from '@/components/admin/UpdateBird.vue';
 
@@ -26,11 +25,6 @@ const router = createRouter({
       component: SignUp,
     },
     // Pages for admins:
-    {
-      path: '/admin/birds/dashboard',
-      name: 'birds-dashboard',
-      component: BirdsDashboard,
-    },
     {
       path: '/admin/birds/add-bird',
       name: 'add-bird',
