@@ -6,6 +6,18 @@ export default {
       required: true,
     },
   },
+  methods: {
+    async deleteBird(id) {
+      const resp = await this.$http.delete(`/birds/delete/${id}`);
+      if (resp.status === 204) {
+        console.log('Bird deleted with success.');
+        this.$router.go();
+      } else {
+        console.error(resp);
+        console.log('Server error.');
+      }
+    },
+  },
 };
 </script>
 
@@ -30,6 +42,8 @@ export default {
         $t('birdActionsMenu.edit')
       }}</RouterLink>
     </li>
-    <li class="dropdown-item">{{ $t('birdActionsMenu.delete') }}</li>
+    <li class="dropdown-item text-danger" @click="deleteBird(bird.id)">
+      {{ $t('birdActionsMenu.delete') }}
+    </li>
   </ul>
 </template>
