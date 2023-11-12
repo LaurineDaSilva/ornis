@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import BirdsList from '@/components/BirdsList.vue';
-import SignUp from '@/components/SignUp.vue';
 import BirdDetail from '@/components/BirdDetail.vue';
-import CreateBird from '@/components/CreateBird.vue';
+import SignUp from '@/components/SignUp.vue';
+import CreateBird from '@/components/admin/CreateBird.vue';
+import UpdateBird from '@/components/admin/UpdateBird.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // Pages for all users, even unauthenticated users:
+    // Pages accessible without authentication:
     {
       path: '/',
       name: 'home',
@@ -25,9 +26,14 @@ const router = createRouter({
     },
     // Pages for admins:
     {
-      path: '/admin/add-bird',
+      path: '/admin/birds/add-bird',
       name: 'add-bird',
       component: CreateBird,
+    },
+    {
+      path: '/admin/birds/:id/update-bird',
+      name: 'update-bird',
+      component: UpdateBird,
     },
   ],
 });
