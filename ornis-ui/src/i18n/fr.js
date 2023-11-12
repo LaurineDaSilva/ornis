@@ -28,6 +28,10 @@ const messages = {
     submit: "S'inscrire",
   },
   // Admin pages:
+  birdActionsMenu: {
+    edit: 'Mettre à jour',
+    delete: 'Supprimer',
+  },
   createBird: {
     title: "Ajouter une espèce d'oiseau",
     scientificName: {

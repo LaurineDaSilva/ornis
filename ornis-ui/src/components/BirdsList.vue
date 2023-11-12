@@ -1,4 +1,6 @@
 <script>
+import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
+
 export default {
   data() {
     return {
@@ -6,6 +8,9 @@ export default {
       birds: [],
       loaded: false,
     };
+  },
+  components: {
+    BirdActionsMenu,
   },
   beforeMount() {
     this.initBirdsList();
@@ -38,23 +43,13 @@ export default {
                 {{ bird.scientificName }}
               </p></RouterLink
             >
-            <button class="btn text-secondary position-absolute top-0 end-0">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-three-dots"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
-                />
-              </svg>
-            </button>
+            <div class="position-absolute top-0 end-0">
+              <BirdActionsMenu :bird="bird"></BirdActionsMenu>
+            </div>
           </div>
         </li>
       </ul>
+
       <div v-else class="d-flex mx-auto my-5">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
