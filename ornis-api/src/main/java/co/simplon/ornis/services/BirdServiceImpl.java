@@ -1,9 +1,11 @@
 package co.simplon.ornis.services;
 
 import java.util.Collection;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import co.simplon.ornis.dtos.BirdCreate;
 import co.simplon.ornis.dtos.BirdDetail;
@@ -17,9 +19,13 @@ import co.simplon.ornis.repositories.BirdRepository;
 @Transactional(readOnly = true)
 public class BirdServiceImpl implements BirdService {
 
+    private final FileStorage storage;
+
     private BirdRepository birds;
 
-    public BirdServiceImpl(BirdRepository birds) {
+    public BirdServiceImpl(FileStorage storage,
+	    BirdRepository birds) {
+	this.storage = storage;
 	this.birds = birds;
     }
 
@@ -41,6 +47,10 @@ public class BirdServiceImpl implements BirdService {
 	entity.setScientificName(
 		inputs.getScientificName());
 	entity.setDescription(inputs.getDescription());
+	MultipartFile file = inputs.getFile();
+	String baseName = UUID.randomUUID().toString();
+	String fileName = storage.store(file, baseName);
+	entity.setImageName(fileName);
 	birds.save(entity);
     }
 
