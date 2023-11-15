@@ -46,7 +46,12 @@ const messages = {
       label: 'Description',
       helpText: '5000 caractères maximum.',
     },
+    file: {
+      label: 'Ajouter une image',
+      helpText: 'Format .jpg ou .png.',
+    },
     submit: "Ajouter l'oiseau",
+    required: '*',
   },
   updateBird: {
     title: "Mettre à jour l'espèce",
