@@ -67,6 +67,14 @@ public class BirdServiceImpl implements BirdService {
 		inputs.getScientificName());
 	entity.setCommonName(inputs.getCommonName());
 	entity.setDescription(inputs.getDescription());
+	MultipartFile file = inputs.getFile();
+	if (file != null) {
+	    String original = entity.getImageName();
+	    String baseName = UUID.randomUUID().toString();
+	    String newFullName = storage.replace(file,
+		    baseName, original);
+	    entity.setImageName(newFullName);
+	}
     }
 
     @Transactional
