@@ -47,7 +47,6 @@ export default {
           formData.append(key, value);
         }
       });
-      console.log(formData);
       const resp = await this.$http.post('/birds/create', formData);
       if (resp.status === 204) {
         event.target.reset();
@@ -70,7 +69,7 @@ export default {
       <div class="mb-3">
         <label for="scientificName" class="form-label"
           >{{ $t('createBird.scientificName.label')
-          }}<span class="text-secondary">{{ $t('createBird.required') }}</span></label
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <input
           id="scientificName"
@@ -89,7 +88,7 @@ export default {
       <div class="mb-3">
         <label for="commonName" class="form-label"
           >{{ $t('createBird.commonName.label')
-          }}<span class="text-secondary">{{ $t('createBird.required') }}</span></label
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <input
           id="commonName"
@@ -108,7 +107,7 @@ export default {
       <div class="mb-3">
         <label for="description" class="form-label"
           >{{ $t('createBird.description.label')
-          }}<span class="text-secondary">{{ $t('createBird.required') }}</span></label
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <textarea
           id="description"
@@ -127,7 +126,7 @@ export default {
       <div class="mb-3">
         <label for="file" class="form-label"
           >{{ $t('createBird.file.label')
-          }}<span class="text-secondary">{{ $t('createBird.required') }}</span></label
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <input
           id="file"
