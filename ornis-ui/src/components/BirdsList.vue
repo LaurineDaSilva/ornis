@@ -1,9 +1,11 @@
 <script>
 import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
+import LoadingStatus from './commons/LoadingStatus.vue';
 
 export default {
   components: {
     BirdActionsMenu,
+    LoadingStatus,
   },
   data() {
     return {
@@ -52,9 +54,7 @@ export default {
       </ul>
 
       <div v-else class="d-flex mx-auto my-5">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+        <LoadingStatus></LoadingStatus>
       </div>
     </div>
   </section>
