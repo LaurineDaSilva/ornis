@@ -1,5 +1,6 @@
 <script setup>
 import HeaderBar from '@/components/commons/HeaderBar.vue';
+import ToastNotification from '../components/commons/ToastNotification.vue';
 </script>
 
 <template>
@@ -7,4 +8,5 @@ import HeaderBar from '@/components/commons/HeaderBar.vue';
   <main class="container-xl">
     <RouterView />
   </main>
+  <ToastNotification id="toast-global" />
 </template>
