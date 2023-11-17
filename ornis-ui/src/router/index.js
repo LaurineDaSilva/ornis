@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import BirdsList from '@/components/BirdsList.vue';
-import BirdDetail from '@/components/BirdDetail.vue';
-import SignUp from '@/components/SignUp.vue';
-import CreateBird from '@/components/admin/CreateBird.vue';
-import UpdateBird from '@/components/admin/UpdateBird.vue';
+import BirdsList from '@/components/birds/BirdsList.vue';
+import BirdDetail from '@/components/birds/BirdDetail.vue';
+import CreateBird from '@/components/birds/admin/CreateBird.vue';
+import UpdateBird from '@/components/birds/admin/UpdateBird.vue';
+import SignUp from '@/components/users/SignUp.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

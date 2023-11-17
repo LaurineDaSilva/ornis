@@ -1,11 +1,11 @@
 <script>
-import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
-import LoadingStatus from './commons/LoadingStatus.vue';
+import BirdActionsMenu from '@/components/birds/admin/BirdActionsMenu.vue';
+import LoadingSpinner from '@/components/commons/LoadingSpinner.vue';
 
 export default {
   components: {
     BirdActionsMenu,
-    LoadingStatus,
+    LoadingSpinner,
   },
   data() {
     return {
@@ -54,7 +54,7 @@ export default {
       </ul>
 
       <div v-else class="d-flex mx-auto my-5">
-        <LoadingStatus></LoadingStatus>
+        <LoadingSpinner></LoadingSpinner>
       </div>
     </div>
   </section>
