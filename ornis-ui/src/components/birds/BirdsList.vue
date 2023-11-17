@@ -60,7 +60,7 @@ export default {
   </section>
 </template>
 
-<style>
+<style scoped>
 .birds-list {
   gap: 20px;
 }
