@@ -1,4 +1,6 @@
 const messages = {
+  // common
+  required: '*',
   // Pages accessible to all users:
   birdsList: {
     title: 'Liste des oiseaux de France',
@@ -25,6 +27,7 @@ const messages = {
       helpText:
         '8 caractères minimum. Doit inclure une lettre minuscule, une lettre majuscule et un symbole parmi',
     },
+    regex: '%*!',
     submit: "S'inscrire",
   },
   // Admin pages:
@@ -46,6 +49,10 @@ const messages = {
       label: 'Description',
       helpText: '5000 caractères maximum.',
     },
+    file: {
+      label: 'Ajouter une image',
+      helpText: 'Format .jpg ou .png.',
+    },
     submit: "Ajouter l'oiseau",
   },
   updateBird: {
@@ -61,6 +68,10 @@ const messages = {
     description: {
       label: 'Description',
       helpText: '5000 caractères maximum.',
+    },
+    file: {
+      label: "Modifier l'image",
+      helpText: 'Format .jpg ou .png.',
     },
     submit: 'Mettre à jour',
   },

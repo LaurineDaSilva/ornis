@@ -3,6 +3,8 @@ package co.simplon.ornis.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class BirdUpdate {
 
     @NotBlank
@@ -15,6 +17,8 @@ public class BirdUpdate {
 
     @Size(max = 5000)
     private String description;
+
+    private MultipartFile file;
 
     public BirdUpdate() {
     }
@@ -43,11 +47,20 @@ public class BirdUpdate {
 	this.description = description;
     }
 
+    public MultipartFile getFile() {
+	return file;
+    }
+
+    public void setFile(MultipartFile file) {
+	this.file = file;
+    }
+
     @Override
     public String toString() {
-	return "{scientificName=" + scientificName
-		+ ", commonName=" + commonName
-		+ ", description=" + description + "}";
+	return String.format(
+		"{scientificName=%s, commonName=%s, description=%s, file=%s}",
+		(file != null ? "[BLOB]" : null));
+
     }
 
 }

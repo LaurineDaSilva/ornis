@@ -21,6 +21,7 @@ export default {
         scientificName: null,
         commonName: null,
         description: null,
+        file: undefined,
       },
     };
   },
@@ -30,6 +31,11 @@ export default {
         scientificName: { required, maxLength: maxLength(100) },
         commonName: { required, maxLength: maxLength(200) },
         description: { required, maxLength: maxLength(5000) },
+        file: {
+          maxValue: (file) => {
+            return file ? file.size <= 1048576 : true;
+          },
+        },
       },
     };
   },
@@ -37,6 +43,9 @@ export default {
     this.initInputs();
   },
   methods: {
+    fileSelected(event) {
+      [this.inputs.file] = event.target.files;
+    },
     async initInputs() {
       const resp = await this.$http.get(`/birds/${this.id}/to-update`);
       this.inputs = resp.body;
@@ -130,6 +139,23 @@ export default {
         />
         <p class="form-text">
           {{ $t('updateBird.description.helpText') }}
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="file" class="form-label">{{ $t('updateBird.file.label') }}</label>
+        <input
+          id="file"
+          name="file"
+          type="file"
+          class="form-control shadow-sm"
+          :class="{
+            'is-invalid': validator.inputs.file.$error,
+          }"
+          accept="image/jpeg,image/png"
+          @change="fileSelected"
+        />
+        <p class="form-text">
+          {{ $t('updateBird.file.helpText') }}
         </p>
       </div>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       id: this.route.params.id,
+      baseUrl: import.meta.env.VITE_IMG_BASE_URL,
       bird: {},
     };
   },
@@ -33,7 +34,7 @@ export default {
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            :src="`/images/bird_pictures/${bird.speciesCode}.jpg`"
+            :src="baseUrl + bird.imageName"
             class="img-fluid rounded-start bird-detail"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
