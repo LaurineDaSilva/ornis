@@ -10,7 +10,6 @@ export default {
     async deleteBird(id) {
       const resp = await this.$http.delete(`/birds/delete/${id}`);
       if (resp.status === 204) {
-        console.log(resp);
         this.$toast.success('toast-global', 'Espèce supprimée avec succès.');
         setTimeout(() => {
           this.$router.go();
