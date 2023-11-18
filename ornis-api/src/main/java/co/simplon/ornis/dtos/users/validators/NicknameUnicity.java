@@ -1,4 +1,4 @@
-package co.simplon.ornis.dtos.validators;
+package co.simplon.ornis.dtos.users.validators;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

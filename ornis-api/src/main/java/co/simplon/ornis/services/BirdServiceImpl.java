@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import co.simplon.ornis.dtos.BirdCreate;
-import co.simplon.ornis.dtos.BirdDetail;
-import co.simplon.ornis.dtos.BirdToUpdate;
-import co.simplon.ornis.dtos.BirdUpdate;
-import co.simplon.ornis.dtos.BirdView;
+import co.simplon.ornis.dtos.birds.BirdCreate;
+import co.simplon.ornis.dtos.birds.BirdDetail;
+import co.simplon.ornis.dtos.birds.BirdToUpdate;
+import co.simplon.ornis.dtos.birds.BirdUpdate;
+import co.simplon.ornis.dtos.birds.BirdView;
 import co.simplon.ornis.entities.Bird;
 import co.simplon.ornis.repositories.BirdRepository;
 

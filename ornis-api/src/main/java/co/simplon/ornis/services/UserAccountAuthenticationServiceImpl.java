@@ -3,7 +3,7 @@ package co.simplon.ornis.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.ornis.dtos.CreateUserAccount;
+import co.simplon.ornis.dtos.users.CreateUserAccount;
 import co.simplon.ornis.entities.UserAccount;
 import co.simplon.ornis.repositories.UserAccountRepository;
 import co.simplon.ornis.security.AuthenticationHelper;

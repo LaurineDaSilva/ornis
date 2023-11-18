@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.ornis.dtos.BirdCreate;
-import co.simplon.ornis.dtos.BirdDetail;
-import co.simplon.ornis.dtos.BirdToUpdate;
-import co.simplon.ornis.dtos.BirdUpdate;
-import co.simplon.ornis.dtos.BirdView;
+import co.simplon.ornis.dtos.birds.BirdCreate;
+import co.simplon.ornis.dtos.birds.BirdDetail;
+import co.simplon.ornis.dtos.birds.BirdToUpdate;
+import co.simplon.ornis.dtos.birds.BirdUpdate;
+import co.simplon.ornis.dtos.birds.BirdView;
 import co.simplon.ornis.services.BirdService;
 
 @RestController

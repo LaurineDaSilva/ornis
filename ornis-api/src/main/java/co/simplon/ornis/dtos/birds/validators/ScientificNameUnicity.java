@@ -1,4 +1,4 @@
-package co.simplon.ornis.dtos.users.validators;
+package co.simplon.ornis.dtos.birds.validators;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,15 +10,14 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = EmailUnicityValidator.class)
+@Constraint(validatedBy = ScientificNameUnicityValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EmailUnicity {
+public @interface ScientificNameUnicity {
 
-    String message() default "{ornis.validation.constraints.EmailUnicity.message}";
+    String message() default "{ornis.validation.constraints.ScientificNameUnicity.message}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

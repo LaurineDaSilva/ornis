@@ -1,4 +1,4 @@
-package co.simplon.ornis.dtos.validators;
+package co.simplon.ornis.dtos.users.validators;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

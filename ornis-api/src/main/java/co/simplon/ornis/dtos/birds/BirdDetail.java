@@ -1,4 +1,4 @@
-package co.simplon.ornis.dtos;
+package co.simplon.ornis.dtos.birds;
 
 public interface BirdDetail {
 

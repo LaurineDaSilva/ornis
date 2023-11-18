@@ -1,4 +1,4 @@
-package co.simplon.ornis.dtos;
+package co.simplon.ornis.dtos.birds;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -6,14 +6,19 @@ import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import co.simplon.ornis.dtos.birds.validators.CommonNameUnicity;
+import co.simplon.ornis.dtos.birds.validators.ScientificNameUnicity;
+
 public class BirdCreate {
 
     @NotBlank
     @Size(max = 100)
+    @ScientificNameUnicity
     private String scientificName;
 
     @NotBlank
     @Size(max = 200)
+    @CommonNameUnicity
     private String commonName;
 
     @Size(max = 5000)

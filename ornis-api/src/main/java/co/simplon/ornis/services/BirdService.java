@@ -2,11 +2,11 @@ package co.simplon.ornis.services;
 
 import java.util.Collection;
 
-import co.simplon.ornis.dtos.BirdCreate;
-import co.simplon.ornis.dtos.BirdDetail;
-import co.simplon.ornis.dtos.BirdToUpdate;
-import co.simplon.ornis.dtos.BirdUpdate;
-import co.simplon.ornis.dtos.BirdView;
+import co.simplon.ornis.dtos.birds.BirdCreate;
+import co.simplon.ornis.dtos.birds.BirdDetail;
+import co.simplon.ornis.dtos.birds.BirdToUpdate;
+import co.simplon.ornis.dtos.birds.BirdUpdate;
+import co.simplon.ornis.dtos.birds.BirdView;
 
 public interface BirdService {
 
@@ -21,5 +21,10 @@ public interface BirdService {
     void updateBird(Long id, BirdUpdate inputs);
 
     void delete(Long id);
+
+    public boolean scientificNameExists(
+	    String scientificName);
+
+    public boolean commonNameExists(String commonName);
 
 }

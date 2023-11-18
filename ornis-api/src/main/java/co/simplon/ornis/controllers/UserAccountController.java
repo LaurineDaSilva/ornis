@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.ornis.dtos.CreateUserAccount;
+import co.simplon.ornis.dtos.users.CreateUserAccount;
 import co.simplon.ornis.services.UserAccountAuthenticationService;
 
 @RestController

@@ -1,6 +1,6 @@
 package co.simplon.ornis.services;
 
-import co.simplon.ornis.dtos.CreateUserAccount;
+import co.simplon.ornis.dtos.users.CreateUserAccount;
 
 public interface UserAccountAuthenticationService {
 
@@ -8,6 +8,6 @@ public interface UserAccountAuthenticationService {
 
     public boolean emailAddressExists(String email);
 
-    public boolean nicknameExists(String email);
+    public boolean nicknameExists(String nickname);
 
 }
