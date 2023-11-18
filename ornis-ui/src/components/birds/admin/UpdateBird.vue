@@ -60,17 +60,13 @@ export default {
           formData.append(key, value);
         }
       });
-      console.log('check id before resp ');
-      console.log(this.id);
       const resp = await this.$http.put(`/birds/update/${this.id}`, formData);
-      console.log('check id after resp ');
-      console.log(this.id);
       if (resp.status === 204) {
         this.validator.$reset();
-        console.log('Bird updated with success.');
+        this.$toast.success('toast-global', 'Espèce mise à jour avec succès.');
       } else {
         console.error(resp);
-        console.log('Server conversion or validation error.');
+        this.$toast.error('toast-global', 'Erreur de serveur ou de validation.');
       }
     },
   },

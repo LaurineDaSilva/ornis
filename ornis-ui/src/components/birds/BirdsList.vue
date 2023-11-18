@@ -1,9 +1,11 @@
 <script>
-import BirdActionsMenu from '@/components/admin/BirdActionsMenu.vue';
+import BirdActionsMenu from '@/components/birds/admin/BirdActionsMenu.vue';
+import LoadingSpinner from '@/components/commons/LoadingSpinner.vue';
 
 export default {
   components: {
     BirdActionsMenu,
+    LoadingSpinner,
   },
   data() {
     return {
@@ -34,7 +36,7 @@ export default {
         <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
           <img
             class="col-4 bird-card-img"
-            :src="`/images/bird_thumbnails/${bird.imageName}`"
+            :src="`src/assets/images/bird_thumbnails/${bird.imageName}`"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
           <div class="card-body col-md-8">
@@ -52,15 +54,13 @@ export default {
       </ul>
 
       <div v-else class="d-flex mx-auto my-5">
-        <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+        <LoadingSpinner></LoadingSpinner>
       </div>
     </div>
   </section>
 </template>
 
-<style>
+<style scoped>
 .birds-list {
   gap: 20px;
 }

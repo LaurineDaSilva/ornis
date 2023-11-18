@@ -1,9 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import BirdsList from '@/components/BirdsList.vue';
-import BirdDetail from '@/components/BirdDetail.vue';
-import SignUp from '@/components/SignUp.vue';
-import CreateBird from '@/components/admin/CreateBird.vue';
-import UpdateBird from '@/components/admin/UpdateBird.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,28 +7,28 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: BirdsList,
+      component: () => import('@/components/birds/BirdsList.vue'),
     },
     {
       path: '/birds/:id/detail',
       name: 'bird-detail',
-      component: BirdDetail,
+      component: () => import('@/components/birds/BirdDetail.vue'),
     },
     {
       path: '/sign-up',
       name: 'sign-up',
-      component: SignUp,
+      component: () => import('@/components/users/SignUp.vue'),
     },
     // Pages for admins:
     {
       path: '/admin/birds/add-bird',
       name: 'add-bird',
-      component: CreateBird,
+      component: () => import('@/components/birds/admin/CreateBird.vue'),
     },
     {
       path: '/admin/birds/:id/update-bird',
       name: 'update-bird',
-      component: UpdateBird,
+      component: () => import('@/components/birds/admin/UpdateBird.vue'),
     },
   ],
 });

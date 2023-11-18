@@ -27,3 +27,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# Folders
+
+/public/images/bird_thumbnails/
+
