@@ -81,7 +81,26 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void delete(Long id) {
 	Bird entity = birds.findById(id).get();
+	String imageName = entity.getImageName();
 	birds.delete(entity);
+	storage.delete(imageName);
+    }
+
+    @Override
+    public boolean scientificNameExists(
+	    String scientificName)
+	    throws UnsupportedOperationException {
+
+	return this.birds.existsByScientificName(
+		scientificName.toString());
+    }
+
+    @Override
+    public boolean commonNameExists(String commonName)
+	    throws UnsupportedOperationException {
+
+	return this.birds
+		.existsByCommonName(commonName.toString());
     }
 
 }
