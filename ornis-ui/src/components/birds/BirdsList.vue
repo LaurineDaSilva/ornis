@@ -36,7 +36,7 @@ export default {
         <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
           <img
             class="col-4 bird-card-img"
-            :src="`/images/bird_thumbnails/${bird.imageName}`"
+            :src="`src/assets/images/bird_thumbnails/${bird.imageName}`"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
           <div class="card-body col-md-8">
