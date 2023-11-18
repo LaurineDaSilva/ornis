@@ -14,9 +14,10 @@ export default {
     });
     http.interceptors.response.use(
       (response) => {
+        const status = response.status;
         const data = response.data;
         const body = data != '' ? data : null;
-        return { body: body.errorCodes };
+        return { status: status, body: body };
       },
       (error) => {
         return Promise.reject(error);

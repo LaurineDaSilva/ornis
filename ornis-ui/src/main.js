@@ -12,4 +12,9 @@ app.use(axios);
 app.use(toast);
 app.use(i18n);
 
+app.config.errorHandler = (err, comp) => {
+  console.error('Vue Global ErrorHandler', err);
+  comp.$toast.error('toast-global', "Une erreur inattendue s'est produite.");
+};
+
 app.mount('#app');
