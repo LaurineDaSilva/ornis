@@ -14,8 +14,8 @@ const messages = {
   // Authentication pages:
   signUp: {
     title: 'Inscription',
-    username: {
-      label: "Nom d'utilisateur",
+    nickname: {
+      label: 'Pseudonyme',
       helpText: '20 caractères maximum. Doit être unique.',
     },
     email: {

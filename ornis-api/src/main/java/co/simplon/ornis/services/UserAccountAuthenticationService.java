@@ -6,4 +6,8 @@ public interface UserAccountAuthenticationService {
 
     public void signUp(CreateUserAccount inputs);
 
+    public boolean emailAddressExists(String email);
+
+    public boolean nicknameExists(String email);
+
 }

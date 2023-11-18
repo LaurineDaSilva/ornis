@@ -2,7 +2,6 @@ package co.simplon.ornis.controllers;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,8 +16,12 @@ import co.simplon.ornis.services.UserAccountAuthenticationService;
 @RequestMapping("/join")
 public class UserAccountController {
 
-    @Autowired
-    private UserAccountAuthenticationService service;
+    private final UserAccountAuthenticationService service;
+
+    public UserAccountController(
+	    UserAccountAuthenticationService service) {
+	this.service = service;
+    }
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.NO_CONTENT)
