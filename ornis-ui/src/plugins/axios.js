@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 
-const ACCEPTED_STATUS = [200, 201, 202, 204, 400];
+const ACCEPTED_STATUS = [200, 201, 202, 204];
 
 export default {
   install: (app) => {

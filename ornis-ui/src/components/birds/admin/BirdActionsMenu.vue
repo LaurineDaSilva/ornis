@@ -10,13 +10,13 @@ export default {
     async deleteBird(id) {
       const resp = await this.$http.delete(`/birds/delete/${id}`);
       if (resp.status === 204) {
-        this.$toast.success('toast-global', 'Espèce supprimée avec succès.');
+        this.$toast.success('toast-global', this.$t('birdActionsMenu.toastMessages.success'));
         setTimeout(() => {
           this.$router.go();
         }, '1000');
       } else {
         console.error(resp);
-        this.$toast.error('toast-global', 'Erreur de serveur.');
+        this.$toast.error('toast-global', this.$t('birdActionsMenu.toastMessages.error'));
       }
     },
   },

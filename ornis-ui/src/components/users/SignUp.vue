@@ -37,10 +37,10 @@ export default {
       if (resp.status === 204) {
         Object.assign(this.inputs, this.$options.data().inputs);
         this.validator.$reset();
-        console.log('User created with success.');
+        this.$toast.success('toast-global', this.$t('signUp.toastMessages.success'));
       } else {
         console.error(resp);
-        console.log('Server conversion or validation error.');
+        this.$toast.error('toast-global', this.$t('signUp.toastMessages.error));
       }
     },
   },

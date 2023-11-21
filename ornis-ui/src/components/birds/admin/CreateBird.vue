@@ -52,10 +52,10 @@ export default {
         event.target.reset();
         Object.assign(this.inputs, this.$options.data().inputs);
         this.validator.$reset();
-        this.$toast.success('toast-global', 'Espèce créée avec succès.');
+        this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
       } else {
         console.error(resp);
-        this.$toast.error('toast-global', 'Erreur de serveur ou de validation.');
+        this.$toast.error('toast-global', this.$t('createBird.toastMessages.error'));
       }
     },
   },

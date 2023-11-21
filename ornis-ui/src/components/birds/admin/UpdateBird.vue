@@ -63,10 +63,13 @@ export default {
       const resp = await this.$http.put(`/birds/update/${this.id}`, formData);
       if (resp.status === 204) {
         this.validator.$reset();
-        this.$toast.success('toast-global', 'Espèce mise à jour avec succès.');
+        this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success'));
+        setTimeout(() => {
+          this.$router.push('/');
+        }, '1000');
       } else {
         console.error(resp);
-        this.$toast.error('toast-global', 'Erreur de serveur ou de validation.');
+        this.$toast.error('toast-global', this.$t('updateBird.toastMessages.error'));
       }
     },
   },

@@ -1,6 +1,11 @@
 const messages = {
   // common
   required: '*',
+  toastMessages: {
+    errors: {
+      global: "Une erreur s'est produite.",
+    },
+  },
   // Pages accessible to all users:
   birdsList: {
     title: 'Liste des oiseaux de France',
@@ -29,11 +34,19 @@ const messages = {
     },
     regex: '%*!',
     submit: "S'inscrire",
+    toastMessages: {
+      success: 'Compte utilisateur créé avec succès.',
+      error: 'Erreur de serveur ou de validation.',
+    },
   },
   // Admin pages:
   birdActionsMenu: {
     edit: 'Mettre à jour',
     delete: 'Supprimer',
+    toastMessages: {
+      success: 'Espèce supprimée avec succès.',
+      error: 'Erreur de serveur.',
+    },
   },
   createBird: {
     title: "Ajouter une espèce d'oiseau",
@@ -54,6 +67,10 @@ const messages = {
       helpText: 'Format .jpg ou .png.',
     },
     submit: "Ajouter l'espèce",
+    toastMessages: {
+      success: 'Espèce créée avec succès.',
+      error: 'Erreur de serveur ou de validation.',
+    },
   },
   updateBird: {
     title: "Mettre à jour l'espèce",
@@ -74,6 +91,10 @@ const messages = {
       helpText: 'Format .jpg ou .png.',
     },
     submit: 'Mettre à jour',
+    toastMessages: {
+      success: 'Espèce mise à jour avec succès.',
+      error: 'Erreur de serveur ou de validation.',
+    },
   },
 };
 
