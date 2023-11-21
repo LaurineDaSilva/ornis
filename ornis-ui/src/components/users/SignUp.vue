@@ -40,7 +40,7 @@ export default {
         this.$toast.success('toast-global', this.$t('signUp.toastMessages.success'));
       } else {
         console.error(resp);
-        this.$toast.error('toast-global', this.$t('signUp.toastMessages.error));
+        this.$toast.error('toast-global', this.$t('signUp.toastMessages.error'));
       }
     },
   },
