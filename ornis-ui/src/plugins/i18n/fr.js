@@ -53,7 +53,7 @@ const messages = {
       label: 'Ajouter une image',
       helpText: 'Format .jpg ou .png.',
     },
-    submit: "Ajouter l'oiseau",
+    submit: "Ajouter l'espèce",
   },
   updateBird: {
     title: "Mettre à jour l'espèce",
