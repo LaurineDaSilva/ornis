@@ -1,5 +1,6 @@
 package co.simplon.ornis.services;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -8,8 +9,10 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -27,23 +30,32 @@ class FileStorage {
     }
 
     @Value("${ornis.uploads.location}")
-    private String uploadDir;
+    private String uploadFullImageDir;
 
-    private Path uploadPath;
+    @Value("${ornis.uploads.location.resized-image}")
+    private String uploadResizedImageDir;
+
+    private Path uploadFullImagePath;
+    private Path uploadResizedImagePath;
 
     FileStorage() {
     }
 
     @PostConstruct
     private void init() {
-	this.uploadPath = Paths.get(uploadDir);
+	this.uploadFullImagePath = Paths
+		.get(uploadFullImageDir);
+	this.uploadResizedImagePath = Paths
+		.get(uploadResizedImageDir);
     }
+
+    // For original images
 
     String store(MultipartFile file, String baseName) {
 	String contentType = file.getContentType();
 	String fullName = String.format("%s.%s", baseName,
 		TYPES.get(contentType));
-	Path target = uploadPath.resolve(fullName);
+	Path target = uploadFullImagePath.resolve(fullName);
 	try (InputStream in = file.getInputStream()) {
 	    Files.copy(in, target,
 		    StandardCopyOption.REPLACE_EXISTING);
@@ -54,7 +66,7 @@ class FileStorage {
     }
 
     void delete(String fullName) {
-	Path target = uploadPath.resolve(fullName);
+	Path target = uploadFullImagePath.resolve(fullName);
 	try {
 	    Files.delete(target);
 	} catch (IOException ex) {
@@ -67,6 +79,36 @@ class FileStorage {
 	String newFullName = store(file, baseName);
 	delete(original);
 	return newFullName;
+    }
+
+    // For thumbnails
+
+    public Optional<String> getExtensionByStringHandling(
+	    String filename) {
+	return Optional.ofNullable(filename)
+		.filter(f -> f.contains("."))
+		.map(f -> f.substring(
+			filename.lastIndexOf(".") + 1));
+    }
+
+    String storeThumbnail(BufferedImage image,
+	    MultipartFile file, String baseName) {
+	String contentType = file.getContentType();
+	String formatName = getExtensionByStringHandling(
+		baseName).toString();
+	String fullName = String.format("%s.%s", baseName,
+		TYPES.get(contentType));
+	Path target = uploadResizedImagePath
+		.resolve(fullName);
+	try {
+	    ImageIO.write(image, formatName,
+		    target.toFile());
+	} catch (IOException ex) {
+	    throw new RuntimeException(ex);
+	}
+
+	return fullName;
+
     }
 
 }

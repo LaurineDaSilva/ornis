@@ -1,7 +1,11 @@
 package co.simplon.ornis.services;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.UUID;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +55,30 @@ public class BirdServiceImpl implements BirdService {
 	String baseName = UUID.randomUUID().toString();
 	String fileName = storage.store(file, baseName);
 	entity.setImageName(fileName);
+
+	BufferedImage originalImage;
+	try {
+	    originalImage = ImageIO
+		    .read(file.getInputStream());
+	} catch (IOException ex) {
+	    throw new RuntimeException(ex);
+	}
+
+	ResizedImage resizedImage = new ResizedImage();
+
+	int targetWidth = 500;
+	int targetHeight = 500;
+
+	BufferedImage thumbnail;
+	try {
+	    thumbnail = resizedImage.resizeImage(
+		    originalImage, targetWidth,
+		    targetHeight);
+	} catch (IOException ex) {
+	    throw new RuntimeException(ex);
+	}
+	storage.storeThumbnail(thumbnail, file, baseName);
+
 	birds.save(entity);
     }
 
