@@ -15,6 +15,5 @@ CREATE TABLE user_accounts (
     id SERIAL PRIMARY KEY, 
     email_address VARCHAR(100) UNIQUE NOT NULL, 
     nickname VARCHAR(20) UNIQUE NOT NULL, 
-    password VARCHAR(42), 
-    roles VARCHAR(11)
+    password VARCHAR(42)
 );

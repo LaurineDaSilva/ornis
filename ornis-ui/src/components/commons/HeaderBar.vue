@@ -1,9 +1,27 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-light mb-5 shadow">
     <div class="container-fluid">
-      <a class="navbar-brand text-light ms-1" href="/">Ornis</a>
+      <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
+        {{ $t('header.title') }}
+      </RouterLink>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <RouterLink :to="{ name: 'home' }" class="nav-link active">
+              {{ $t('header.home') }}
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink :to="{ name: 'add-bird' }" class="nav-link">
+              {{ $t('header.addBird') }}
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-secondary me-2">Login</button>
+        <button type="button" class="btn btn-outline-secondary me-2">
+          {{ $t('header.login') }}
+        </button>
         <button type="button" class="btn btn-primary">
           <RouterLink :to="{ name: 'sign-up' }" class="text-light navbar-links">
             {{ $t('signUp.title') }}

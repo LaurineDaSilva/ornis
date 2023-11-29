@@ -7,6 +7,12 @@ const messages = {
     },
   },
   // Pages accessible to all users:
+  header: {
+    title: 'Ornis',
+    home: 'Accueil',
+    addBird: "Ajouter une espèce d'oiseau",
+    login: 'Connexion',
+  },
   birdsList: {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
