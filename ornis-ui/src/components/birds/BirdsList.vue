@@ -32,7 +32,11 @@ export default {
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
     <div class="list-group birds-list-container">
-      <ul v-if="loaded" class="row justify-content-between birds-list">
+      <p v-if="loaded && (!birds || birds.length === 0)">Il n'y a plus d'oiseaux en France.</p>
+      <ul
+        v-else-if="loaded && birds && birds.length > 0"
+        class="row justify-content-between birds-list"
+      >
         <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
           <img
             class="col-4 bird-card-img"

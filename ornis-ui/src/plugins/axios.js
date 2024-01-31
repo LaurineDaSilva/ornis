@@ -2,14 +2,16 @@
 
 import axios from 'axios';
 
-const ACCEPTED_STATUS = [200, 201, 202, 204];
+const ALLOWED_STATUS_CODES = [200, 201, 202, 204, 400];
 
 export default {
   install: (app) => {
-    const http = axios.create({
-      baseURL: import.meta.env.VITE_API_BASE_URL,
-      validateStatus: (status) => {
-        return ACCEPTED_STATUS.includes(status);
+    const http = axios.create(
+      {
+        baseURL: import.meta.env.VITE_API_BASE_URL,
+      },
+      /* validateStatus: (status) => {
+        return ALLOWED_STATUS_CODES.includes(status);
       },
     });
     http.interceptors.response.use(
@@ -21,7 +23,7 @@ export default {
       },
       (error) => {
         return Promise.reject(error);
-      },
+      },*/
     );
 
     app.config.globalProperties.$http = http;

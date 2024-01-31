@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import co.simplon.ornis.dtos.birds.validators.CommonNameUnicity;
 import co.simplon.ornis.dtos.birds.validators.ScientificNameUnicity;
 
-public class BirdCreate {
+public class PizzaOrderPizzaOrder {
 
     @NotBlank
     @Size(max = 100)
