@@ -2,6 +2,8 @@
 
 ## ESM syntax
 
+Vite projects require the ESM syntax (it can be specified in package.json with `"type": "module`).
+
 The term "ESM syntax" typically refers to the syntax used in ECMAScript Modules (ESM). ECMAScript is the official specification upon which JavaScript is based, and ECMAScript Modules are a way to organize and structure code in JavaScript.
 
 In JavaScript, there are two main module systems: CommonJS and ECMAScript Modules (ESM). ESM syntax is the syntax used for ECMAScript Modules. It provides a way to define modules in JavaScript by using the import and export keywords.
