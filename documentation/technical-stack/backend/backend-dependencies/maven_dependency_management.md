@@ -8,7 +8,7 @@ This goal is used to view the dependency hierarchy of the project currently bein
 
 This goal can be executed from the command line: `mvn dependency:tree`
 
-![Ornis dependency tree](../../../images/technical-stack/backend/backend-dependencies/maven-dependency-management/mvn_dependency_mgmt_01.jpg)
+![Ornis dependency tree](../../../images/technical-stack/backend/backend-dependencies/maven-dependency-management/mvn_dependency_mgmt_01.png)
 
 ## Dependency scope
 
