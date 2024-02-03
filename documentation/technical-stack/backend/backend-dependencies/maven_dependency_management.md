@@ -37,3 +37,5 @@ It shows the available updates for all dependencies, even those that are not in 
 ## Update dependencies
 
 `mvn versions: use-latest-versions`
+
+If you have the versions defined in the properties block in the pom.xml, run the following command: `mvn versions:update-properties`
