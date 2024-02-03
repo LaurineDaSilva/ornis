@@ -29,7 +29,7 @@ The main differences between using `npm install` and `npm ci` are:
 
 `npm list` lists the installed packages of the current project.
 
-![npm list](../.../images/technical-stack/frontend/frontend-dependencies/npm/npm_01.png)
+![npm list](../../../images/technical-stack/frontend/frontend-dependencies/npm/npm_01.png)
 
 ## `npm outdated` and `npm update`
 
