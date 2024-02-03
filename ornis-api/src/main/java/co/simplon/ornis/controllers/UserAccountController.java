@@ -1,7 +1,5 @@
 package co.simplon.ornis.controllers;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.ornis.dtos.CreateUserAccount;
 import co.simplon.ornis.services.UserAccountAuthenticationService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/join")
