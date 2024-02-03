@@ -29,6 +29,6 @@ Then we can access it to set up Axios this way:
 
 Sourcemaps are useful for developers to see in which file a style has been defined when inspecting an element in the browser.
 
-![viteconfig-sourcemap01](../../images/technical-stack/frontend/frontend-dependencies/vite_01.jpg)
+![viteconfig-sourcemap01](../.../images/technical-stack/frontend/frontend-dependencies/vite_01.jpg)
 
-![viteconfig-sourcemap02](../../images/technical-stack/frontend/frontend-dependencies/vite_02.jpg)
+![viteconfig-sourcemap02](../.../images/technical-stack/frontend/frontend-dependencies/vite_02.jpg)
