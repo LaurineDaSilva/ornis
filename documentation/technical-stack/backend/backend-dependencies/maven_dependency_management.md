@@ -27,3 +27,13 @@ Dependency scope is used to limit the transitivity of a dependency and to determ
 ## Not declaring the version of a dependency in the pom.xml
 
 **Dependency mediation** - this determines what version of an artifact will be chosen when multiple versions are encountered as dependencies. **Maven picks the "nearest definition"**. That is, it uses the version of the closest dependency to your project in the tree of dependencies. **You can always guarantee a version by declaring it explicitly in your project's POM**. Note that if two dependency versions are at the same depth in the dependency tree, the first declaration wins.
+
+## Display dependency updates
+
+`mvn versions:display-dependency-updates`
+
+It shows the available updates for all dependencies, even those that are not in our own POM but in the parent POM.
+
+## Update dependencies
+
+`mvn versions: use-latest-versions`
