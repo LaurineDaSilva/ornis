@@ -13,8 +13,33 @@ export default {
       },
       (error) => {
         const errorCodes = error?.response?.data?.errorCodes;
+        // const message = '';
+
         if (errorCodes) {
-          console.log(errorCodes);
+          for (let i = 0; i < errorCodes.length; i += 1) {
+            const value = errorCodes[i];
+            const splitValue = value.split(': ');
+            // const errorField = splitValue[0];
+            const errorCode = splitValue[1];
+
+            switch (errorCode) {
+              case 'E_UNQ_EMAIL':
+                console.log('This email address already exists.');
+                break;
+              case 'E_UNQ_NCKNM':
+                console.log('This username is already taken.');
+                break;
+              case 'E_UNQ_SC_NM':
+                console.log('A bird with this scientific name already exists.');
+                break;
+              case 'E_UNQ_CMN_NM':
+                console.log('A bird with this common name already exists.');
+                break;
+              default:
+                console.log(errorCodes);
+                console.log(`Sorry, a mysterious error occured.`);
+            }
+          }
         } else {
           console.log('errorCodes not found');
         }
