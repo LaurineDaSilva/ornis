@@ -1,15 +1,15 @@
 package co.simplon.ornis.dtos.birds;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 import org.springframework.web.multipart.MultipartFile;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import co.simplon.ornis.dtos.birds.validators.CommonNameUnicity;
 import co.simplon.ornis.dtos.birds.validators.ScientificNameUnicity;
 
-public class PizzaOrderPizzaOrder {
+public class BirdCreate {
 
     @NotBlank
     @Size(max = 100)

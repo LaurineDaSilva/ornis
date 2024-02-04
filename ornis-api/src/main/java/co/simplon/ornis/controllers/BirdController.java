@@ -2,8 +2,6 @@ package co.simplon.ornis.controllers;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +19,7 @@ import co.simplon.ornis.dtos.birds.BirdToUpdate;
 import co.simplon.ornis.dtos.birds.BirdUpdate;
 import co.simplon.ornis.dtos.birds.BirdView;
 import co.simplon.ornis.services.BirdService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/birds")
