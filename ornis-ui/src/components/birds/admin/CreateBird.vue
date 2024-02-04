@@ -48,6 +48,7 @@ export default {
         }
       });
       const resp = await this.$http.post('/birds/create', formData);
+      console.log('test: est-ce que le programme continue après une erreur à ce stade');
       if (resp.status === 204) {
         event.target.reset();
         Object.assign(this.inputs, this.$options.data().inputs);
