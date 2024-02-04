@@ -1,9 +1,8 @@
 package co.simplon.ornis.dtos.users.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import co.simplon.ornis.services.UserAccountAuthenticationService;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class NicknameUnicityValidator implements
 	ConstraintValidator<NicknameUnicity, String> {

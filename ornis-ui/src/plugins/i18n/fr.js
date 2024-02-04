@@ -16,6 +16,7 @@ const messages = {
   birdsList: {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
+    error: "La liste des oiseaux n'a pu être chargée.",
   },
   birdDetail: {
     description: {

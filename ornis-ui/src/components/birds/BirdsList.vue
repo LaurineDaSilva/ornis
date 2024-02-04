@@ -32,7 +32,7 @@ export default {
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
     <div class="list-group birds-list-container">
-      <p v-if="loaded && (!birds || birds.length === 0)">Il n'y a plus d'oiseaux en France.</p>
+      <p v-if="loaded && (!birds || birds.length === 0)">{{ $t('birdsList.error') }}</p>
       <ul
         v-else-if="loaded && birds && birds.length > 0"
         class="row justify-content-between birds-list"

@@ -4,7 +4,7 @@
       <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
         {{ $t('header.title') }}
       </RouterLink>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <RouterLink :to="{ name: 'home' }" class="nav-link active">

@@ -1,9 +1,8 @@
 package co.simplon.ornis.dtos.birds.validators;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import co.simplon.ornis.services.BirdService;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class CommonNameUnicityValidator implements
 	ConstraintValidator<CommonNameUnicity, String> {

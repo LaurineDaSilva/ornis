@@ -1,12 +1,11 @@
 package co.simplon.ornis.dtos.users;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
 import co.simplon.ornis.dtos.users.validators.EmailUnicity;
 import co.simplon.ornis.dtos.users.validators.NicknameUnicity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 public class CreateUserAccount {
 
