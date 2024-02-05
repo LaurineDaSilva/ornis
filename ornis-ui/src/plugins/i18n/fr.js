@@ -1,9 +1,24 @@
 const messages = {
   // common
   required: '*',
+  // errors
   toastMessages: {
     errors: {
       global: "Une erreur s'est produite.",
+      undefined: 'Erreur de serveur ou de validation',
+      email: {
+        unicity: 'Un compte avec cette adresse email existe déjà.',
+      },
+      nickname: {
+        unicity:
+          "Un compte avec ce nom d'utilisateur existe déjà, veuillez vous connecter ou en choisir un autre.",
+      },
+      scientificName: {
+        unicity: 'Ce nom scientifique est déjà enregistré.',
+      },
+      commonName: {
+        unicity: 'Ce nom commun est déjà enregistré.',
+      },
     },
   },
   // Pages accessible to all users:
@@ -43,7 +58,6 @@ const messages = {
     submit: "S'inscrire",
     toastMessages: {
       success: 'Compte utilisateur créé avec succès.',
-      error: 'Erreur de serveur ou de validation.',
     },
   },
   // Admin pages:
@@ -52,7 +66,6 @@ const messages = {
     delete: 'Supprimer',
     toastMessages: {
       success: 'Espèce supprimée avec succès.',
-      error: 'Erreur de serveur.',
     },
   },
   createBird: {
@@ -76,7 +89,6 @@ const messages = {
     submit: "Ajouter l'espèce",
     toastMessages: {
       success: 'Espèce créée avec succès.',
-      error: 'Erreur de serveur ou de validation.',
     },
   },
   updateBird: {
@@ -100,7 +112,6 @@ const messages = {
     submit: 'Mettre à jour',
     toastMessages: {
       success: 'Espèce mise à jour avec succès.',
-      error: 'Erreur de serveur ou de validation.',
     },
   },
 };
