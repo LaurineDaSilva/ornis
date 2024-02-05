@@ -4,6 +4,7 @@ import router from '@/router';
 import axios from '@/plugins/axios';
 import toast from '@/plugins/toast';
 import i18n from '@/plugins/i18n/i18n';
+import customErrorHandler from '@/plugins/customErrorHandler';
 
 const app = createApp(App);
 
@@ -12,9 +13,6 @@ app.use(axios);
 app.use(toast);
 app.use(i18n);
 
-/* app.config.errorHandler = (err, comp) => {
-  console.error('Vue Global ErrorHandler', err);
-  comp.$toast.error('toast-global', comp.$t('toastMessages.errors.global'));
-}; */
+app.use(customErrorHandler);
 
 app.mount('#app');

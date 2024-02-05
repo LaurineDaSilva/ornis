@@ -5,6 +5,7 @@ export default {
     const http = axios.create({
       baseURL: import.meta.env.VITE_API_BASE_URL,
     });
+
     http.interceptors.response.use(
       (response) => {
         const { status, data } = response;
@@ -13,7 +14,7 @@ export default {
       },
       (error) => {
         const errorCodes = error?.response?.data?.errorCodes;
-        // const message = '';
+        let message = '';
 
         if (errorCodes) {
           for (let i = 0; i < errorCodes.length; i += 1) {
@@ -24,26 +25,29 @@ export default {
 
             switch (errorCode) {
               case 'E_UNQ_EMAIL':
-                console.log('This email address already exists.');
+                message = 'This email address already exists.';
                 break;
               case 'E_UNQ_NCKNM':
-                console.log('This username is already taken.');
+                message = 'This username is already taken.';
                 break;
               case 'E_UNQ_SC_NM':
-                console.log('A bird with this scientific name already exists.');
+                message = 'A bird with this scientific name already exists.';
                 break;
               case 'E_UNQ_CMN_NM':
-                console.log('A bird with this common name already exists.');
+                message = 'A bird with this common name already exists.';
                 break;
               default:
                 console.log(errorCodes);
-                console.log(`Sorry, a mysterious error occured.`);
+                message = `Sorry, a mysterious error occured.`;
             }
           }
         } else {
-          console.log('errorCodes not found');
+          message = 'errorCodes not found';
         }
+        console.log('Enter Axios');
         console.log(error);
+        console.log(message);
+        console.log('Exit Axios');
         return Promise.reject(error);
       },
     );
