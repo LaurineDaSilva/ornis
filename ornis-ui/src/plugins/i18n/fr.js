@@ -6,7 +6,7 @@ const messages = {
     errors: {
       global: "Une erreur s'est produite.",
       undefined: 'Erreur de serveur ou de validation',
-      email: {
+      emailAddress: {
         unicity: 'Un compte avec cette adresse email existe déjà.',
       },
       nickname: {
@@ -45,7 +45,7 @@ const messages = {
       label: 'Pseudonyme',
       helpText: '20 caractères maximum. Doit être unique.',
     },
-    email: {
+    emailAddress: {
       label: 'Adresse email',
       helpText: 'Doit être unique.',
     },

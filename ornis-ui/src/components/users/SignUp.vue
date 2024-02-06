@@ -66,26 +66,28 @@ export default {
             'is-invalid': validator.inputs.nickname.$error,
           }"
         />
-        <p class="form-text">
+        <p id="nickname-helpText" class="form-text">
           {{ $t('signUp.nickname.helpText') }}
         </p>
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label"
-          >{{ $t('signUp.email.label')
+        <label for="emailAddress" class="form-label"
+          >{{ $t('signUp.emailAddress.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <input
-          id="email"
+          id="emailAddress"
           v-model="inputs.emailAddress"
-          name="email"
+          name="emailAddress"
           type="email"
           class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
         />
-        <p class="form-text">{{ $t('signUp.email.helpText') }}</p>
+        <p id="emailAddress-helpText" class="form-text">
+          {{ $t('signUp.emailAddress.helpText') }}
+        </p>
       </div>
       <div class="mb-3">
         <label for="password" class="form-label"
@@ -102,7 +104,7 @@ export default {
             'is-invalid': validator.inputs.password.$error,
           }"
         />
-        <p class="form-text">
+        <p id="password-helpText" class="form-text">
           {{ $t('signUp.password.helpText') }} "<span class="fst-italic">{{
             $t('signUp.regex')
           }}</span

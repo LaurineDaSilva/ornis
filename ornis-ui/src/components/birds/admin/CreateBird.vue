@@ -82,7 +82,7 @@ export default {
             'is-invalid': validator.inputs.commonName.$error,
           }"
         />
-        <p class="form-text">
+        <p id="scientificName-helpText" class="form-text">
           {{ $t('createBird.scientificName.helpText') }}
         </p>
       </div>
@@ -101,7 +101,7 @@ export default {
             'is-invalid': validator.inputs.commonName.$error,
           }"
         />
-        <p class="form-text">
+        <p id="commonName-helpText" class="form-text">
           {{ $t('createBird.commonName.helpText') }}
         </p>
       </div>
@@ -120,7 +120,7 @@ export default {
             'is-invalid': validator.inputs.description.$error,
           }"
         ></textarea>
-        <p class="form-text">
+        <p id="description-helpText" class="form-text">
           {{ $t('createBird.description.helpText') }}
         </p>
       </div>
@@ -140,7 +140,7 @@ export default {
           accept="image/jpeg,image/png"
           @change="fileSelected"
         />
-        <p class="form-text">
+        <p id="file-helpText" class="form-text">
           {{ $t('createBird.file.helpText') }}
         </p>
       </div>
