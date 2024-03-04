@@ -8,6 +8,7 @@ export default {
       validator: useVuelidate({ $autoDirty: true }),
     };
   },
+
   data() {
     return {
       inputs: {
@@ -18,6 +19,7 @@ export default {
       },
     };
   },
+
   validations() {
     return {
       inputs: {
@@ -35,31 +37,34 @@ export default {
       },
     };
   },
+
   methods: {
     fileSelected(event) {
       [this.inputs.file] = event.target.files;
     },
+
     async submit(event) {
       const formData = new FormData();
+
       Object.keys(this.inputs).forEach((key) => {
         const value = this.inputs[key];
         if (value) {
           formData.append(key, value);
         }
       });
+
       await this.$http
+
         .post('/birds/create', formData)
-        .then((resp) => {
-          if (resp.status === 204) {
-            event.target.reset();
-            Object.assign(this.inputs, this.$options.data().inputs);
-            this.validator.$reset();
-            this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
-          }
+
+        .then(() => {
+          event.target.reset();
+          Object.assign(this.inputs, this.$options.data().inputs);
+          this.validator.$reset();
+          this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
         })
-        .catch(() => {
-          console.log('extra error management');
-        });
+
+        .catch(() => {});
     },
   },
 };
@@ -68,12 +73,14 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('createBird.title') }}</h1>
+
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
         <label for="scientificName" class="form-label"
           >{{ $t('createBird.scientificName.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
           id="scientificName"
           v-model.trim="inputs.scientificName"
@@ -84,15 +91,18 @@ export default {
             'is-invalid': validator.inputs.commonName.$error,
           }"
         />
+
         <p id="scientificName-helpText" class="form-text">
           {{ $t('createBird.scientificName.helpText') }}
         </p>
       </div>
+
       <div class="mb-3">
         <label for="commonName" class="form-label"
           >{{ $t('createBird.commonName.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
           id="commonName"
           v-model.trim="inputs.commonName"
@@ -103,15 +113,18 @@ export default {
             'is-invalid': validator.inputs.commonName.$error,
           }"
         />
+
         <p id="commonName-helpText" class="form-text">
           {{ $t('createBird.commonName.helpText') }}
         </p>
       </div>
+
       <div class="mb-3">
         <label for="description" class="form-label"
           >{{ $t('createBird.description.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <textarea
           id="description"
           v-model.trim="inputs.description"
@@ -122,15 +135,18 @@ export default {
             'is-invalid': validator.inputs.description.$error,
           }"
         ></textarea>
+
         <p id="description-helpText" class="form-text">
           {{ $t('createBird.description.helpText') }}
         </p>
       </div>
+
       <div class="mb-3">
         <label for="file" class="form-label"
           >{{ $t('createBird.file.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
           id="file"
           name="file"
@@ -142,6 +158,7 @@ export default {
           accept="image/jpeg,image/png"
           @change="fileSelected"
         />
+
         <p id="file-helpText" class="form-text">
           {{ $t('createBird.file.helpText') }}
         </p>

@@ -8,11 +8,13 @@ const shortDatetimeFormat = {
   month: 'numeric',
   day: '2-digit',
 };
+
 const longDatetimeFormat = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 };
+
 const datetimeFormats = {
   fr: {
     short: shortDatetimeFormat,

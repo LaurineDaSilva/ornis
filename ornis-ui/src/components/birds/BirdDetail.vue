@@ -7,20 +7,32 @@ export default {
       route: useRoute(),
     };
   },
+
   data() {
     return {
       id: this.route.params.id,
+
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
+
       bird: {},
     };
   },
+
   beforeMount() {
     this.initBird();
   },
+
   methods: {
     async initBird() {
-      const resp = await this.$http.get(`/birds/${this.id}/detail`);
-      this.bird = resp.body;
+      await this.$http
+
+        .get(`/birds/${this.id}/detail`)
+
+        .then((resp) => {
+          this.bird = resp.body;
+        })
+
+        .catch(() => {});
     },
   },
 };
@@ -29,7 +41,9 @@ export default {
 <template>
   <section>
     <h1>{{ bird.commonName }}</h1>
+
     <p class="fw-light fst-italic">{{ bird.scientificName }}</p>
+
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
@@ -39,9 +53,11 @@ export default {
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
         </div>
+
         <div class="col-md-8">
           <div class="card-body">
             <h5 class="card-title">{{ $t('birdDetail.description.title') }}</h5>
+
             <p class="card-text">
               {{ bird.description }}
             </p>

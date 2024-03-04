@@ -7,6 +7,7 @@ export default {
     BirdActionsMenu,
     LoadingSpinner,
   },
+
   data() {
     return {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
@@ -18,11 +19,19 @@ export default {
   beforeMount() {
     this.initBirdsList();
   },
+
   methods: {
     async initBirdsList() {
-      const resp = await this.$http.get(`/birds/list`);
-      this.birds = await resp.body;
-      this.loaded = true;
+      await this.$http
+
+        .get(`/birds/list`)
+
+        .then((resp) => {
+          this.birds = resp.body;
+          this.loaded = true;
+        })
+
+        .catch(() => {});
     },
   },
 };
@@ -31,8 +40,10 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
+
     <div class="list-group birds-list-container">
       <p v-if="loaded && (!birds || birds.length === 0)">{{ $t('birdsList.error') }}</p>
+
       <ul
         v-else-if="loaded && birds && birds.length > 0"
         class="row justify-content-between birds-list"
@@ -43,13 +54,16 @@ export default {
             :src="`src/assets/images/bird_pictures/${bird.imageName}`"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
+
           <div class="card-body col-md-8">
             <RouterLink :to="{ name: 'bird-detail', params: { id: bird.id } }" class="ms-auto">
               <h5 class="card-title">{{ bird.commonName }}</h5>
+
               <p class="card-text fst-italic">
                 {{ bird.scientificName }}
               </p></RouterLink
             >
+
             <div class="position-absolute top-0 end-0">
               <BirdActionsMenu :bird="bird"></BirdActionsMenu>
             </div>

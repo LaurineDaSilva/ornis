@@ -22,7 +22,6 @@ const toast = {
     showToast(id, 'text-bg-success', msg);
   },
   error: (id, msg) => {
-    console.log(msg);
     showToast(id, 'text-bg-danger', msg);
   },
 };

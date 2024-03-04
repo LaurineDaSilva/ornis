@@ -4,6 +4,7 @@
       <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
         {{ $t('header.title') }}
       </RouterLink>
+
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -11,6 +12,7 @@
               {{ $t('header.home') }}
             </RouterLink>
           </li>
+
           <li class="nav-item">
             <RouterLink :to="{ name: 'add-bird' }" class="nav-link">
               {{ $t('header.addBird') }}
@@ -18,16 +20,19 @@
           </li>
         </ul>
       </div>
+
       <div class="col-md-3 text-end">
         <button type="button" class="btn btn-outline-secondary me-2">
           {{ $t('header.login') }}
         </button>
+
         <button type="button" class="btn btn-primary">
           <RouterLink :to="{ name: 'sign-up' }" class="text-light navbar-links">
             {{ $t('signUp.title') }}
           </RouterLink>
         </button>
       </div>
+
       <button
         class="navbar-toggler"
         type="button"

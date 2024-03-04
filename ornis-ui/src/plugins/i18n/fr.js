@@ -10,8 +10,7 @@ const messages = {
         unicity: 'Un compte avec cette adresse email existe déjà.',
       },
       nickname: {
-        unicity:
-          "Un compte avec ce nom d'utilisateur existe déjà, veuillez vous connecter ou en choisir un autre.",
+        unicity: "Un compte avec ce nom d'utilisateur existe déjà.",
       },
       scientificName: {
         unicity: 'Ce nom scientifique est déjà enregistré.',
