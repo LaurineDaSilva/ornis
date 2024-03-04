@@ -1,47 +1,51 @@
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, maxLength, helpers } from '@vuelidate/validators';
+import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
 
 export default {
   setup() {
     return {
       validator: useVuelidate({ $autoDirty: true }),
+      removeInvalidStyles,
     };
   },
+
   data() {
     return {
       inputs: {
         emailAddress: null,
-        username: null,
+        nickname: null,
         password: null,
       },
     };
   },
+
   validations() {
     return {
       inputs: {
         emailAddress: { required, maxLength: maxLength(100) },
-        username: { required, maxLength: maxLength(20) },
+        nickname: { required, maxLength: maxLength(20) },
         password: {
           required,
           minLength: minLength(8),
           maxLength: maxLength(42),
-          helpers: helpers.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[%*!"]).{8,}$/),
+          helpers: helpers.regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[%*!]).{8,}$/),
         },
       },
     };
   },
+
   methods: {
     async submit() {
-      const resp = await this.$http.post('/join/signup', this.inputs);
-      if (resp.status === 204) {
-        Object.assign(this.inputs, this.$options.data().inputs);
-        this.validator.$reset();
-        console.log('User created with success.');
-      } else {
-        console.error(resp);
-        console.log('Server conversion or validation error.');
-      }
+      await this.$http
+        .post('/join/signup', this.inputs)
+        .then(() => {
+          Object.assign(this.inputs, this.$options.data().inputs);
+          this.validator.$reset();
+          this.$toast.success('toast-global', this.$t('signUp.toastMessages.success'));
+        })
+        .catch(() => {});
     },
   },
 };
@@ -50,48 +54,60 @@ export default {
 <template>
   <section>
     <h1>{{ $t('signUp.title') }}</h1>
+
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
-        <label for="username" class="form-label"
-          >{{ $t('signUp.username.label')
+        <label for="nickname" class="form-label"
+          >{{ $t('signUp.nickname.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
-          id="username"
-          v-model="inputs.username"
-          name="username"
+          id="nickname"
+          v-model="inputs.nickname"
+          name="nickname"
           type="text"
           class="form-control shadow-sm"
           :class="{
-            'is-invalid': validator.inputs.username.$error,
+            'is-invalid': validator.inputs.nickname.$error,
           }"
+          @input="removeInvalidStyles('nickname')"
         />
-        <p class="form-text">
-          {{ $t('signUp.username.helpText') }}
+
+        <p id="nickname-helpText" class="form-text">
+          {{ $t('signUp.nickname.helpText') }}
         </p>
       </div>
+
       <div class="mb-3">
-        <label for="email" class="form-label"
-          >{{ $t('signUp.email.label')
+        <label for="emailAddress" class="form-label"
+          >{{ $t('signUp.emailAddress.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
-          id="email"
+          id="emailAddress"
           v-model="inputs.emailAddress"
-          name="email"
+          name="emailAddress"
           type="email"
           class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
+          @input="removeInvalidStyles('emailAddress')"
         />
-        <p class="form-text">{{ $t('signUp.email.helpText') }}</p>
+
+        <p id="emailAddress-helpText" class="form-text">
+          {{ $t('signUp.emailAddress.helpText') }}
+        </p>
       </div>
+
       <div class="mb-3">
         <label for="password" class="form-label"
           >{{ $t('signUp.password.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
+
         <input
           id="password"
           v-model="inputs.password"
@@ -102,13 +118,15 @@ export default {
             'is-invalid': validator.inputs.password.$error,
           }"
         />
-        <p class="form-text">
+
+        <p id="password-helpText" class="form-text">
           {{ $t('signUp.password.helpText') }} "<span class="fst-italic">{{
             $t('signUp.regex')
           }}</span
           >".
         </p>
       </div>
+
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="submit" class="btn btn-primary shadow-sm" :disabled="validator.$invalid">
           {{ $t('signUp.submit') }}

@@ -1,12 +1,11 @@
-package co.simplon.ornis.dtos;
+package co.simplon.ornis.dtos.birds;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class BirdCreate {
+public class BirdUpdate {
 
     @NotBlank
     @Size(max = 100)
@@ -19,10 +18,9 @@ public class BirdCreate {
     @Size(max = 5000)
     private String description;
 
-    @NotNull
     private MultipartFile file;
 
-    public BirdCreate() {
+    public BirdUpdate() {
     }
 
     public String getScientificName() {

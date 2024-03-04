@@ -1,10 +1,12 @@
-package co.simplon.ornis.dtos;
+package co.simplon.ornis.dtos.birds;
 
-public interface BirdToUpdate {
+public interface BirdDetail {
 
     String getScientificName();
 
     String getCommonName();
+
+    String getImageName();
 
     String getDescription();
 

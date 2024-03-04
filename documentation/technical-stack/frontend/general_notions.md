@@ -32,6 +32,8 @@ CommonJS is synchronous, and the modules are loaded and executed at runtime. Thi
 
 While CommonJS is still widely used in server-side JavaScript (especially in Node.js), it is not natively supported in browsers. For client-side development, ECMAScript Modules (ESM) have become the preferred syntax.
 
+During development, Vite's dev serves all code as native ESM. Therefore, Vite must convert dependencies that are shipped as CommonJS or UMD into ESM first.
+
 ## Plugins
 
 Plugins are self-contained code that usually add app-level functionality to Vue.

@@ -1,26 +1,33 @@
-package co.simplon.ornis.dtos;
+package co.simplon.ornis.dtos.birds;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class BirdUpdate {
+import co.simplon.ornis.dtos.birds.validators.CommonNameUnicity;
+import co.simplon.ornis.dtos.birds.validators.ScientificNameUnicity;
+
+public class BirdCreate {
 
     @NotBlank
     @Size(max = 100)
+    @ScientificNameUnicity
     private String scientificName;
 
     @NotBlank
     @Size(max = 200)
+    @CommonNameUnicity
     private String commonName;
 
     @Size(max = 5000)
     private String description;
 
+    @NotNull
     private MultipartFile file;
 
-    public BirdUpdate() {
+    public BirdCreate() {
     }
 
     public String getScientificName() {

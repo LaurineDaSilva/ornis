@@ -1,10 +1,36 @@
 const messages = {
   // common
   required: '*',
+  // errors
+  toastMessages: {
+    errors: {
+      global: "Une erreur s'est produite.",
+      undefined: 'Erreur de serveur ou de validation',
+      emailAddress: {
+        unicity: 'Un compte avec cette adresse email existe déjà.',
+      },
+      nickname: {
+        unicity: "Un compte avec ce nom d'utilisateur existe déjà.",
+      },
+      scientificName: {
+        unicity: 'Ce nom scientifique est déjà enregistré.',
+      },
+      commonName: {
+        unicity: 'Ce nom commun est déjà enregistré.',
+      },
+    },
+  },
   // Pages accessible to all users:
+  header: {
+    title: 'Ornis',
+    home: 'Accueil',
+    addBird: "Ajouter une espèce d'oiseau",
+    login: 'Connexion',
+  },
   birdsList: {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
+    error: "La liste des oiseaux n'a pu être chargée.",
   },
   birdDetail: {
     description: {
@@ -14,11 +40,11 @@ const messages = {
   // Authentication pages:
   signUp: {
     title: 'Inscription',
-    username: {
-      label: "Nom d'utilisateur",
+    nickname: {
+      label: 'Pseudonyme',
       helpText: '20 caractères maximum. Doit être unique.',
     },
-    email: {
+    emailAddress: {
       label: 'Adresse email',
       helpText: 'Doit être unique.',
     },
@@ -29,11 +55,17 @@ const messages = {
     },
     regex: '%*!',
     submit: "S'inscrire",
+    toastMessages: {
+      success: 'Compte utilisateur créé avec succès.',
+    },
   },
   // Admin pages:
   birdActionsMenu: {
     edit: 'Mettre à jour',
     delete: 'Supprimer',
+    toastMessages: {
+      success: 'Espèce supprimée avec succès.',
+    },
   },
   createBird: {
     title: "Ajouter une espèce d'oiseau",
@@ -53,7 +85,10 @@ const messages = {
       label: 'Ajouter une image',
       helpText: 'Format .jpg ou .png.',
     },
-    submit: "Ajouter l'oiseau",
+    submit: "Ajouter l'espèce",
+    toastMessages: {
+      success: 'Espèce créée avec succès.',
+    },
   },
   updateBird: {
     title: "Mettre à jour l'espèce",
@@ -74,6 +109,9 @@ const messages = {
       helpText: 'Format .jpg ou .png.',
     },
     submit: 'Mettre à jour',
+    toastMessages: {
+      success: 'Espèce mise à jour avec succès.',
+    },
   },
 };
 

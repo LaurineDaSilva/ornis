@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.ornis.dtos.CreateUserAccount;
+import co.simplon.ornis.dtos.users.CreateUserAccount;
 import co.simplon.ornis.services.UserAccountAuthenticationService;
 import jakarta.validation.Valid;
 
@@ -16,8 +16,12 @@ import jakarta.validation.Valid;
 @RequestMapping("/join")
 public class UserAccountController {
 
-    @Autowired
-    private UserAccountAuthenticationService service;
+    private final UserAccountAuthenticationService service;
+
+    public UserAccountController(
+	    UserAccountAuthenticationService service) {
+	this.service = service;
+    }
 
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -6,18 +6,18 @@ export default {
       required: true,
     },
   },
+
   methods: {
     async deleteBird(id) {
-      const resp = await this.$http.delete(`/birds/delete/${id}`);
-      if (resp.status === 204) {
-        this.$toast.success('toast-global', 'Espèce supprimée avec succès.');
-        setTimeout(() => {
-          this.$router.go();
-        }, '1000');
-      } else {
-        console.error(resp);
-        this.$toast.error('toast-global', 'Erreur de serveur.');
-      }
+      await this.$http
+        .delete(`/birds/delete/${id}`)
+        .then(
+          this.$toast.success('toast-global', this.$t('birdActionsMenu.toastMessages.success')),
+          setTimeout(() => {
+            this.$router.go();
+          }, '1000'),
+        )
+        .catch(() => {});
     },
   },
 };
@@ -38,12 +38,14 @@ export default {
       />
     </svg>
   </button>
+
   <ul class="dropdown-menu">
     <li class="dropdown-item">
       <RouterLink :to="{ name: 'update-bird', params: { id: bird.id } }" class="ms-auto">{{
         $t('birdActionsMenu.edit')
       }}</RouterLink>
     </li>
+
     <li class="dropdown-item text-danger" @click="deleteBird(bird.id)">
       {{ $t('birdActionsMenu.delete') }}
     </li>

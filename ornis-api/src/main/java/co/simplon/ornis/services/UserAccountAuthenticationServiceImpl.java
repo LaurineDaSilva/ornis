@@ -3,7 +3,7 @@ package co.simplon.ornis.services;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.ornis.dtos.CreateUserAccount;
+import co.simplon.ornis.dtos.users.CreateUserAccount;
 import co.simplon.ornis.entities.UserAccount;
 import co.simplon.ornis.repositories.UserAccountRepository;
 import co.simplon.ornis.security.AuthenticationHelper;
@@ -27,7 +27,7 @@ public class UserAccountAuthenticationServiceImpl
     @Override
     public void signUp(CreateUserAccount inputs) {
 	UserAccount userAccount = new UserAccount();
-	userAccount.setUsername(inputs.getUsername());
+	userAccount.setNickname(inputs.getNickname());
 	userAccount
 		.setEmailAddress(inputs.getEmailAddress());
 	String hashedPassword = authenticationHelper
@@ -35,6 +35,22 @@ public class UserAccountAuthenticationServiceImpl
 	userAccount.setPassword(hashedPassword);
 	userAccount.setRoles("ROLE_USER");
 	userAccounts.save(userAccount);
+    }
+
+    @Override
+    public boolean emailAddressExists(String email)
+	    throws UnsupportedOperationException {
+
+	return this.userAccounts
+		.existsByEmailAddress(email.toString());
+    }
+
+    @Override
+    public boolean nicknameExists(String nickname)
+	    throws UnsupportedOperationException {
+
+	return this.userAccounts
+		.existsByNickname(nickname.toString());
     }
 
 }
