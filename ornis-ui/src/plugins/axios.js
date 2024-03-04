@@ -5,6 +5,7 @@ const setInvalidStyle = (errorFields) => {
     const errorField = errorFields[i];
     const element = document.getElementById(errorField);
     const elementHelpText = document.getElementById(`${errorField}-helpText`);
+
     element.classList.add('is-invalid');
     elementHelpText.classList.add('text-danger');
   }
@@ -63,8 +64,10 @@ export default {
       (response) => {
         const { status, data } = response;
         const body = data !== '' ? data : null;
+
         return { status, body };
       },
+
       (error) => {
         handleGlobalErrors(error, i18n, toast);
 
