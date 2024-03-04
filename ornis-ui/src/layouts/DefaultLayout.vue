@@ -10,3 +10,9 @@ import ToastNotification from '../components/commons/ToastNotification.vue';
   </main>
   <ToastNotification id="toast-global" />
 </template>
+
+<style lang="scss">
+.toast-container .toast-body {
+  white-space: pre;
+}
+</style>

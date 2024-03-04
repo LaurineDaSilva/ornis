@@ -47,17 +47,19 @@ export default {
           formData.append(key, value);
         }
       });
-      const resp = await this.$http.post('/birds/create', formData);
-      console.log('test: est-ce que le programme continue après une erreur à ce stade');
-      if (resp.status === 204) {
-        event.target.reset();
-        Object.assign(this.inputs, this.$options.data().inputs);
-        this.validator.$reset();
-        this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
-      } else {
-        console.error(resp);
-        this.$toast.error('toast-global', this.$t('createBird.toastMessages.error'));
-      }
+      await this.$http
+        .post('/birds/create', formData)
+        .then((resp) => {
+          if (resp.status === 204) {
+            event.target.reset();
+            Object.assign(this.inputs, this.$options.data().inputs);
+            this.validator.$reset();
+            this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
+          }
+        })
+        .catch(() => {
+          console.log('extra error management');
+        });
     },
   },
 };
