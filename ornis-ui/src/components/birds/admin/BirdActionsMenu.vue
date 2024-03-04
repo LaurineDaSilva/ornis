@@ -10,16 +10,13 @@ export default {
   methods: {
     async deleteBird(id) {
       await this.$http
-
         .delete(`/birds/delete/${id}`)
-
         .then(
           this.$toast.success('toast-global', this.$t('birdActionsMenu.toastMessages.success')),
           setTimeout(() => {
             this.$router.go();
           }, '1000'),
         )
-
         .catch(() => {});
     },
   },

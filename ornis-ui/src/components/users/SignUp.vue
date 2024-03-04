@@ -1,11 +1,13 @@
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, maxLength, helpers } from '@vuelidate/validators';
+import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
 
 export default {
   setup() {
     return {
       validator: useVuelidate({ $autoDirty: true }),
+      removeInvalidStyles,
     };
   },
 
@@ -37,15 +39,12 @@ export default {
   methods: {
     async submit() {
       await this.$http
-
         .post('/join/signup', this.inputs)
-
         .then(() => {
           Object.assign(this.inputs, this.$options.data().inputs);
           this.validator.$reset();
           this.$toast.success('toast-global', this.$t('signUp.toastMessages.success'));
         })
-
         .catch(() => {});
     },
   },
@@ -72,6 +71,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.nickname.$error,
           }"
+          @input="removeInvalidStyles('nickname')"
         />
 
         <p id="nickname-helpText" class="form-text">
@@ -94,6 +94,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.emailAddress.$error,
           }"
+          @input="removeInvalidStyles('emailAddress')"
         />
 
         <p id="emailAddress-helpText" class="form-text">

@@ -1,15 +1,5 @@
 import axios from 'axios';
-
-const setInvalidStyle = (errorFields) => {
-  for (let i = 0; i < errorFields.length; i += 1) {
-    const errorField = errorFields[i];
-    const element = document.getElementById(errorField);
-    const elementHelpText = document.getElementById(`${errorField}-helpText`);
-
-    element.classList.add('is-invalid');
-    elementHelpText.classList.add('text-danger');
-  }
-};
+import { setInvalidStyle } from '@/utils/invalidStylesHandler';
 
 const handleGlobalErrors = (error, i18n, toast) => {
   const errorCodes = error?.response?.data?.errorCodes;

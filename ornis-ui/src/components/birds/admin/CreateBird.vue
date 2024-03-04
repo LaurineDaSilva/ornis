@@ -1,11 +1,13 @@
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, requiredIf, maxLength } from '@vuelidate/validators';
+import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
 
 export default {
   setup() {
     return {
       validator: useVuelidate({ $autoDirty: true }),
+      removeInvalidStyles,
     };
   },
 
@@ -48,22 +50,20 @@ export default {
 
       Object.keys(this.inputs).forEach((key) => {
         const value = this.inputs[key];
+
         if (value) {
           formData.append(key, value);
         }
       });
 
       await this.$http
-
         .post('/birds/create', formData)
-
         .then(() => {
           event.target.reset();
           Object.assign(this.inputs, this.$options.data().inputs);
           this.validator.$reset();
           this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
         })
-
         .catch(() => {});
     },
   },
@@ -90,6 +90,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.commonName.$error,
           }"
+          @input="removeInvalidStyles('scientificName')"
         />
 
         <p id="scientificName-helpText" class="form-text">
@@ -112,6 +113,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.commonName.$error,
           }"
+          @input="removeInvalidStyles('commonName')"
         />
 
         <p id="commonName-helpText" class="form-text">
@@ -134,6 +136,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.description.$error,
           }"
+          @input="removeInvalidStyles('description')"
         ></textarea>
 
         <p id="description-helpText" class="form-text">

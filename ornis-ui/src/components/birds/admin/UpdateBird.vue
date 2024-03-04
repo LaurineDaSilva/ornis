@@ -2,12 +2,14 @@
 import { useRoute } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
 import { required, maxLength } from '@vuelidate/validators';
+import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
 
 export default {
   setup() {
     return {
       route: useRoute(),
       validator: useVuelidate({ $autoDirty: true }),
+      removeInvalidStyles,
     };
   },
 
@@ -55,15 +57,12 @@ export default {
 
     async initInputs() {
       await this.$http
-
         .get(`/birds/${this.id}/to-update`)
-
         .then((resp) => {
           this.inputs = resp.body;
           this.birdToUpdate.commonName = this.inputs.commonName;
           this.birdToUpdate.scientificName = this.inputs.scientificName;
         })
-
         .catch(() => {});
     },
 
@@ -121,6 +120,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.commonName.$error,
           }"
+          @input="removeInvalidStyles('scientificName')"
         />
 
         <p class="form-text">
@@ -142,6 +142,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.commonName.$error,
           }"
+          @input="removeInvalidStyles('commonName')"
         />
 
         <p class="form-text">
@@ -163,6 +164,7 @@ export default {
           :class="{
             'is-invalid': validator.inputs.description.$error,
           }"
+          @input="removeInvalidStyles('description')"
         />
 
         <p class="form-text">

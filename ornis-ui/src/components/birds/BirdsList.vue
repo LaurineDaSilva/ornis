@@ -23,14 +23,11 @@ export default {
   methods: {
     async initBirdsList() {
       await this.$http
-
         .get(`/birds/list`)
-
         .then((resp) => {
           this.birds = resp.body;
           this.loaded = true;
         })
-
         .catch(() => {});
     },
   },

@@ -25,13 +25,10 @@ export default {
   methods: {
     async initBird() {
       await this.$http
-
         .get(`/birds/${this.id}/detail`)
-
         .then((resp) => {
           this.bird = resp.body;
         })
-
         .catch(() => {});
     },
   },
