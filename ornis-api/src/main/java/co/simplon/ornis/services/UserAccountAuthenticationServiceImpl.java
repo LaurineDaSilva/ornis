@@ -71,11 +71,11 @@ public class UserAccountAuthenticationServiceImpl
 		return tokenInfo;
 	    } else {
 		throw new BadCredentialsException(
-			"Wrong credentials");
+			"Wrong credentials: really wrong");
 	    }
 	} else {
 	    throw new BadCredentialsException(
-		    "Wrong credentials");
+		    "Wrong credentials: null");
 	}
     }
 
@@ -96,7 +96,7 @@ public class UserAccountAuthenticationServiceImpl
     }
 
     public boolean isEmailAddress(String input) {
-	String regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,7}$";
+	String regexPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
 	return Pattern.compile(regexPattern).matcher(input)
 		.matches();
     }
