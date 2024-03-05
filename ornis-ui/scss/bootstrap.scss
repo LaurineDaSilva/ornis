@@ -28,3 +28,11 @@ p {
 a {
   text-decoration: none;
 }
+
+.cstm-btn-text-secondary {
+  color: $secondary;
+}
+
+.cstm-btn-text-secondary:hover {
+  color: $primary;
+}

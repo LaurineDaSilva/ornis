@@ -24,6 +24,12 @@ const router = createRouter({
       component: () => import('@/components/users/SignUp.vue'),
     },
 
+    {
+      path: '/sign-in',
+      name: 'sign-in',
+      component: () => import('@/components/users/SignIn.vue'),
+    },
+
     // Pages for admins:
     {
       path: '/admin/birds/add-bird',
