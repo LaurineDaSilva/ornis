@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.ornis.dtos.users.CreateUserAccount;
+import co.simplon.ornis.dtos.users.UserAccountCreate;
 import co.simplon.ornis.services.UserAccountAuthenticationService;
 import jakarta.validation.Valid;
 
@@ -26,7 +26,7 @@ public class UserAccountController {
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void signUp(
-	    @RequestBody @Valid CreateUserAccount inputs) {
+	    @RequestBody @Valid UserAccountCreate inputs) {
 	service.signUp(inputs);
     }
 

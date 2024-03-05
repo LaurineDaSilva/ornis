@@ -1,9 +1,15 @@
 package co.simplon.ornis.services;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.ornis.dtos.users.CreateUserAccount;
+import co.simplon.ornis.dtos.users.TokenInfo;
+import co.simplon.ornis.dtos.users.UserAccountCreate;
+import co.simplon.ornis.dtos.users.UserAccountLogTo;
 import co.simplon.ornis.entities.UserAccount;
 import co.simplon.ornis.repositories.UserAccountRepository;
 import co.simplon.ornis.security.AuthenticationHelper;
@@ -25,7 +31,7 @@ public class UserAccountAuthenticationServiceImpl
 
     @Transactional
     @Override
-    public void signUp(CreateUserAccount inputs) {
+    public void signUp(UserAccountCreate inputs) {
 	UserAccount userAccount = new UserAccount();
 	userAccount.setNickname(inputs.getNickname());
 	userAccount
@@ -35,6 +41,44 @@ public class UserAccountAuthenticationServiceImpl
 	userAccount.setPassword(hashedPassword);
 	userAccount.setRoles("ROLE_USER");
 	userAccounts.save(userAccount);
+    }
+
+    @Override
+    public TokenInfo signIn(UserAccountLogTo inputs) {
+	String nicknameOrEmailAddress = inputs
+		.getNicknameOrEmailAddress();
+	String candidate = inputs.getPassword();
+
+	UserAccount userAccount = isEmailAddress(
+		nicknameOrEmailAddress)
+			? userAccounts.findByEmailAddress(
+				nicknameOrEmailAddress)
+			: userAccounts.findByNickname(
+				nicknameOrEmailAddress);
+
+	if (userAccount != null) {
+	    boolean match = authenticationHelper.matches(
+		    candidate, userAccount.getPassword());
+	    if (match) {
+		String name = userAccount
+			.getNickname();
+		List<String> roles = userAccount.getRoles();
+		String token = authenticationHelper
+			.createJWT(roles, name);
+
+		TokenInfo tokenInfo = new TokenInfo();
+		tokenInfo.setToken(token);
+		tokenInfo.setRoles(roles);
+
+		return tokenInfo;
+	    } else {
+		throw new BadCredentialsException(
+			"Wrong credentials");
+	    }
+	} else {
+	    throw new BadCredentialsException(
+		    "Wrong credentials");
+	}
     }
 
     @Override
@@ -53,4 +97,9 @@ public class UserAccountAuthenticationServiceImpl
 		.existsByNickname(nickname.toString());
     }
 
+    public boolean isEmailAddress(String input) {
+	String regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{2,7}$";
+	return Pattern.compile(regexPattern).matcher(input)
+		.matches();
+    }
 }

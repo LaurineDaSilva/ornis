@@ -11,8 +11,8 @@ const handleGlobalErrors = (error, i18n, toast) => {
     for (let i = 0; i < errorCodes.length; i += 1) {
       const value = errorCodes[i];
       const splitValue = value.split(': ');
-      const errorCode = splitValue[1];
       const errorField = splitValue[0];
+      const errorCode = splitValue[1];
 
       switch (errorCode) {
         case 'E_UNQ_EMAIL':
