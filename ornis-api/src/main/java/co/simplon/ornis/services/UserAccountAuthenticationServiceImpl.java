@@ -1,6 +1,5 @@
 package co.simplon.ornis.services;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 import org.springframework.security.authentication.BadCredentialsException;
@@ -39,7 +38,7 @@ public class UserAccountAuthenticationServiceImpl
 	String hashedPassword = authenticationHelper
 		.encode(inputs.getPassword());
 	userAccount.setPassword(hashedPassword);
-	userAccount.setRoles("ROLE_USER");
+	userAccount.setRole("ROLE_USER");
 	userAccounts.save(userAccount);
     }
 
@@ -60,15 +59,14 @@ public class UserAccountAuthenticationServiceImpl
 	    boolean match = authenticationHelper.matches(
 		    candidate, userAccount.getPassword());
 	    if (match) {
-		String name = userAccount
-			.getNickname();
-		List<String> roles = userAccount.getRoles();
+		String nickname = userAccount.getNickname();
+		String role = userAccount.getRole();
 		String token = authenticationHelper
-			.createJWT(roles, name);
+			.createJWT(role, nickname);
 
 		TokenInfo tokenInfo = new TokenInfo();
 		tokenInfo.setToken(token);
-		tokenInfo.setRoles(roles);
+		tokenInfo.setRole(role);
 
 		return tokenInfo;
 	    } else {

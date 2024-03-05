@@ -16,6 +16,6 @@ CREATE TABLE user_accounts (
     email_address VARCHAR(100) UNIQUE NOT NULL, 
     nickname VARCHAR(20) UNIQUE NOT NULL, 
     password VARCHAR(60), 
-    roles VARCHAR(11)
+    role VARCHAR(11)
 );
 

@@ -19,8 +19,8 @@ public class UserAccount extends AbstractEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "roles")
-    private String roles;
+    @Column(name = "role")
+    private String role;
 
     public UserAccount() {
     }
@@ -49,12 +49,12 @@ public class UserAccount extends AbstractEntity {
 	this.password = password;
     }
 
-    public String getRoles() {
-	return roles;
+    public String getRole() {
+	return role;
     }
 
-    public void setRoles(String roles) {
-	this.roles = roles;
+    public void setRole(String role) {
+	this.role = role;
     }
 
     @Override
@@ -82,8 +82,8 @@ public class UserAccount extends AbstractEntity {
     public String toString() {
 	return "{emailAddress=" + emailAddress
 		+ ", nickname=" + nickname
-		+ ", password={protected}" + ", roles="
-		+ roles + "}";
+		+ ", password={protected}" + ", role="
+		+ role + "}";
     }
 
 }

@@ -1,15 +1,11 @@
 package co.simplon.ornis.dtos.users;
 
-import java.util.List;
-
 public class TokenInfo {
 
     private String token;
-    private List<String> roles;
+    private String role;
 
     public TokenInfo() {
-	super();
-	// TODO Auto-generated constructor stub
     }
 
     public String getToken() {
@@ -20,17 +16,17 @@ public class TokenInfo {
 	this.token = token;
     }
 
-    public List<String> getRoles() {
-	return roles;
+    public String getRole() {
+	return role;
     }
 
-    public void setRoles(List<String> roles) {
-	this.roles = roles;
+    public void setRole(String role) {
+	this.role = role;
     }
 
     @Override
     public String toString() {
-	return "{token=" + token + ", roles=" + roles + "}";
+	return "{token=" + token + ", role=" + role + "}";
     }
 
 }
