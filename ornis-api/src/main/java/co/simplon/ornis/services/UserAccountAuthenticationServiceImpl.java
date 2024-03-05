@@ -71,11 +71,11 @@ public class UserAccountAuthenticationServiceImpl
 		return tokenInfo;
 	    } else {
 		throw new BadCredentialsException(
-			"Wrong credentials: really wrong");
+			"Wrong credentials");
 	    }
 	} else {
 	    throw new BadCredentialsException(
-		    "Wrong credentials: null");
+		    "Wrong credentials");
 	}
     }
 

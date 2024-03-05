@@ -59,6 +59,19 @@ const messages = {
       success: 'Compte utilisateur créé avec succès.',
     },
   },
+  signIn: {
+    title: 'Connexion',
+    nicknameOrEmailAddress: {
+      label: "Nom d'utilisateur ou adresse email",
+    },
+    password: {
+      label: 'Mot de passe',
+    },
+    submit: 'Se connecter',
+    toastMessages: {
+      success: 'Bienvenue !',
+    },
+  },
   // Admin pages:
   birdActionsMenu: {
     edit: 'Mettre à jour',

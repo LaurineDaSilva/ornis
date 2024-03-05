@@ -8,6 +8,8 @@ const handleGlobalErrors = (error, i18n, toast) => {
   const { t } = i18n.global;
 
   if (errorCodes) {
+    console.log('Error codes (1st step) ');
+    console.log(errorCodes);
     for (let i = 0; i < errorCodes.length; i += 1) {
       const value = errorCodes[i];
       const splitValue = value.split(': ');
@@ -35,12 +37,29 @@ const handleGlobalErrors = (error, i18n, toast) => {
           messages.push(t('toastMessages.errors.undefined'));
           errorFields.push(errorField);
       }
+
+      if (messages.length > 0) {
+        setInvalidStyle(errorFields);
+        toast.error('toast-global', messages.join('\n'));
+      }
+    }
+  } else {
+    const form = document.querySelector('form');
+    // eslint-disable-next-line prefer-destructuring
+    const elements = form.elements;
+
+    for (let i = 0; i < elements.length; i += 1) {
+      const element = elements[i];
+      if (element.tagName !== 'button') {
+        element.classList.add('is-invalid');
+      }
     }
 
-    if (messages.length > 0) {
-      setInvalidStyle(errorFields);
-      toast.error('toast-global', messages.join('\n'));
-    }
+    messages.push(t('toastMessages.errors.undefined'));
+  }
+
+  if (messages.length > 0) {
+    toast.error('toast-global', messages.join('\n'));
   }
 };
 
