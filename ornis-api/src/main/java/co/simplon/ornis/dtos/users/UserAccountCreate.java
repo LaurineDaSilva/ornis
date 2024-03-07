@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-public class CreateUserAccount {
+public class UserAccountCreate {
 
     @NotBlank
     @Size(max = 100)
@@ -24,7 +24,7 @@ public class CreateUserAccount {
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[%*!]).{8,42}$")
     private String password;
 
-    public CreateUserAccount() {
+    public UserAccountCreate() {
     }
 
     public String getEmailAddress() {

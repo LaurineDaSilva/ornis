@@ -1,7 +1,6 @@
 package co.simplon.ornis.security;
 
 import java.time.Instant;
-import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -30,18 +29,14 @@ public class AuthenticationHelper {
 	return encoder.matches(candidate, hash);
     }
 
-    public String createJWT(List<String> roles,
-	    String name) {
+    public String createJWT(String role, String name) {
 	Instant now = Instant.now();
 	Instant expirationTime = now
 		.plusSeconds(expiration);
-	String[] rolesAsArray = roles
-		.toArray(new String[roles.size()]);
 	return JWT.create().withIssuer(issuer)
 		.withSubject(name).withIssuedAt(now)
 		.withExpiresAt(expirationTime)
-		.withArrayClaim("roles", rolesAsArray)
-		.sign(algorithm);
+		.withClaim("roles", role).sign(algorithm);
     }
 
     public static class Builder {

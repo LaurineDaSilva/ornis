@@ -39,7 +39,7 @@ export default {
   methods: {
     async submit() {
       await this.$http
-        .post('/join/signup', this.inputs)
+        .post('/join/sign-up', this.inputs)
         .then(() => {
           Object.assign(this.inputs, this.$options.data().inputs);
           this.validator.$reset();

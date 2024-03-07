@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary text-light mb-5 shadow">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow">
     <div class="container-fluid">
       <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
         {{ $t('header.title') }}
@@ -22,8 +22,13 @@
       </div>
 
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-secondary me-2">
-          {{ $t('header.login') }}
+        <button
+          type="button"
+          class="btn btn-outline-secondary cstm-btn-text-secondary link-secondary me-2"
+        >
+          <RouterLink id="sign-in" :to="{ name: 'sign-in' }" class="cstm-btn-text-secondary">
+            {{ $t('signIn.title') }}
+          </RouterLink>
         </button>
 
         <button type="button" class="btn btn-primary">

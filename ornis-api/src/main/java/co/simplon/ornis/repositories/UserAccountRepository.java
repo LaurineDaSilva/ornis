@@ -7,8 +7,12 @@ import co.simplon.ornis.entities.UserAccount;
 public interface UserAccountRepository
 	extends JpaRepository<UserAccount, Long> {
 
-    boolean existsByEmailAddress(String string);
+    boolean existsByEmailAddress(String emailAddress);
 
-    boolean existsByNickname(String string);
+    boolean existsByNickname(String nickname);
+
+    UserAccount findByEmailAddress(String emailAddress);
+
+    UserAccount findByNickname(String nickname);
 
 }

@@ -14,7 +14,7 @@ const removeInvalidStyles = (inputId) => {
   const elementHelpText = document.getElementById(`${inputId}-helpText`);
 
   element.classList.remove('is-invalid');
-  elementHelpText.classList.remove('text-danger');
+  elementHelpText?.classList?.remove('text-danger');
 };
 
 export { setInvalidStyle, removeInvalidStyles };
