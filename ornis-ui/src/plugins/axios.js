@@ -8,8 +8,6 @@ const handleGlobalErrors = (error, i18n, toast) => {
   const { t } = i18n.global;
 
   if (errorCodes) {
-    console.log('Error codes (1st step) ');
-    console.log(errorCodes);
     for (let i = 0; i < errorCodes.length; i += 1) {
       const value = errorCodes[i];
       const splitValue = value.split(': ');
