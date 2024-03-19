@@ -60,11 +60,15 @@ public class UserAccountAuthenticationServiceImpl
 		    candidate, userAccount.getPassword());
 	    if (match) {
 		String nickname = userAccount.getNickname();
+		String emailAddress = userAccount
+			.getEmailAddress();
 		String role = userAccount.getRole();
 		String token = authenticationHelper
 			.createJWT(role, nickname);
 
 		TokenInfo tokenInfo = new TokenInfo();
+		tokenInfo.setNickname(nickname);
+		tokenInfo.setEmailAddress(emailAddress);
 		tokenInfo.setToken(token);
 		tokenInfo.setRole(role);
 

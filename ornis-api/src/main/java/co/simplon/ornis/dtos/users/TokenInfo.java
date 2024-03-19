@@ -4,6 +4,8 @@ public class TokenInfo {
 
     private String token;
     private String role;
+    private String nickname;
+    private String emailAddress;
 
     public TokenInfo() {
     }
@@ -24,9 +26,27 @@ public class TokenInfo {
 	this.role = role;
     }
 
+    public String getNickname() {
+	return nickname;
+    }
+
+    public void setNickname(String nickname) {
+	this.nickname = nickname;
+    }
+
+    public String getEmailAddress() {
+	return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+	this.emailAddress = emailAddress;
+    }
+
     @Override
     public String toString() {
-	return "{token=" + token + ", role=" + role + "}";
+	return "{token=" + token + ", role=" + role
+		+ ", nickname=" + nickname
+		+ ", emailAddress=" + emailAddress + "}";
     }
 
 }

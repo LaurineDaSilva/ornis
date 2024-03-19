@@ -2,6 +2,7 @@
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   setup() {
@@ -35,7 +36,13 @@ export default {
     async submit() {
       await this.$http
         .post('/join/sign-in', this.inputs)
-        .then(() => {
+        .then((resp) => {
+          const response = resp.body;
+          const store = useAuthStore;
+          store.emailAddress = response.emailAddress;
+          store.nickname = response.nickname;
+          store.token = response.token;
+          store.role = response.role;
           Object.assign(this.inputs, this.$options.data().inputs);
           this.validator.$reset();
           this.$toast.success('toast-global', this.$t('signIn.toastMessages.success'));
