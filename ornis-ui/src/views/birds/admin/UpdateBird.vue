@@ -77,9 +77,7 @@ export default {
       });
 
       await this.$http
-
         .put(`/birds/update/${this.id}`, formData)
-
         .then(
           this.validator.$reset(),
           this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),
@@ -87,7 +85,6 @@ export default {
             this.$router.push('/');
           }, '1000'),
         )
-
         .catch(() => {});
     },
   },
