@@ -83,7 +83,7 @@ export default {
           this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),
           setTimeout(() => {
             this.$router.push('/');
-          }, '1000'),
+          }, 1000),
         )
         .catch(() => {});
     },

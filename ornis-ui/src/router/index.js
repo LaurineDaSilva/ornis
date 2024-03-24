@@ -39,7 +39,7 @@ const router = createRouter({
       name: 'sign-in',
       component: () => import('@/views/users/SignIn.vue'),
       meta: {
-        requiresAuth: false,
+        requiresUnauth: true,
       },
     },
 
@@ -81,12 +81,9 @@ router.beforeEach(async (to, from, next) => {
 
   if (to.meta.requiresAdminRole && !store.isAdmin) {
     next('/not-found');
-  }
-  if (to.meta.requiresAuth && !store.isAuthenticated) {
+  } else if (to.meta.requiresAuth && !store.isAuthenticated) {
     next('/sign-in');
   } else if (to.meta.requiresUnauth && store.isAuthenticated) {
-    console.log(store.nickname);
-    console.log(store.isAuthenticated);
     next('/');
   } else if (to.meta.requiresAuth && store.isAuthenticated) {
     next();

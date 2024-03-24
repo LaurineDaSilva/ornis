@@ -11,6 +11,17 @@ export const useAuthStore = defineStore('auth', {
     };
   },
 
+  actions: {
+    setUser(token, nickname, emailAddress, role) {
+      this.$patch({
+        token,
+        nickname,
+        emailAddress,
+        role,
+      });
+    },
+  },
+
   getters: {
     isAuthenticated: (state) => !!state.token,
 
