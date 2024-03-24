@@ -3,13 +3,17 @@ import { useRoute } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
 import { required, maxLength } from '@vuelidate/validators';
 import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   setup() {
+    const store = useAuthStore();
+
     return {
       route: useRoute(),
       validator: useVuelidate({ $autoDirty: true }),
       removeInvalidStyles,
+      store,
     };
   },
 
@@ -67,25 +71,27 @@ export default {
     },
 
     async submit() {
-      const formData = new FormData();
+      if (this.store.isAdmin) {
+        const formData = new FormData();
 
-      Object.keys(this.inputs).forEach((key) => {
-        const value = this.inputs[key];
-        if (value) {
-          formData.append(key, value);
-        }
-      });
+        Object.keys(this.inputs).forEach((key) => {
+          const value = this.inputs[key];
+          if (value) {
+            formData.append(key, value);
+          }
+        });
 
-      await this.$http
-        .put(`/birds/update/${this.id}`, formData)
-        .then(
-          this.validator.$reset(),
-          this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),
-          setTimeout(() => {
-            this.$router.push('/');
-          }, 1000),
-        )
-        .catch(() => {});
+        await this.$http
+          .put(`/birds/update/${this.id}`, formData)
+          .then(
+            this.validator.$reset(),
+            this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),
+            setTimeout(() => {
+              this.$router.push('/');
+            }, 1000),
+          )
+          .catch(() => {});
+      }
     },
   },
 };

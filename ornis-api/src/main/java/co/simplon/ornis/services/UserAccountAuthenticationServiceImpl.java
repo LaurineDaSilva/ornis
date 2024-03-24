@@ -58,6 +58,7 @@ public class UserAccountAuthenticationServiceImpl
 	if (userAccount != null) {
 	    boolean match = authenticationHelper.matches(
 		    candidate, userAccount.getPassword());
+
 	    if (match) {
 		String nickname = userAccount.getNickname();
 		String emailAddress = userAccount

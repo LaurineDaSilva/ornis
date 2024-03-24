@@ -2,12 +2,16 @@
 import { useVuelidate } from '@vuelidate/core';
 import { required, requiredIf, maxLength } from '@vuelidate/validators';
 import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   setup() {
+    const store = useAuthStore();
+
     return {
       validator: useVuelidate({ $autoDirty: true }),
       removeInvalidStyles,
+      store,
     };
   },
 
@@ -46,25 +50,27 @@ export default {
     },
 
     async submit(event) {
-      const formData = new FormData();
+      if (this.store.isAdmin) {
+        const formData = new FormData();
 
-      Object.keys(this.inputs).forEach((key) => {
-        const value = this.inputs[key];
+        Object.keys(this.inputs).forEach((key) => {
+          const value = this.inputs[key];
 
-        if (value) {
-          formData.append(key, value);
-        }
-      });
+          if (value) {
+            formData.append(key, value);
+          }
+        });
 
-      await this.$http
-        .post('/birds/create', formData)
-        .then(() => {
-          event.target.reset();
-          Object.assign(this.inputs, this.$options.data().inputs);
-          this.validator.$reset();
-          this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
-        })
-        .catch(() => {});
+        await this.$http
+          .post('/birds/create', formData)
+          .then(() => {
+            event.target.reset();
+            Object.assign(this.inputs, this.$options.data().inputs);
+            this.validator.$reset();
+            this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
+          })
+          .catch(() => {});
+      }
     },
   },
 };
