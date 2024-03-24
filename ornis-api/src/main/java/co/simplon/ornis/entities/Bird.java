@@ -22,6 +22,9 @@ public class Bird extends AbstractEntity {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "xeno_id")
+    private String xenoId;
+
     public Bird() {
     }
 
@@ -57,6 +60,14 @@ public class Bird extends AbstractEntity {
 	this.description = description;
     }
 
+    public String getXenoId() {
+	return xenoId;
+    }
+
+    public void setXenoId(String xenoId) {
+	this.xenoId = xenoId;
+    }
+
     @Override
     public int hashCode() {
 	return Objects.hash(scientificName);
@@ -81,9 +92,9 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s}",
+		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s, xenoId=%s}",
 		getId(), scientificName, commonName,
-		imageName, description);
+		imageName, description, xenoId);
     }
 
 }

@@ -1,7 +1,12 @@
 <script>
 import { useRoute } from 'vue-router';
+import XenoCantoPlayer from '../../components/birds/XenoCantoPlayer.vue';
 
 export default {
+  components: {
+    XenoCantoPlayer,
+  },
+
   setup() {
     return {
       route: useRoute(),
@@ -58,6 +63,10 @@ export default {
             <p class="card-text">
               {{ bird.description }}
             </p>
+
+            <div v-if="bird.xenoId">
+              <XenoCantoPlayer :bird="bird"></XenoCantoPlayer>
+            </div>
           </div>
         </div>
       </div>
