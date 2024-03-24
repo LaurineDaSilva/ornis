@@ -8,6 +8,7 @@ CREATE TABLE birds (
     scientific_name VARCHAR(100) UNIQUE NOT NULL,
     common_name VARCHAR(200) UNIQUE NOT NULL,
     image_name VARCHAR(41) UNIQUE NOT NULL,
+    xeno_id NUMERIC(6) UNIQUE,
     description VARCHAR(5000)
 );
 

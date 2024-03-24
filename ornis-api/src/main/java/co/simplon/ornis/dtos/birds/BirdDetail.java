@@ -10,4 +10,6 @@ public interface BirdDetail {
 
     String getDescription();
 
+    String getXenoId();
+
 }
