@@ -1,3 +1,17 @@
+<script>
+import { useAuthStore } from '@/stores/authStore';
+
+export default {
+  setup() {
+    const store = useAuthStore();
+
+    return {
+      store,
+    };
+  },
+};
+</script>
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow">
     <div class="container-fluid">
@@ -13,7 +27,7 @@
             </RouterLink>
           </li>
 
-          <li class="nav-item">
+          <li v-if="store.isAdmin" class="nav-item">
             <RouterLink :to="{ name: 'add-bird' }" class="nav-link">
               {{ $t('header.addBird') }}
             </RouterLink>
@@ -21,7 +35,7 @@
         </ul>
       </div>
 
-      <div class="col-md-3 text-end">
+      <div v-if="!store.isAuthenticated" class="col-md-3 text-end">
         <button
           type="button"
           class="btn btn-outline-secondary cstm-btn-text-secondary link-secondary me-2"

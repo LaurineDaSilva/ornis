@@ -1,18 +1,31 @@
 <script>
+import { useRoute } from 'vue-router';
 import { useVuelidate } from '@vuelidate/core';
-import { required, requiredIf, maxLength } from '@vuelidate/validators';
+import { required, maxLength } from '@vuelidate/validators';
 import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   setup() {
+    const store = useAuthStore();
+
     return {
+      route: useRoute(),
       validator: useVuelidate({ $autoDirty: true }),
       removeInvalidStyles,
+      store,
     };
   },
 
   data() {
     return {
+      id: this.route.params.id,
+
+      birdToUpdate: {
+        scientificName: null,
+        commonName: null,
+      },
+
       inputs: {
         scientificName: null,
         commonName: null,
@@ -27,11 +40,8 @@ export default {
       inputs: {
         scientificName: { required, maxLength: maxLength(100) },
         commonName: { required, maxLength: maxLength(200) },
-        description: { maxLength: maxLength(5000) },
+        description: { required, maxLength: maxLength(5000) },
         file: {
-          required: requiredIf(() => {
-            return this.inputs.file === undefined;
-          }),
           maxValue: (file) => {
             return file ? file.size <= 1048576 : true;
           },
@@ -40,31 +50,48 @@ export default {
     };
   },
 
+  beforeMount() {
+    this.initInputs();
+  },
+
   methods: {
     fileSelected(event) {
       [this.inputs.file] = event.target.files;
     },
 
-    async submit(event) {
-      const formData = new FormData();
-
-      Object.keys(this.inputs).forEach((key) => {
-        const value = this.inputs[key];
-
-        if (value) {
-          formData.append(key, value);
-        }
-      });
-
+    async initInputs() {
       await this.$http
-        .post('/birds/create', formData)
-        .then(() => {
-          event.target.reset();
-          Object.assign(this.inputs, this.$options.data().inputs);
-          this.validator.$reset();
-          this.$toast.success('toast-global', this.$t('createBird.toastMessages.success'));
+        .get(`/birds/${this.id}/to-update`)
+        .then((resp) => {
+          this.inputs = resp.body;
+          this.birdToUpdate.commonName = this.inputs.commonName;
+          this.birdToUpdate.scientificName = this.inputs.scientificName;
         })
         .catch(() => {});
+    },
+
+    async submit() {
+      if (this.store.isAdmin) {
+        const formData = new FormData();
+
+        Object.keys(this.inputs).forEach((key) => {
+          const value = this.inputs[key];
+          if (value) {
+            formData.append(key, value);
+          }
+        });
+
+        await this.$http
+          .put(`/birds/update/${this.id}`, formData)
+          .then(
+            this.validator.$reset(),
+            this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),
+            setTimeout(() => {
+              this.$router.push('/');
+            }, 1000),
+          )
+          .catch(() => {});
+      }
     },
   },
 };
@@ -72,14 +99,20 @@ export default {
 
 <template>
   <section>
-    <h1 class="mt-5 mb-4">{{ $t('createBird.title') }}</h1>
+    <div class="mt-5 mb-4">
+      <h1>{{ $t('updateBird.title') }} :</h1>
+
+      <h4 class="text-primary">
+        {{ birdToUpdate.commonName }}
+        <span class="fst-italic text-primary">({{ birdToUpdate.scientificName }})</span>
+      </h4>
+    </div>
 
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
-        <label for="scientificName" class="form-label"
-          >{{ $t('createBird.scientificName.label')
-          }}<span class="text-secondary">{{ $t('required') }}</span></label
-        >
+        <label for="scientificName" class="form-label">{{
+          $t('updateBird.scientificName.label')
+        }}</label>
 
         <input
           id="scientificName"
@@ -93,16 +126,15 @@ export default {
           @input="removeInvalidStyles('scientificName')"
         />
 
-        <p id="scientificName-helpText" class="form-text">
-          {{ $t('createBird.scientificName.helpText') }}
+        <p class="form-text">
+          {{ $t('updateBird.scientificName.helpText') }}
         </p>
       </div>
 
       <div class="mb-3">
-        <label for="commonName" class="form-label"
-          >{{ $t('createBird.commonName.label')
-          }}<span class="text-secondary">{{ $t('required') }}</span></label
-        >
+        <label for="commonName" class="form-label">{{
+          $t('updateBird.commonName.label')
+        }}</label>
 
         <input
           id="commonName"
@@ -116,39 +148,35 @@ export default {
           @input="removeInvalidStyles('commonName')"
         />
 
-        <p id="commonName-helpText" class="form-text">
-          {{ $t('createBird.commonName.helpText') }}
+        <p class="form-text">
+          {{ $t('updateBird.commonName.helpText') }}
         </p>
       </div>
 
       <div class="mb-3">
-        <label for="description" class="form-label"
-          >{{ $t('createBird.description.label')
-          }}<span class="text-secondary">{{ $t('required') }}</span></label
-        >
+        <label for="description" class="form-label">{{
+          $t('updateBird.description.label')
+        }}</label>
 
-        <textarea
+        <input
           id="description"
           v-model.trim="inputs.description"
-          name="description"
-          rows="5"
+          name="commonName"
+          type="textarea"
           class="form-control shadow-sm"
           :class="{
             'is-invalid': validator.inputs.description.$error,
           }"
           @input="removeInvalidStyles('description')"
-        ></textarea>
+        />
 
-        <p id="description-helpText" class="form-text">
-          {{ $t('createBird.description.helpText') }}
+        <p class="form-text">
+          {{ $t('updateBird.description.helpText') }}
         </p>
       </div>
 
       <div class="mb-3">
-        <label for="file" class="form-label"
-          >{{ $t('createBird.file.label')
-          }}<span class="text-secondary">{{ $t('required') }}</span></label
-        >
+        <label for="file" class="form-label">{{ $t('updateBird.file.label') }}</label>
 
         <input
           id="file"
@@ -162,16 +190,22 @@ export default {
           @change="fileSelected"
         />
 
-        <p id="file-helpText" class="form-text">
-          {{ $t('createBird.file.helpText') }}
+        <p class="form-text">
+          {{ $t('updateBird.file.helpText') }}
         </p>
       </div>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button type="submit" class="btn btn-primary shadow-sm" :disabled="validator.$invalid">
-          {{ $t('createBird.submit') }}
+          {{ $t('updateBird.submit') }}
         </button>
       </div>
     </form>
   </section>
 </template>
+
+<style>
+#description {
+  height: 100px;
+}
+</style>

@@ -44,6 +44,9 @@ export default {
           Object.assign(this.inputs, this.$options.data().inputs);
           this.validator.$reset();
           this.$toast.success('toast-global', this.$t('signUp.toastMessages.success'));
+          setTimeout(() => {
+            this.$router.push('/sign-in');
+          }, 1000);
         })
         .catch(() => {});
     },

@@ -1,11 +1,20 @@
 <script>
 import BirdActionsMenu from '@/components/birds/admin/BirdActionsMenu.vue';
 import LoadingSpinner from '@/components/commons/LoadingSpinner.vue';
+import { useAuthStore } from '@/stores/authStore';
 
 export default {
   components: {
     BirdActionsMenu,
     LoadingSpinner,
+  },
+
+  setup() {
+    const store = useAuthStore();
+
+    return {
+      store,
+    };
   },
 
   data() {
@@ -61,7 +70,7 @@ export default {
               </p></RouterLink
             >
 
-            <div class="position-absolute top-0 end-0">
+            <div v-if="store.isAdmin" class="position-absolute top-0 end-0">
               <BirdActionsMenu :bird="bird"></BirdActionsMenu>
             </div>
           </div>

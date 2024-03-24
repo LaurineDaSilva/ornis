@@ -1,4 +1,6 @@
 <script>
+import { useAuthStore } from '@/stores/authStore';
+
 export default {
   props: {
     bird: {
@@ -7,17 +9,30 @@ export default {
     },
   },
 
+  setup() {
+    const store = useAuthStore();
+
+    return {
+      store,
+    };
+  },
+
   methods: {
     async deleteBird(id) {
-      await this.$http
-        .delete(`/birds/delete/${id}`)
-        .then(
-          this.$toast.success('toast-global', this.$t('birdActionsMenu.toastMessages.success')),
-          setTimeout(() => {
-            this.$router.go();
-          }, '1000'),
-        )
-        .catch(() => {});
+      if (this.store.isAdmin) {
+        await this.$http
+          .delete(`/birds/delete/${id}`)
+          .then(
+            this.$toast.success(
+              'toast-global',
+              this.$t('birdActionsMenu.toastMessages.success'),
+            ),
+            setTimeout(() => {
+              this.$router.go();
+            }, '1000'),
+          )
+          .catch(() => {});
+      }
     },
   },
 };
