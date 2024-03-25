@@ -16,7 +16,6 @@ export default {
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow">
     <div class="container-fluid">
       <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
-        {{ $t('header.title') }}
       </RouterLink>
 
       <div id="navbarSupportedContent" class="collapse navbar-collapse">
@@ -34,6 +33,10 @@ export default {
           </li>
         </ul>
       </div>
+
+      <form role="search">
+        <input class="form-control" type="search" :placeholder="$t('header.search')" />
+      </form>
 
       <div v-if="!store.isAuthenticated" class="col-md-3 text-end">
         <button

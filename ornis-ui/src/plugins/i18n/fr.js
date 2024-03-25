@@ -1,6 +1,7 @@
 const messages = {
   // common
   required: '*',
+
   // errors
   toastMessages: {
     errors: {
@@ -20,24 +21,29 @@ const messages = {
       },
     },
   },
-  // Pages accessible to all users:
+
+  // Components accessible to all users:
   header: {
     title: 'Ornis',
     home: 'Accueil',
     addBird: "Ajouter une espèce d'oiseau",
     login: 'Connexion',
+    search: 'Rechercher',
   },
+
   birdsList: {
     title: 'Liste des oiseaux de France',
     imageAlt: '{name} (photo)',
     error: "La liste des oiseaux n'a pu être chargée.",
   },
+
   birdDetail: {
     description: {
       title: 'Description',
     },
   },
-  // Authentication pages:
+
+  // Authentication components:
   signUp: {
     title: 'Inscription',
     nickname: {
@@ -59,6 +65,7 @@ const messages = {
       success: 'Compte utilisateur créé avec succès.',
     },
   },
+
   signIn: {
     title: 'Connexion',
     nicknameOrEmailAddress: {
@@ -72,7 +79,8 @@ const messages = {
       success: 'Bienvenue !',
     },
   },
-  // Admin pages:
+
+  // Admin components:
   birdActionsMenu: {
     edit: 'Mettre à jour',
     delete: 'Supprimer',
@@ -80,6 +88,7 @@ const messages = {
       success: 'Espèce supprimée avec succès.',
     },
   },
+
   createBird: {
     title: "Ajouter une espèce d'oiseau",
     scientificName: {
@@ -103,6 +112,7 @@ const messages = {
       success: 'Espèce créée avec succès.',
     },
   },
+
   updateBird: {
     title: "Mettre à jour l'espèce",
     scientificName: {
