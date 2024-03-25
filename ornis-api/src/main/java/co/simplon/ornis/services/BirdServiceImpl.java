@@ -35,6 +35,12 @@ public class BirdServiceImpl implements BirdService {
     }
 
     @Override
+    public Collection<BirdView> searchBirds(
+	    String searchText) {
+	return birds.findBirdsBySearchText(searchText);
+    }
+
+    @Override
     public BirdDetail getDetail(Long id) {
 	return birds.findProjectedDetailById(id);
     }
