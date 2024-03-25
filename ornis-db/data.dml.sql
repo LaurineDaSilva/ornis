@@ -1,4 +1,22 @@
 DELETE from birds;
+DELETE from colors;
+
+INSERT INTO colors (rdb_code, color_name)
+VALUES
+('FFFFFF', 'white'),
+('000000', 'black'),
+('A0A0A0', 'grey'),
+('663300', 'brown'),
+('FF0000', 'red'),
+('FFFF00', 'yellow'),
+('FF9933', 'orange'),
+('000000', 'blue'),
+('009900', 'green'),
+('6600CC', 'purple'),
+('FF99CC', 'pink');
+
+
+
 
 INSERT INTO birds (scientific_name, common_name, image_name, xeno_id, description)
 VALUES

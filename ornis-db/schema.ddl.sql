@@ -20,3 +20,9 @@ CREATE TABLE user_accounts (
     role VARCHAR(11)
 );
 
+CREATE TABLE colors {
+    id SERIAL PRIMARY KEY, 
+    rgb_code VARCHAR(6) UNIQUE NOT NULL,
+    color_name VARCHAR(100) UNIQUE NOT NULL
+}
+
