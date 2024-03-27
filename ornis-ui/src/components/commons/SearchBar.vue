@@ -1,9 +1,18 @@
 <script>
+import { useResultStore } from '@/stores/resultStore';
+
 export default {
+  setup() {
+    const store = useResultStore();
+
+    return {
+      store,
+    };
+  },
+
   data() {
     return {
       searchText: null,
-      birds: [],
     };
   },
 
@@ -12,8 +21,11 @@ export default {
       await this.$http
         .get(`/birds/search?searchText=${this.searchText}`)
         .then((resp) => {
-          this.birds = resp.body;
-          console.log(resp);
+          const results = resp.body;
+          console.log('search bar');
+          console.log(results);
+          this.store.setResults(results);
+          this.$router.push('/search-result');
         })
         .catch(() => {});
     },
