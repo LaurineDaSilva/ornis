@@ -16,7 +16,6 @@ export default {
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 shadow">
     <div class="container-fluid">
       <RouterLink :to="{ name: 'home' }" class="nav-link navbar-brand text-light ms-1">
-        {{ $t('header.title') }}
       </RouterLink>
 
       <div id="navbarSupportedContent" class="collapse navbar-collapse">

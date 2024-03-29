@@ -12,6 +12,8 @@ public interface BirdService {
 
     Collection<BirdView> getAll(Long id);
 
+    Collection<BirdView> searchBirds(String searchText);
+
     BirdDetail getDetail(Long id);
 
     void createBird(BirdCreate inputs);

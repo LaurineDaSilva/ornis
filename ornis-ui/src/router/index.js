@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import BirdList from '@/views/birds/BirdsList.vue';
-import { useAuthStore } from '../stores/authStore';
+import { useAuthStore } from '@/stores/authStore';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -11,18 +11,12 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: BirdList,
-      meta: {
-        requiresAuth: false,
-      },
     },
 
     {
       path: '/birds/:id/detail',
       name: 'bird-detail',
       component: () => import('@/views/birds/BirdDetail.vue'),
-      meta: {
-        requiresAuth: false,
-      },
     },
 
     {
@@ -69,9 +63,6 @@ const router = createRouter({
       path: '/not-found',
       name: 'not-found',
       component: () => import('@/views/errors/NotFound.vue'),
-      meta: {
-        requiresAuth: false,
-      },
     },
   ],
 });

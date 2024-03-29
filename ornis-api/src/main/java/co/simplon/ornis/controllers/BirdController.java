@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,12 @@ public class BirdController {
     @GetMapping("/list")
     public Collection<BirdView> getAll(Long id) {
 	return service.getAll(id);
+    }
+
+    @GetMapping("/search")
+    public Collection<BirdView> searchBirds(
+	    @RequestParam String searchText) {
+	return service.searchBirds(searchText);
     }
 
     @GetMapping("/{id}/detail")

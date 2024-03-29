@@ -23,7 +23,7 @@ public class Bird extends AbstractEntity {
     private String description;
 
     @Column(name = "xeno_id")
-    private String xenoId;
+    private int xenoId;
 
     public Bird() {
     }
@@ -60,11 +60,11 @@ public class Bird extends AbstractEntity {
 	this.description = description;
     }
 
-    public String getXenoId() {
+    public int getXenoId() {
 	return xenoId;
     }
 
-    public void setXenoId(String xenoId) {
+    public void setXenoId(int xenoId) {
 	this.xenoId = xenoId;
     }
 
@@ -78,15 +78,8 @@ public class Bird extends AbstractEntity {
 	if (this == obj) {
 	    return true;
 	}
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	Bird other = (Bird) obj;
-	return Objects.equals(scientificName,
-		other.scientificName);
+	return obj instanceof Bird other && Objects.equals(
+		scientificName, other.scientificName);
     }
 
     @Override
