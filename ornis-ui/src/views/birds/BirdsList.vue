@@ -21,6 +21,7 @@ export default {
     return {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
       birds: [],
+      displayedBirds: [],
       searchText: null,
       loaded: false,
     };
@@ -36,19 +37,24 @@ export default {
         .get(`/birds/list`)
         .then((resp) => {
           this.birds = resp.body;
+          this.displayedBirds = this.birds;
           this.loaded = true;
         })
         .catch(() => {});
     },
 
     async filterBirds() {
-      await this.$http
-        .get(`/birds/search?searchText=${this.searchText}`)
-        .then((resp) => {
-          const results = resp.body;
-          this.birds = results;
-        })
-        .catch(() => {});
+      if (!this.searchText) {
+        this.displayedBirds = this.birds;
+      } else {
+        await this.$http
+          .get(`/birds/search?searchText=${this.searchText}`)
+          .then((resp) => {
+            const results = resp.body;
+            this.displayedBirds = results;
+          })
+          .catch(() => {});
+      }
     },
   },
 };
@@ -63,22 +69,28 @@ export default {
         v-model.trim="searchText"
         type="search"
         class="form-control"
-        :placeholder="$t('birdsList.filter')"
+        :placeholder="$t('birdsList.filterPlaceholder')"
         @keyup.enter="submit"
       />
       <button class="btn btn-outline-secondary" type="submit">
-        {{ $t('birdsList.filter') }}
+        {{ $t('birdsList.filterButton') }}
       </button>
     </form>
 
     <div class="list-group birds-list-container">
-      <p v-if="loaded && (!birds || birds.length === 0)">{{ $t('birdsList.error') }}</p>
+      <p v-if="loaded && (!displayedBirds || displayedBirds.length === 0)">
+        {{ $t('birdsList.error') }}
+      </p>
 
       <ul
-        v-else-if="loaded && birds && birds.length > 0"
+        v-else-if="loaded && displayedBirds && displayedBirds.length > 0"
         class="row justify-content-between birds-list"
       >
-        <li v-for="bird in birds" :key="bird" class="col-md-6 shadow-sm card bird-cards">
+        <li
+          v-for="bird in displayedBirds"
+          :key="bird"
+          class="col-md-6 shadow-sm card bird-cards"
+        >
           <img
             class="col-4 bird-card-img"
             :src="`src/assets/images/bird_pictures/${bird.imageName}`"
