@@ -28,11 +28,11 @@ const messages = {
     home: 'Accueil',
     addBird: "Ajouter une espèce d'oiseau",
     login: 'Connexion',
-    search: 'Rechercher',
   },
 
   birdsList: {
     title: 'Liste des oiseaux de France',
+    filter: 'Rechercher',
     imageAlt: '{name} (photo)',
     error: "La liste des oiseaux n'a pu être chargée.",
   },

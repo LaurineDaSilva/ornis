@@ -21,6 +21,7 @@ export default {
     return {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
       birds: [],
+      searchText: null,
       loaded: false,
     };
   },
@@ -39,6 +40,16 @@ export default {
         })
         .catch(() => {});
     },
+
+    async filterBirds() {
+      await this.$http
+        .get(`/birds/search?searchText=${this.searchText}`)
+        .then((resp) => {
+          const results = resp.body;
+          this.birds = results;
+        })
+        .catch(() => {});
+    },
   },
 };
 </script>
@@ -46,6 +57,19 @@ export default {
 <template>
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
+
+    <form class="input-group mb-3" role="search" novalidate @submit.prevent="filterBirds">
+      <input
+        v-model.trim="searchText"
+        type="search"
+        class="form-control"
+        :placeholder="$t('birdsList.filter')"
+        @keyup.enter="submit"
+      />
+      <button class="btn btn-outline-secondary" type="submit">
+        {{ $t('birdsList.filter') }}
+      </button>
+    </form>
 
     <div class="list-group birds-list-container">
       <p v-if="loaded && (!birds || birds.length === 0)">{{ $t('birdsList.error') }}</p>

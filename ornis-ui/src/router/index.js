@@ -20,12 +20,6 @@ const router = createRouter({
     },
 
     {
-      path: '/search-result',
-      name: 'search-result',
-      component: () => import('@/views/SearchResult.vue'),
-    },
-
-    {
       path: '/sign-up',
       name: 'sign-up',
       component: () => import('@/views/users/SignUp.vue'),

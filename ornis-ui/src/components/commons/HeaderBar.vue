@@ -1,12 +1,7 @@
 <script>
 import { useAuthStore } from '@/stores/authStore';
-import SearchBar from '@/components/commons/SearchBar.vue';
 
 export default {
-  components: {
-    SearchBar,
-  },
-
   setup() {
     const store = useAuthStore();
 
@@ -38,8 +33,6 @@ export default {
           </li>
         </ul>
       </div>
-
-      <SearchBar />
 
       <div v-if="!store.isAuthenticated" class="col-md-3 text-end">
         <button
