@@ -31,8 +31,9 @@ const messages = {
   },
 
   birdsList: {
-    title: 'Liste des oiseaux de France',
-    filter: 'Rechercher',
+    title: 'Oiseaux de France',
+    filterPlaceholder: 'Rechercher des oiseaux',
+    filterButton: 'Rechercher',
     imageAlt: '{name} (photo)',
     error: "La liste des oiseaux n'a pu être chargée.",
   },
