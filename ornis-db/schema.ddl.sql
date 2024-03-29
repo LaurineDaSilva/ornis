@@ -22,9 +22,11 @@ CREATE TABLE birds (
 );
 
 CREATE TABLE birds_colors (
-    scientific_name VARCHAR REFERENCES birds(scientific_name),
-    color_name VARCHAR REFERENCES colors(color_name),
-    PRIMARY KEY (scientific_name, color_name)
+    bird_id INTEGER,
+    color_id INTEGER,
+    PRIMARY KEY (bird_id, color_id),
+    FOREIGN KEY (bird_id) REFERENCES birds(id),
+    FOREIGN KEY (color_id) REFERENCES colors(id)
 );
 
 CREATE TABLE user_accounts (
