@@ -1,5 +1,7 @@
 package co.simplon.ornis.entities;
 
+import java.util.Objects;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -31,6 +33,23 @@ public class BirdColor extends AbstractEntity {
 
     public void setColorName(String colorName) {
 	this.colorName = colorName;
+    }
+
+    @Override
+    public int hashCode() {
+	return Objects.hash(scientificName, colorName);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) {
+	    return true;
+	}
+	return obj instanceof BirdColor other
+		&& Objects.equals(scientificName,
+			other.scientificName)
+		&& Objects.equals(colorName,
+			other.colorName);
     }
 
     @Override

@@ -78,15 +78,8 @@ public class Bird extends AbstractEntity {
 	if (this == obj) {
 	    return true;
 	}
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	Bird other = (Bird) obj;
-	return Objects.equals(scientificName,
-		other.scientificName);
+	return obj instanceof Bird other && Objects.equals(
+		scientificName, other.scientificName);
     }
 
     @Override

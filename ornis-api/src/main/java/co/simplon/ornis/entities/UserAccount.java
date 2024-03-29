@@ -62,20 +62,14 @@ public class UserAccount extends AbstractEntity {
 	return Objects.hash(emailAddress);
     }
 
+    // implémentation avec instanceOf
     @Override
     public boolean equals(Object obj) {
 	if (this == obj) {
 	    return true;
 	}
-	if (obj == null) {
-	    return false;
-	}
-	if (getClass() != obj.getClass()) {
-	    return false;
-	}
-	UserAccount other = (UserAccount) obj;
-	return Objects.equals(emailAddress,
-		other.emailAddress);
+	return obj instanceof UserAccount other && Objects
+		.equals(emailAddress, other.emailAddress);
     }
 
     @Override
