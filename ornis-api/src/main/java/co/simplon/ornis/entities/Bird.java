@@ -1,9 +1,13 @@
 package co.simplon.ornis.entities;
 
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,6 +28,10 @@ public class Bird extends AbstractEntity {
 
     @Column(name = "xeno_id")
     private int xenoId;
+
+    @ManyToMany
+    @JoinTable(name = "birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
+    private Set<Color> colors;
 
     public Bird() {
     }
@@ -68,6 +76,14 @@ public class Bird extends AbstractEntity {
 	this.xenoId = xenoId;
     }
 
+    public Set<Color> getColors() {
+	return colors;
+    }
+
+    public void setColors(Set<Color> colors) {
+	this.colors = colors;
+    }
+
     @Override
     public int hashCode() {
 	return Objects.hash(scientificName);
@@ -85,9 +101,9 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s, xenoId=%s}",
+		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s, xenoId=%s, colors=%s}",
 		getId(), scientificName, commonName,
-		imageName, description, xenoId);
+		imageName, description, xenoId, colors);
     }
 
 }
