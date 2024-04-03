@@ -3,8 +3,11 @@ package co.simplon.ornis.entities;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
@@ -29,7 +32,8 @@ public class Bird extends AbstractEntity {
     @Column(name = "xeno_id")
     private int xenoId;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
     @JoinTable(name = "birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
     private Set<Color> colors;
 
