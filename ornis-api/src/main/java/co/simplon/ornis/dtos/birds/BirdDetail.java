@@ -10,12 +10,14 @@ public interface BirdDetail {
 
     String getCommonName();
 
-    String getImageName();
+    String getImage();
 
     String getDescription();
 
     String getXenoId();
 
     Set<Color> getColors();
+
+    String getBeakShapeName();
 
 }

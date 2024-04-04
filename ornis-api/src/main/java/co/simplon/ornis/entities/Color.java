@@ -12,14 +12,14 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "colors")
+@Table(name = "t_colors")
 public class Color extends AbstractEntity {
 
     @Column(name = "rgbCode")
     private String rgbCode;
 
-    @Column(name = "colorName")
-    private String colorName;
+    @Column(name = "name")
+    private String name;
 
     @ManyToMany(mappedBy = "colors", fetch = FetchType.EAGER)
     @JsonBackReference
@@ -36,12 +36,12 @@ public class Color extends AbstractEntity {
 	this.rgbCode = rgbCode;
     }
 
-    public String getColorName() {
-	return colorName;
+    public String getName() {
+	return name;
     }
 
-    public void setColorName(String colorName) {
-	this.colorName = colorName;
+    public void setName(String name) {
+	this.name = name;
     }
 
     public Set<Bird> getBirds() {
@@ -68,9 +68,8 @@ public class Color extends AbstractEntity {
 
     @Override
     public String toString() {
-	return String.format(
-		"{id=%s, rgbCode=%s, colorName=%s}",
-		getId(), rgbCode, colorName);
+	return String.format("{id=%s, rgbCode=%s, name=%s}",
+		getId(), rgbCode, name);
     }
 
 }

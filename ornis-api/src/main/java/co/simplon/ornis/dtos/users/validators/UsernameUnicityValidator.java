@@ -4,21 +4,21 @@ import co.simplon.ornis.services.UserAccountAuthenticationService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class NicknameUnicityValidator implements
-	ConstraintValidator<NicknameUnicity, String> {
+public class UsernameUnicityValidator implements
+	ConstraintValidator<UsernameUnicity, String> {
 
     private final UserAccountAuthenticationService service;
 
-    public NicknameUnicityValidator(
+    public UsernameUnicityValidator(
 	    UserAccountAuthenticationService service) {
 	this.service = service;
     }
 
     @Override
-    public boolean isValid(String nickname,
+    public boolean isValid(String username,
 	    ConstraintValidatorContext context) {
-	if (nickname != null) {
-	    return !this.service.nicknameExists(nickname);
+	if (username != null) {
+	    return !this.service.usernameExists(username);
 	}
 	return true;
 

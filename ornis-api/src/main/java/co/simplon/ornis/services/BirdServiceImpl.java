@@ -56,7 +56,7 @@ public class BirdServiceImpl implements BirdService {
 	MultipartFile file = inputs.getFile();
 	String baseName = UUID.randomUUID().toString();
 	String fileName = storage.store(file, baseName);
-	entity.setImageName(fileName);
+	entity.setImage(fileName);
 	birds.save(entity);
     }
 
@@ -75,11 +75,11 @@ public class BirdServiceImpl implements BirdService {
 	entity.setDescription(inputs.getDescription());
 	MultipartFile file = inputs.getFile();
 	if (file != null) {
-	    String original = entity.getImageName();
+	    String original = entity.getImage();
 	    String baseName = UUID.randomUUID().toString();
 	    String newFullName = storage.replace(file,
 		    baseName, original);
-	    entity.setImageName(newFullName);
+	    entity.setImage(newFullName);
 	}
     }
 
@@ -87,7 +87,7 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void delete(Long id) {
 	Bird entity = birds.findById(id).get();
-	String imageName = entity.getImageName();
+	String imageName = entity.getImage();
 	birds.delete(entity);
 	storage.delete(imageName);
     }

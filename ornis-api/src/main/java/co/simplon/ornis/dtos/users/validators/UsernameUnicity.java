@@ -10,12 +10,12 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 @Documented
-@Constraint(validatedBy = NicknameUnicityValidator.class)
+@Constraint(validatedBy = UsernameUnicityValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface NicknameUnicity {
+public @interface UsernameUnicity {
 
-    String message() default "{ornis.validation.constraints.NicknameUnicity.message}";
+    String message() default "{ornis.validation.constraints.UsernameUnicity.message}";
 
     Class<?>[] groups() default {};
 

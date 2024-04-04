@@ -7,14 +7,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user_accounts")
+@Table(name = "t_user_accounts")
 public class UserAccount extends AbstractEntity {
 
     @Column(name = "email_address")
     private String emailAddress;
 
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -33,12 +33,12 @@ public class UserAccount extends AbstractEntity {
 	this.emailAddress = emailAddress;
     }
 
-    public String getNickname() {
-	return nickname;
+    public String getUsername() {
+	return username;
     }
 
-    public void setNickname(String nickname) {
-	this.nickname = nickname;
+    public void setUsername(String username) {
+	this.username = username;
     }
 
     public String getPassword() {
@@ -74,7 +74,7 @@ public class UserAccount extends AbstractEntity {
     @Override
     public String toString() {
 	return "{emailAddress=" + emailAddress
-		+ ", nickname=" + nickname
+		+ ", username=" + username
 		+ ", password={protected}" + ", role="
 		+ role + "}";
     }
