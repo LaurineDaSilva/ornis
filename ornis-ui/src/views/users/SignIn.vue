@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       inputs: {
-        nicknameOrEmailAddress: null,
+        usernameOrEmailAddress: null,
         password: null,
       },
     };
@@ -27,7 +27,7 @@ export default {
   validations() {
     return {
       inputs: {
-        nicknameOrEmailAddress: { required },
+        usernameOrEmailAddress: { required },
         password: {
           required,
         },
@@ -44,7 +44,7 @@ export default {
 
           this.store.setUser(
             response.token,
-            response.nickname,
+            response.username,
             response.emailAddress,
             response.role,
           );
@@ -71,21 +71,21 @@ export default {
 
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
-        <label for="nicknameOrEmailAddress" class="form-label"
-          >{{ $t('signIn.nicknameOrEmailAddress.label')
+        <label for="usernameOrEmailAddress" class="form-label"
+          >{{ $t('signIn.usernameOrEmailAddress.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
 
         <input
-          id="nicknameOrEmailAddress"
-          v-model="inputs.nicknameOrEmailAddress"
-          name="nicknameOrEmailAddress"
+          id="usernameOrEmailAddress"
+          v-model="inputs.usernameOrEmailAddress"
+          name="usernameOrEmailAddress"
           type="text"
           class="form-control shadow-sm"
           :class="{
-            'is-invalid': validator.inputs.nicknameOrEmailAddress.$error,
+            'is-invalid': validator.inputs.usernameOrEmailAddress.$error,
           }"
-          @input="removeInvalidStyles('nicknameOrEmailAddress')"
+          @input="removeInvalidStyles('usernameOrEmailAddress')"
         />
       </div>
 

@@ -15,7 +15,7 @@ export default {
     return {
       inputs: {
         emailAddress: null,
-        nickname: null,
+        username: null,
         password: null,
       },
     };
@@ -25,7 +25,7 @@ export default {
     return {
       inputs: {
         emailAddress: { required, maxLength: maxLength(100) },
-        nickname: { required, maxLength: maxLength(20) },
+        username: { required, maxLength: maxLength(20) },
         password: {
           required,
           minLength: minLength(8),
@@ -60,25 +60,25 @@ export default {
 
     <form novalidate @submit.prevent="submit">
       <div class="mb-3">
-        <label for="nickname" class="form-label"
-          >{{ $t('signUp.nickname.label')
+        <label for="username" class="form-label"
+          >{{ $t('signUp.username.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
 
         <input
-          id="nickname"
-          v-model="inputs.nickname"
-          name="nickname"
+          id="username"
+          v-model="inputs.username"
+          name="username"
           type="text"
           class="form-control shadow-sm"
           :class="{
-            'is-invalid': validator.inputs.nickname.$error,
+            'is-invalid': validator.inputs.username.$error,
           }"
-          @input="removeInvalidStyles('nickname')"
+          @input="removeInvalidStyles('username')"
         />
 
-        <p id="nickname-helpText" class="form-text">
-          {{ $t('signUp.nickname.helpText') }}
+        <p id="username-helpText" class="form-text">
+          {{ $t('signUp.username.helpText') }}
         </p>
       </div>
 

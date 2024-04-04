@@ -47,7 +47,7 @@ const messages = {
   // Authentication components:
   signUp: {
     title: 'Inscription',
-    nickname: {
+    username: {
       label: 'Pseudonyme',
       helpText: '20 caractères maximum. Doit être unique.',
     },
@@ -69,7 +69,7 @@ const messages = {
 
   signIn: {
     title: 'Connexion',
-    nicknameOrEmailAddress: {
+    usernameOrEmailAddress: {
       label: "Nom d'utilisateur ou adresse email",
     },
     password: {

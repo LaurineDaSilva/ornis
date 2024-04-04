@@ -93,7 +93,7 @@ export default {
         >
           <img
             class="col-4 bird-card-img"
-            :src="`src/assets/images/bird_pictures/${bird.imageName}`"
+            :src="`src/assets/images/bird_pictures/${bird.image}`"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
 
