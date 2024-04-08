@@ -33,14 +33,18 @@ public class Bird extends AbstractEntity {
     @Column(name = "xeno_id")
     private int xenoId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "beak_shape_id")
+    private BeakShape beakShape;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "feet_shape_id")
+    private FeetShape feetShape;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonManagedReference
     @JoinTable(name = "t_birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
     private Set<Color> colors;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "beak_shape_id")
-    private BeakShape beakShape;
 
     public Bird() {
     }
@@ -101,6 +105,14 @@ public class Bird extends AbstractEntity {
 	this.beakShape = beakShape;
     }
 
+    public FeetShape getFeetShape() {
+	return feetShape;
+    }
+
+    public void setFeetShape(FeetShape feetShape) {
+	this.feetShape = feetShape;
+    }
+
     @Override
     public int hashCode() {
 	return Objects.hash(scientificName);
@@ -118,9 +130,10 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, scientificName=%s, commonName=%s, image=%s, description=%s, xenoId=%s, colors=%s, beakShape=%s}",
+		"{id=%s, scientificName=%s, commonName=%s, image=%s, description=%s, xenoId=%s, colors=%s, beakShape=%s, feetShape=%s}",
 		getId(), scientificName, commonName, image,
-		description, xenoId, colors, beakShape);
+		description, xenoId, colors, beakShape,
+		feetShape);
     }
 
 }

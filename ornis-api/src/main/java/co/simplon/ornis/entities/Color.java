@@ -1,14 +1,9 @@
 package co.simplon.ornis.entities;
 
 import java.util.Objects;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,10 +15,6 @@ public class Color extends AbstractEntity {
 
     @Column(name = "name")
     private String name;
-
-    @ManyToMany(mappedBy = "colors", fetch = FetchType.EAGER)
-    @JsonBackReference
-    private Set<Bird> birds;
 
     public Color() {
     }
@@ -42,14 +33,6 @@ public class Color extends AbstractEntity {
 
     public void setName(String name) {
 	this.name = name;
-    }
-
-    public Set<Bird> getBirds() {
-	return birds;
-    }
-
-    public void setBirds(Set<Bird> birds) {
-	this.birds = birds;
     }
 
     @Override

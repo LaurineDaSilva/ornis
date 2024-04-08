@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS t_birds_colors;
 DROP TABLE IF EXISTS t_birds;
 DROP TABLE IF EXISTS t_colors;
 DROP TABLE IF EXISTS t_beak_shapes;
+DROP TABLE IF EXISTS t_feet_shapes;
 
 DROP TABLE IF EXISTS t_user_accounts;
 
@@ -19,14 +20,23 @@ create TABLE t_beak_shapes (
     image VARCHAR(41) UNIQUE 
 );
 
+create TABLE t_feet_shapes (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) UNIQUE,
+    image VARCHAR(41) UNIQUE 
+);
+
 CREATE TABLE t_birds (
     id SERIAL PRIMARY KEY,
     scientific_name VARCHAR(100) UNIQUE NOT NULL,
     common_name VARCHAR(200) UNIQUE NOT NULL,
     image VARCHAR(41) UNIQUE NOT NULL,
-    beak_shape_id INTEGER REFERENCES t_beak_shapes(id) NOT NULL,
+    beak_shape_id INTEGER,
+    feet_shape_id INTEGER,
     xeno_id NUMERIC(6) UNIQUE,
-    description VARCHAR(5000)
+    description VARCHAR(5000),
+    FOREIGN KEY (beak_shape_id) REFERENCES t_beak_shapes(id),
+    FOREIGN KEY (feet_shape_id) REFERENCES t_feet_shapes(id)
 );
 
 CREATE TABLE t_birds_colors (
