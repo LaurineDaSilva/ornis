@@ -41,6 +41,10 @@ public class Bird extends AbstractEntity {
     @JoinColumn(name = "feet_shape_id")
     private FeetShape feetShape;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "size_id")
+    private Size size;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonManagedReference
     @JoinTable(name = "t_birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))

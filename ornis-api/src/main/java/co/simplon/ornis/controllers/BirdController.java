@@ -49,9 +49,10 @@ public class BirdController {
     public Collection<BirdView> filterBirds(
 	    @RequestParam(required = false) Set<String> colors,
 	    @RequestParam(required = false) Optional<Long> beakShapeId,
-	    @RequestParam(required = false) Optional<Long> feetShapeId) {
+	    @RequestParam(required = false) Optional<Long> feetShapeId,
+	    @RequestParam(required = false) Optional<Long> sizeId) {
 	return service.filterBirds(colors, beakShapeId,
-		feetShapeId);
+		feetShapeId, sizeId);
     }
 
     @GetMapping("/{id}/detail")

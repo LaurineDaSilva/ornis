@@ -18,7 +18,8 @@ public interface BirdService {
 
     Collection<BirdView> filterBirds(Set<String> colors,
 	    Optional<Long> beakShapeId,
-	    Optional<Long> feetShapeId);
+	    Optional<Long> feetShapeId,
+	    Optional<Long> sizeId);
 
     BirdDetail getDetail(Long id);
 
