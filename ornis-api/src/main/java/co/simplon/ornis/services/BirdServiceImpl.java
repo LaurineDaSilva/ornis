@@ -1,6 +1,8 @@
 package co.simplon.ornis.services;
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +40,83 @@ public class BirdServiceImpl implements BirdService {
     public Collection<BirdView> searchBirds(
 	    String searchText) {
 	return birds.findBirdsBySearchText(searchText);
+    }
+
+    @Override
+    public Collection<BirdView> filterBirds(
+	    Set<String> colors, Optional<Long> beakShapeId,
+	    Optional<Long> feetShapeId) {
+
+	int colorCount = colors.size();
+	Collection<BirdView> filteredBirds = null;
+
+	// no parameters
+	if (colors.isEmpty() && beakShapeId.isEmpty()
+		&& feetShapeId.isEmpty()) {
+
+	    filteredBirds = birds.findAllProjectedBy();
+
+	    // all parameters
+	} else if (!colors.isEmpty()
+		&& beakShapeId.isPresent()
+		&& feetShapeId.isPresent()) {
+
+	    filteredBirds = birds
+		    .findByHavingAllCharacteristics(colors,
+			    colorCount, beakShapeId,
+			    feetShapeId);
+
+	    // only beakShape and feetShape
+	} else if (colors.isEmpty()
+		&& beakShapeId.isPresent()
+		&& feetShapeId.isPresent()) {
+
+	    filteredBirds = birds
+		    .findByFeetShapeAndBeakShape(
+			    beakShapeId, feetShapeId);
+
+	    // only colors and feetShape
+	} else if (!colors.isEmpty()
+		&& beakShapeId.isEmpty()
+		&& feetShapeId.isPresent()) {
+
+	    filteredBirds = birds.findByColorsAndFeetShape(
+		    colors, colorCount, feetShapeId);
+
+	    // only colors and beakShape
+	} else if (!colors.isEmpty()
+		&& beakShapeId.isPresent()
+		&& feetShapeId.isEmpty()) {
+
+	    filteredBirds = birds.findByColorsAndBeakShape(
+		    colors, colorCount, beakShapeId);
+
+	    // only colors
+	} else if (!colors.isEmpty()
+		&& beakShapeId.isEmpty()
+		&& feetShapeId.isEmpty()) {
+
+	    filteredBirds = birds.findByColors(colors,
+		    colorCount);
+
+	    // only beakShape
+	} else if (colors.isEmpty()
+		&& beakShapeId.isPresent()
+		&& feetShapeId.isEmpty()) {
+
+	    filteredBirds = birds
+		    .findByBeakShapeId(beakShapeId);
+
+	    // only feetShape
+	} else if (colors.isEmpty() && beakShapeId.isEmpty()
+		&& feetShapeId.isPresent()) {
+
+	    filteredBirds = birds
+		    .findByFeetShapeId(feetShapeId);
+	}
+
+	return filteredBirds;
+
     }
 
     @Override

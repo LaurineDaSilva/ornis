@@ -1,6 +1,8 @@
 package co.simplon.ornis.services;
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
 import co.simplon.ornis.dtos.birds.BirdCreate;
 import co.simplon.ornis.dtos.birds.BirdDetail;
@@ -13,6 +15,10 @@ public interface BirdService {
     Collection<BirdView> getAll(Long id);
 
     Collection<BirdView> searchBirds(String searchText);
+
+    Collection<BirdView> filterBirds(Set<String> colors,
+	    Optional<Long> beakShapeId,
+	    Optional<Long> feetShapeId);
 
     BirdDetail getDetail(Long id);
 
