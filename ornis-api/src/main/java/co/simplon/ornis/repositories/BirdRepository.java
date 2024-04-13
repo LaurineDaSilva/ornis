@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -15,8 +14,7 @@ import co.simplon.ornis.dtos.birds.BirdView;
 import co.simplon.ornis.entities.Bird;
 
 public interface BirdRepository
-	extends JpaRepository<Bird, Long>,
-	JpaSpecificationExecutor<Bird> {
+	extends JpaRepository<Bird, Long> {
 
     Collection<BirdView> findAllProjectedBy();
 
@@ -34,8 +32,18 @@ public interface BirdRepository
     Collection<BirdView> findBirdsBySearchText(
 	    @Param("searchText") String searchText);
 
-    @Query("SELECT b FROM Bird b JOIN b.colors c JOIN b.size s JOIN b.beakShape bs JOIN b.feetShape fs WHERE s.id= :sizeId AND bs.id = :beakShapeId AND fs.id = :feetShapeId AND c.name IN (:colors) GROUP BY b HAVING COUNT(DISTINCT c) >= :colorCount")
+    @Query("SELECT b FROM Bird b JOIN b.colors c JOIN b.behaviors bh JOIN b.size s JOIN b.beakShape bs JOIN b.feetShape fs WHERE s.id= :sizeId AND bs.id = :beakShapeId AND fs.id = :feetShapeId AND c.name IN (:colors) AND bh.name IN (:behaviors) GROUP BY b HAVING COUNT(DISTINCT bh) >= :behaviorCount AND COUNT(DISTINCT c) >= :colorCount")
     Collection<BirdView> findByHavingAllCharacteristics(
+	    @Param("colors") Set<String> colors,
+	    @Param("colorCount") int colorCount,
+	    @Param("behaviors") Set<String> behaviors,
+	    @Param("behaviorCount") int behaviorCount,
+	    @Param("beakShapeId") Optional<Long> beakShapeId,
+	    @Param("feetShapeId") Optional<Long> feetShapeId,
+	    @Param("sizeId") Optional<Long> sizeId);
+
+    @Query("SELECT b FROM Bird b JOIN b.colors c JOIN b.size s JOIN b.beakShape bs JOIN b.feetShape fs WHERE s.id= :sizeId AND bs.id = :beakShapeId AND fs.id = :feetShapeId AND c.name IN (:colors) GROUP BY b HAVING COUNT(DISTINCT c) >= :colorCount")
+    Collection<BirdView> findByColorsBeakShapeFeetShapeAndSize(
 	    @Param("colors") Set<String> colors,
 	    @Param("colorCount") int colorCount,
 	    @Param("beakShapeId") Optional<Long> beakShapeId,
