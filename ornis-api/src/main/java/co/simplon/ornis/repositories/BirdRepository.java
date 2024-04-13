@@ -32,18 +32,8 @@ public interface BirdRepository
     Collection<BirdView> findBirdsBySearchText(
 	    @Param("searchText") String searchText);
 
-    @Query("SELECT b FROM Bird b JOIN b.colors c JOIN b.behaviors bh JOIN b.size s JOIN b.beakShape bs JOIN b.feetShape fs WHERE s.id= :sizeId AND bs.id = :beakShapeId AND fs.id = :feetShapeId AND c.name IN (:colors) AND bh.name IN (:behaviors) GROUP BY b HAVING COUNT(DISTINCT bh) >= :behaviorCount AND COUNT(DISTINCT c) >= :colorCount")
-    Collection<BirdView> findByHavingAllCharacteristics(
-	    @Param("colors") Set<String> colors,
-	    @Param("colorCount") int colorCount,
-	    @Param("behaviors") Set<String> behaviors,
-	    @Param("behaviorCount") int behaviorCount,
-	    @Param("beakShapeId") Optional<Long> beakShapeId,
-	    @Param("feetShapeId") Optional<Long> feetShapeId,
-	    @Param("sizeId") Optional<Long> sizeId);
-
     @Query("SELECT b FROM Bird b JOIN b.colors c JOIN b.size s JOIN b.beakShape bs JOIN b.feetShape fs WHERE s.id= :sizeId AND bs.id = :beakShapeId AND fs.id = :feetShapeId AND c.name IN (:colors) GROUP BY b HAVING COUNT(DISTINCT c) >= :colorCount")
-    Collection<BirdView> findByColorsBeakShapeFeetShapeAndSize(
+    Collection<BirdView> findByHavingAllCharacteristics(
 	    @Param("colors") Set<String> colors,
 	    @Param("colorCount") int colorCount,
 	    @Param("beakShapeId") Optional<Long> beakShapeId,

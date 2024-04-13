@@ -48,12 +48,11 @@ public class BirdController {
     @GetMapping("/filter")
     public Collection<BirdView> filterBirds(
 	    @RequestParam(required = false) Set<String> colors,
-	    @RequestParam(required = false) Set<String> behaviors,
 	    @RequestParam(required = false) Optional<Long> beakShapeId,
 	    @RequestParam(required = false) Optional<Long> feetShapeId,
 	    @RequestParam(required = false) Optional<Long> sizeId) {
-	return service.filterBirds(colors, behaviors,
-		beakShapeId, feetShapeId, sizeId);
+	return service.filterBirds(colors, beakShapeId,
+		feetShapeId, sizeId);
     }
 
     @GetMapping("/{id}/detail")
