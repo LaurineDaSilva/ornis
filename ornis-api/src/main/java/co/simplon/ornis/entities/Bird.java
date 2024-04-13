@@ -50,6 +50,11 @@ public class Bird extends AbstractEntity {
     @JoinTable(name = "t_birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
     private Set<Color> colors;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @JoinTable(name = "t_birds_behaviors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "behavior_id"))
+    private Set<Behavior> behaviors;
+
     public Bird() {
     }
 

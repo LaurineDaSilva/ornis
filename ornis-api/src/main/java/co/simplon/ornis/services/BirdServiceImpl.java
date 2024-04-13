@@ -44,29 +44,43 @@ public class BirdServiceImpl implements BirdService {
 
     @Override
     public Collection<BirdView> filterBirds(
-	    Set<String> colors, Optional<Long> beakShapeId,
+	    Set<String> colors, Set<String> behaviors,
+	    Optional<Long> beakShapeId,
 	    Optional<Long> feetShapeId,
 	    Optional<Long> sizeId) {
 
 	int colorCount = colors.size();
+	int behaviorCount = behaviors.size();
 	Collection<BirdView> filteredBirds = null;
 
 	// no parameters
 	if (colors.isEmpty() && beakShapeId.isEmpty()
-		&& feetShapeId.isEmpty()
-		&& sizeId.isEmpty()) {
+		&& feetShapeId.isEmpty() && sizeId.isEmpty()
+		&& behaviors.isEmpty()) {
 
 	    filteredBirds = birds.findAllProjectedBy();
 
 	    // all parameters
-	} else if (!colors.isEmpty()
+	} else if (!colors.isEmpty() && !behaviors.isEmpty()
 		&& beakShapeId.isPresent()
 		&& feetShapeId.isPresent()
 		&& sizeId.isPresent()) {
 
 	    filteredBirds = birds
 		    .findByHavingAllCharacteristics(colors,
-			    colorCount, beakShapeId,
+			    colorCount, behaviors,
+			    behaviorCount, beakShapeId,
+			    feetShapeId, sizeId);
+
+	    // only color, beakShape and feetShape and size
+	} else if (!colors.isEmpty()
+		&& beakShapeId.isPresent()
+		&& feetShapeId.isPresent()
+		&& sizeId.isPresent()) {
+
+	    filteredBirds = birds
+		    .findByColorsBeakShapeFeetShapeAndSize(
+			    colors, colorCount, beakShapeId,
 			    feetShapeId, sizeId);
 
 	    // only color, beakShape and feetShape
