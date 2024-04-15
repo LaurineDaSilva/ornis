@@ -24,11 +24,17 @@ export default {
       displayedBirds: [],
       searchText: null,
       loaded: false,
-      inputs: {
+      advancedFilters: {
         colors: [],
-        size: null,
-        beakShape: null,
-        feetShape: null,
+        feetShapes: [],
+        beakShapes: [],
+        sizes: [],
+        inputs: {
+          colors: [],
+          sizeId: null,
+          beakShapeId: null,
+          feetShapeId: null,
+        },
       },
     };
   },
@@ -49,7 +55,7 @@ export default {
         .catch(() => {});
     },
 
-    async filterBirds() {
+    async filterBirdsByName() {
       if (!this.searchText) {
         this.displayedBirds = this.birds;
       } else {
@@ -62,6 +68,88 @@ export default {
           .catch(() => {});
       }
     },
+
+    async initColors() {
+      await this.$http
+        .get(`/colors`)
+        .then((resp) => {
+          this.advancedFilters.colors = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initSizes() {
+      await this.$http
+        .get(`/sizes`)
+        .then((resp) => {
+          this.advancedFilters.sizes = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initBeakShapes() {
+      await this.$http
+        .get(`/beakShapes`)
+        .then((resp) => {
+          this.advancedFilters.beakShapes = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initFeetShapes() {
+      await this.$http
+        .get(`/feetShapes`)
+        .then((resp) => {
+          this.advancedFilters.feetShapes = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async filterBirdsByCharacteristics() {
+      console.log(this.advancedFilters.colors);
+      const filterEndpoint = this.createFilterEndpoint();
+      await this.$http
+        .get(filterEndpoint)
+        .then((resp) => {
+          console.log(filterEndpoint);
+          const results = resp.body;
+          this.displayedBirds = results;
+        })
+        .catch(() => {
+          console.log(filterEndpoint);
+        });
+    },
+
+    createFilterEndpoint() {
+      let filterEndpoint = `/birds/filter?`;
+
+      if (this.advancedFilters.inputs.colors != null) {
+        const colorsString = this.advancedFilters.inputs.colors.join(',');
+        filterEndpoint = filterEndpoint.concat('colors=', colorsString, '&');
+      }
+
+      if (this.advancedFilters.inputs.beakShapeId) {
+        filterEndpoint = filterEndpoint.concat(
+          'beakShapeId=',
+          this.advancedFilters.inputs.beakShapeId,
+          '&',
+        );
+      }
+
+      if (this.advancedFilters.inputs.feetShapeId) {
+        filterEndpoint = filterEndpoint.concat(
+          'feetShapeId=',
+          this.advancedFilters.inputs.feetShapeId,
+          '&',
+        );
+      }
+
+      if (this.advancedFilters.inputs.sizeId) {
+        filterEndpoint = filterEndpoint.concat('sizeId=', this.advancedFilters.inputs.sizeId);
+      }
+
+      return filterEndpoint;
+    },
   },
 };
 </script>
@@ -70,7 +158,7 @@ export default {
   <section>
     <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
 
-    <form class="input-group mb-3" role="search" novalidate @submit.prevent="filterBirds">
+    <form class="input-group mb-3" role="search" novalidate @submit.prevent="filterBirdsByName">
       <input
         v-model.trim="searchText"
         type="search"
@@ -83,104 +171,190 @@ export default {
       </button>
     </form>
 
-    <p>
-      <button
-        class="btn btn-primary"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#advancedFilters"
-      >
-        Recherche avancée
-      </button>
-    </p>
+    <div>
+      <p>
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#advancedFilters"
+        >
+          {{ $t('birdsList.advancedFilters.title') }}
+        </button>
+      </p>
 
-    <div id="advancedFilters" class="collapse card card-body">
-      <form novalidate @submit.prevent="submit">
-        <div class="mb-3">
-          <label for="colors" class="form-label">{{
-            $t('birdsList.advancedFilters.colors.label')
-          }}</label>
+      <div id="advancedFilters" class="collapse card card-body">
+        <form novalidate @submit.prevent="filterBirdsByCharacteristics">
+          <div id="searchAccordion" class="mb-3 accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseColors"
+                  @click.once="initColors"
+                >
+                  <label for="colors" class="form-label">{{
+                    $t('birdsList.advancedFilters.colors.label')
+                  }}</label>
+                </button>
+              </h2>
 
-          <div class="form-check">
-            <input
-              id="red"
-              v-model="inputs.colors"
-              type="checkbox"
-              class="form-check-input"
-              value="red"
-            />
-            <label class="form-check-label" for="red"> Rouge </label>
+              <div
+                id="collapseColors"
+                class="accordion-collapse collapse"
+                data-bs-parent="#searchAccordion"
+              >
+                <div
+                  :key="color"
+                  class="form-check accordion-body"
+                  v-for="color in advancedFilters.colors"
+                >
+                  <input
+                    :id="color.id"
+                    v-model="advancedFilters.inputs.colors"
+                    type="checkbox"
+                    class="form-check-input"
+                    :value="color.name"
+                  />
+                  <label :for="color.id" class="form-check-label"> {{ color.name }} </label>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div class="form-check">
-            <input
-              id="green"
-              v-model="inputs.colors"
-              type="checkbox"
-              class="form-check-input"
-              value="green"
-            />
-            <label class="form-check-label" for="green"> Green </label>
+          <div class="mb-3 accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSizes"
+                  @click.once="initSizes"
+                >
+                  <label for="size" class="form-label">{{
+                    $t('birdsList.advancedFilters.size.label')
+                  }}</label>
+                </button>
+              </h2>
+
+              <div
+                id="collapseSizes"
+                class="accordion-collapse collapse"
+                data-bs-parent="#searchAccordion"
+              >
+                <div
+                  :key="size"
+                  class="form-check accordion-body"
+                  v-for="size in advancedFilters.sizes"
+                >
+                  <input
+                    :id="size.id"
+                    v-model="advancedFilters.inputs.sizeId"
+                    type="radio"
+                    name="flexRadioDefault"
+                    class="form-check-input"
+                    :value="size.id"
+                  />
+                  <label class="form-check-label" for="size.id"> {{ size.name }} </label>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="size" class="form-label">{{
-            $t('birdsList.advancedFilters.size.label')
-          }}</label>
+          <div class="mb-3 accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseBeakShapes"
+                  @click.once="initBeakShapes"
+                >
+                  <label for="beakShape" class="form-label">{{
+                    $t('birdsList.advancedFilters.beakShape.label')
+                  }}</label>
+                </button>
+              </h2>
 
-          <input
-            id="size"
-            v-model="inputs.size"
-            name="size"
-            type="size"
-            class="form-control shadow-sm"
-          />
-
-          <div class="form-check">
-            <input id="size1" type="radio" name="flexRadioDefault" class="form-check-input" />
-            <label class="form-check-label" for="size1"> Default radio </label>
+              <div
+                id="collapseBeakShapes"
+                class="accordion-collapse collapse"
+                data-bs-parent="#searchAccordion"
+              >
+                <div
+                  :key="beakShape"
+                  class="form-check accordion-body"
+                  v-for="beakShape in advancedFilters.beakShapes"
+                >
+                  <input
+                    :id="beakShape.id"
+                    v-model="advancedFilters.inputs.beakShapeId"
+                    type="radio"
+                    name="flexRadioDefault"
+                    class="form-check-input"
+                    :value="beakShape.id"
+                  />
+                  <label class="form-check-label" :for="beakShape.id">
+                    {{ beakShape.name }}
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="size2" />
-            <label class="form-check-label" for="size2"> Default checked radio </label>
+
+          <div class="mb-3 accordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFeetShapes"
+                  @click.once="initFeetShapes"
+                >
+                  <label for="feetShape" class="form-label">{{
+                    $t('birdsList.advancedFilters.feetShape.label')
+                  }}</label>
+                </button>
+              </h2>
+
+              <div
+                id="collapseFeetShapes"
+                class="accordion-collapse collapse"
+                data-bs-parent="#searchAccordion"
+              >
+                <div
+                  :key="feetShape"
+                  class="form-check accordion-body"
+                  v-for="feetShape in advancedFilters.feetShapes"
+                >
+                  <input
+                    :id="feetShape.id"
+                    v-model="advancedFilters.inputs.feetShapeId"
+                    type="radio"
+                    name="flexRadioDefault"
+                    class="form-check-input"
+                    :value="feetShape.id"
+                  />
+                  <label class="form-check-label" :for="feetShape.id">
+                    {{ feetShape.name }}
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="beakShape" class="form-label">{{
-            $t('birdsList.advancedFilters.beakShape.label')
-          }}</label>
-
-          <input
-            id="beakShape"
-            v-model="inputs.beakShape"
-            name="beakShape"
-            type="beakShape"
-            class="form-control shadow-sm"
-          />
-        </div>
-
-        <div class="mb-3">
-          <label for="feetShape" class="form-label">{{
-            $t('birdsList.advancedFilters.feetShape.label')
-          }}</label>
-
-          <input
-            id="feetShape"
-            v-model="inputs.feetShape"
-            name="feetShape"
-            type="feetShape"
-            class="form-control shadow-sm"
-          />
-        </div>
-
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="submit" class="btn btn-primary shadow-sm">
-            {{ $t('signIn.submit') }}
-          </button>
-        </div>
-      </form>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary shadow-sm">
+              {{ $t('birdsList.advancedFilters.submit') }}
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <div class="list-group birds-list-container">
