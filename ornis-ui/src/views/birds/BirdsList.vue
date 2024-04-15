@@ -24,6 +24,12 @@ export default {
       displayedBirds: [],
       searchText: null,
       loaded: false,
+      inputs: {
+        colors: [],
+        size: null,
+        beakShape: null,
+        feetShape: null,
+      },
     };
   },
 
@@ -76,6 +82,106 @@ export default {
         {{ $t('birdsList.filterButton') }}
       </button>
     </form>
+
+    <p>
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#advancedFilters"
+      >
+        Recherche avancée
+      </button>
+    </p>
+
+    <div id="advancedFilters" class="collapse card card-body">
+      <form novalidate @submit.prevent="submit">
+        <div class="mb-3">
+          <label for="colors" class="form-label">{{
+            $t('birdsList.advancedFilters.colors.label')
+          }}</label>
+
+          <div class="form-check">
+            <input
+              id="red"
+              v-model="inputs.colors"
+              type="checkbox"
+              class="form-check-input"
+              value="red"
+            />
+            <label class="form-check-label" for="red"> Rouge </label>
+          </div>
+
+          <div class="form-check">
+            <input
+              id="green"
+              v-model="inputs.colors"
+              type="checkbox"
+              class="form-check-input"
+              value="green"
+            />
+            <label class="form-check-label" for="green"> Green </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="size" class="form-label">{{
+            $t('birdsList.advancedFilters.size.label')
+          }}</label>
+
+          <input
+            id="size"
+            v-model="inputs.size"
+            name="size"
+            type="size"
+            class="form-control shadow-sm"
+          />
+
+          <div class="form-check">
+            <input id="size1" type="radio" name="flexRadioDefault" class="form-check-input" />
+            <label class="form-check-label" for="size1"> Default radio </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="size2" />
+            <label class="form-check-label" for="size2"> Default checked radio </label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="beakShape" class="form-label">{{
+            $t('birdsList.advancedFilters.beakShape.label')
+          }}</label>
+
+          <input
+            id="beakShape"
+            v-model="inputs.beakShape"
+            name="beakShape"
+            type="beakShape"
+            class="form-control shadow-sm"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="feetShape" class="form-label">{{
+            $t('birdsList.advancedFilters.feetShape.label')
+          }}</label>
+
+          <input
+            id="feetShape"
+            v-model="inputs.feetShape"
+            name="feetShape"
+            type="feetShape"
+            class="form-control shadow-sm"
+          />
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-primary shadow-sm">
+            {{ $t('signIn.submit') }}
+          </button>
+        </div>
+      </form>
+    </div>
 
     <div class="list-group birds-list-container">
       <p v-if="loaded && (!displayedBirds || displayedBirds.length === 0)">
