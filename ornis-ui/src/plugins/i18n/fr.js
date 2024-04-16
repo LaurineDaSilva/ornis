@@ -32,13 +32,16 @@ const messages = {
 
   birdsList: {
     title: 'Oiseaux de France',
-    filterPlaceholder: 'Rechercher des oiseaux',
-    filterButton: 'Rechercher',
     imageAlt: '{name} (photo)',
     error: "La liste des oiseaux n'a pu être chargée.",
   },
 
-  advancedFilters: {
+  birdNameFilter: {
+    placeholder: 'Rechercher des oiseaux',
+    submit: 'Rechercher',
+  },
+
+  birdAdvancedFilters: {
     button: 'Recherche avancée',
     labels: {
       colors: 'Couleurs',

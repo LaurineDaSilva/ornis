@@ -4,11 +4,11 @@
       v-model.trim="searchText"
       type="search"
       class="form-control"
-      :placeholder="$t('birdsList.filterPlaceholder')"
+      :placeholder="$t('birdNameFilter.placeholder')"
       @keyup.enter="submit"
     />
     <button class="btn btn-outline-secondary" type="submit">
-      {{ $t('birdsList.filterButton') }}
+      {{ $t('birdNameFilter.submit') }}
     </button>
   </form>
 </template>
