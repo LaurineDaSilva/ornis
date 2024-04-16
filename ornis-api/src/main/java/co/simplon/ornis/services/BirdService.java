@@ -16,7 +16,8 @@ public interface BirdService {
 
     Collection<BirdView> searchBirds(String searchText);
 
-    Collection<BirdView> filterBirds(Set<String> colors,
+    Collection<BirdView> filterBirds(
+	    Optional<Set<String>> colors,
 	    Optional<Long> beakShapeId,
 	    Optional<Long> feetShapeId,
 	    Optional<Long> sizeId);

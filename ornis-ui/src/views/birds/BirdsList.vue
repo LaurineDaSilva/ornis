@@ -206,11 +206,7 @@ export default {
                 class="accordion-collapse collapse"
                 data-bs-parent="#searchAccordion"
               >
-                <div
-                  :key="color"
-                  class="form-check accordion-body"
-                  v-for="color in advancedFilters.colors"
-                >
+                <div :key="color" class="accordion-body" v-for="color in advancedFilters.colors">
                   <input
                     :id="color.id"
                     v-model="advancedFilters.inputs.colors"
@@ -245,11 +241,7 @@ export default {
                 class="accordion-collapse collapse"
                 data-bs-parent="#searchAccordion"
               >
-                <div
-                  :key="size"
-                  class="form-check accordion-body"
-                  v-for="size in advancedFilters.sizes"
-                >
+                <div :key="size" class="accordion-body" v-for="size in advancedFilters.sizes">
                   <input
                     :id="size.id"
                     v-model="advancedFilters.inputs.sizeId"
@@ -287,7 +279,7 @@ export default {
               >
                 <div
                   :key="beakShape"
-                  class="form-check accordion-body"
+                  class="accordion-body"
                   v-for="beakShape in advancedFilters.beakShapes"
                 >
                   <input
@@ -329,7 +321,7 @@ export default {
               >
                 <div
                   :key="feetShape"
-                  class="form-check accordion-body"
+                  class="accordion-body"
                   v-for="feetShape in advancedFilters.feetShapes"
                 >
                   <input
