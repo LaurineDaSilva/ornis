@@ -1,5 +1,5 @@
 <script>
-import BirdActionsMenu from '@/components/birds/admin/BirdActionsMenu.vue';
+import ActionsMenu from '@/components/birds/admin/ActionsMenu.vue';
 import LoadingSpinner from '@/components/commons/LoadingSpinner.vue';
 import NameFilter from '@/components/birds/NameFilter.vue';
 import AdvancedFilter from '@/components/birds/AdvancedFilter.vue';
@@ -7,7 +7,7 @@ import { useAuthStore } from '@/stores/authStore';
 
 export default {
   components: {
-    BirdActionsMenu,
+    ActionsMenu,
     LoadingSpinner,
     NameFilter,
     AdvancedFilter,
@@ -75,15 +75,17 @@ export default {
 
 <template>
   <section>
-    <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
+    <h1 class="mt-5 mb-4">{{ $t('birds.list.title') }}</h1>
 
-    <NameFilter @search="filterBirdsByName" />
+    <div>
+      <NameFilter @search="filterBirdsByName" />
 
-    <AdvancedFilter @filter-endpoint="filterBirdsByCharacteristics" />
+      <AdvancedFilter @filter-endpoint="filterBirdsByCharacteristics" />
+    </div>
 
     <div class="list-group birds-list-container">
       <p v-if="loaded && (!displayedBirds || displayedBirds.length === 0)">
-        {{ $t('birdsList.error') }}
+        {{ $t('birds.list.error') }}
       </p>
 
       <ul
@@ -98,7 +100,7 @@ export default {
           <img
             class="col-4 bird-card-img"
             :src="`src/assets/images/bird_pictures/${bird.image}`"
-            :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
+            :alt="$t('birds.list.imageAlt', { name: bird.commonName })"
           />
 
           <div class="card-body col-md-8">
@@ -111,7 +113,7 @@ export default {
             >
 
             <div v-if="store.isAdmin" class="position-absolute top-0 end-0">
-              <BirdActionsMenu :bird="bird"></BirdActionsMenu>
+              <ActionsMenu :bird="bird"></ActionsMenu>
             </div>
           </div>
         </li>

@@ -59,7 +59,7 @@ export default {
 
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ $t('birdDetail.description.title') }}</h5>
+            <h5 class="card-title">{{ $t('birds.detail.description.title') }}</h5>
 
             <p class="card-text">
               {{ bird.description }}

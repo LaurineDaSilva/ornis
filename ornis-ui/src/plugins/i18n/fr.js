@@ -30,31 +30,33 @@ const messages = {
     login: 'Connexion',
   },
 
-  birdsList: {
-    title: 'Oiseaux de France',
-    imageAlt: '{name} (photo)',
-    error: "La liste des oiseaux n'a pu être chargée.",
-  },
-
-  birdNameFilter: {
-    placeholder: 'Rechercher des oiseaux',
-    submit: 'Rechercher',
-  },
-
-  birdAdvancedFilters: {
-    button: 'Recherche avancée',
-    labels: {
-      colors: 'Couleurs',
-      size: 'Gabarit',
-      beakShape: 'Forme de bec',
-      feetShape: 'Forme de patte',
+  birds: {
+    list: {
+      title: 'Oiseaux de France',
+      imageAlt: '{name} (photo)',
+      error: "La liste des oiseaux n'a pu être chargée.",
     },
-    submit: 'Rechercher',
-  },
 
-  birdDetail: {
-    description: {
-      title: 'Description',
+    nameFilter: {
+      placeholder: 'Rechercher des oiseaux',
+      submit: 'Rechercher',
+    },
+
+    advancedFilters: {
+      button: 'Recherche avancée',
+      labels: {
+        colors: 'Couleurs',
+        size: 'Gabarit',
+        beakShape: 'Forme de bec',
+        feetShape: 'Forme de patte',
+      },
+      submit: 'Rechercher',
+    },
+
+    detail: {
+      description: {
+        title: 'Description',
+      },
     },
   },
 

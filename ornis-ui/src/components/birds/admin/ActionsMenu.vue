@@ -25,7 +25,7 @@ export default {
           .then(
             this.$toast.success(
               'toast-global',
-              this.$t('birdActionsMenu.toastMessages.success'),
+              this.$t('birds.actionsMenu.toastMessages.success'),
             ),
             setTimeout(() => {
               this.$router.go();
@@ -57,12 +57,12 @@ export default {
   <ul class="dropdown-menu">
     <li class="dropdown-item">
       <RouterLink :to="{ name: 'update-bird', params: { id: bird.id } }" class="ms-auto">{{
-        $t('birdActionsMenu.edit')
+        $t('birds.actionsMenu.edit')
       }}</RouterLink>
     </li>
 
     <li class="dropdown-item text-danger" @click="deleteBird(bird.id)">
-      {{ $t('birdActionsMenu.delete') }}
+      {{ $t('birds.actionsMenu.delete') }}
     </li>
   </ul>
 </template>

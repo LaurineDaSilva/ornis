@@ -86,22 +86,22 @@ export default {
 </script>
 
 <template>
-  <div>
-    <p>
+  <div class="pb-5">
+    <p class="d-flex justify-content-end">
       <button
-        class="btn btn-primary"
+        class="btn btn-tertiary shadow-sm"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#advancedFilters"
       >
-        {{ $t('birdAdvancedFilters.button') }}
+        {{ $t('birds.advancedFilters.button') }}
       </button>
     </p>
 
-    <div id="advancedFilters" class="collapse card card-body">
+    <div id="advancedFilters" class="collapse card card-body shadow-sm">
       <form novalidate @submit.prevent="createFilterEndpoint">
         <div id="searchAccordion" class="mb-3 accordion">
-          <div class="accordion-item">
+          <div class="accordion-item shadow-sm">
             <h2 class="accordion-header">
               <button
                 class="accordion-button"
@@ -111,7 +111,7 @@ export default {
                 @click.once="initColors"
               >
                 <label for="colors" class="form-label">{{
-                  $t('birdAdvancedFilters.labels.colors')
+                  $t('birds.advancedFilters.labels.colors')
                 }}</label>
               </button>
             </h2>
@@ -136,7 +136,7 @@ export default {
         </div>
 
         <div class="mb-3 accordion">
-          <div class="accordion-item">
+          <div class="accordion-item shadow-sm">
             <h2 class="accordion-header">
               <button
                 class="accordion-button"
@@ -146,7 +146,7 @@ export default {
                 @click.once="initSizes"
               >
                 <label for="size" class="form-label">{{
-                  $t('birdAdvancedFilters.labels.size')
+                  $t('birds.advancedFilters.labels.size')
                 }}</label>
               </button>
             </h2>
@@ -172,7 +172,7 @@ export default {
         </div>
 
         <div class="mb-3 accordion">
-          <div class="accordion-item">
+          <div class="accordion-item shadow-sm">
             <h2 class="accordion-header">
               <button
                 class="accordion-button"
@@ -182,7 +182,7 @@ export default {
                 @click.once="initBeakShapes"
               >
                 <label for="beakShape" class="form-label">{{
-                  $t('birdAdvancedFilters.labels.beakShape')
+                  $t('birds.advancedFilters.labels.beakShape')
                 }}</label>
               </button>
             </h2>
@@ -214,7 +214,7 @@ export default {
         </div>
 
         <div class="mb-3 accordion">
-          <div class="accordion-item">
+          <div class="accordion-item shadow-sm">
             <h2 class="accordion-header">
               <button
                 class="accordion-button"
@@ -224,7 +224,7 @@ export default {
                 @click.once="initFeetShapes"
               >
                 <label for="feetShape" class="form-label">{{
-                  $t('birdAdvancedFilters.labels.feetShape')
+                  $t('birds.advancedFilters.labels.feetShape')
                 }}</label>
               </button>
             </h2>
@@ -256,8 +256,8 @@ export default {
         </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="submit" class="btn btn-primary shadow-sm">
-            {{ $t('birdAdvancedFilters.submit') }}
+          <button type="submit" class="btn btn-outline-secondary shadow-sm">
+            {{ $t('birds.advancedFilters.submit') }}
           </button>
         </div>
       </form>
