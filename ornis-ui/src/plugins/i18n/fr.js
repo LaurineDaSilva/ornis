@@ -38,6 +38,17 @@ const messages = {
     error: "La liste des oiseaux n'a pu être chargée.",
   },
 
+  advancedFilters: {
+    button: 'Recherche avancée',
+    labels: {
+      colors: 'Couleurs',
+      size: 'Gabarit',
+      beakShape: 'Forme de bec',
+      feetShape: 'Forme de patte',
+    },
+    submit: 'Rechercher',
+  },
+
   birdDetail: {
     description: {
       title: 'Description',

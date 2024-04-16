@@ -94,7 +94,7 @@ export default {
         data-bs-toggle="collapse"
         data-bs-target="#advancedFilters"
       >
-        {{ $t('birdsList.advancedFilters.title') }}
+        {{ $t('advancedFilters.button') }}
       </button>
     </p>
 
@@ -111,7 +111,7 @@ export default {
                 @click.once="initColors"
               >
                 <label for="colors" class="form-label">{{
-                  $t('birdsList.advancedFilters.colors.label')
+                  $t('advancedFilters.labels.colors')
                 }}</label>
               </button>
             </h2>
@@ -146,7 +146,7 @@ export default {
                 @click.once="initSizes"
               >
                 <label for="size" class="form-label">{{
-                  $t('birdsList.advancedFilters.size.label')
+                  $t('advancedFilters.labels.size')
                 }}</label>
               </button>
             </h2>
@@ -182,7 +182,7 @@ export default {
                 @click.once="initBeakShapes"
               >
                 <label for="beakShape" class="form-label">{{
-                  $t('birdsList.advancedFilters.beakShape.label')
+                  $t('advancedFilters.labels.beakShape')
                 }}</label>
               </button>
             </h2>
@@ -224,7 +224,7 @@ export default {
                 @click.once="initFeetShapes"
               >
                 <label for="feetShape" class="form-label">{{
-                  $t('birdsList.advancedFilters.feetShape.label')
+                  $t('advancedFilters.labels.feetShape')
                 }}</label>
               </button>
             </h2>
@@ -257,7 +257,7 @@ export default {
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button type="submit" class="btn btn-primary shadow-sm">
-            {{ $t('birdsList.advancedFilters.submit') }}
+            {{ $t('advancedFilters.submit') }}
           </button>
         </div>
       </form>
