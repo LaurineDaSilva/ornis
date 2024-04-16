@@ -61,27 +61,22 @@ export default {
 
       if (this.advancedFilters.inputs.colors != null) {
         const colorsString = this.advancedFilters.inputs.colors.join(',');
-        filterEndpoint = filterEndpoint.concat('colors=', colorsString, '&');
+        filterEndpoint = filterEndpoint.concat('colors=', encodeURIComponent(colorsString), '&');
       }
 
       if (this.advancedFilters.inputs.beakShapeId) {
-        filterEndpoint = filterEndpoint.concat(
-          'beakShapeId=',
-          this.advancedFilters.inputs.beakShapeId,
-          '&',
-        );
+        const encodedBeakShapeId = encodeURIComponent(this.advancedFilters.inputs.beakShapeId);
+        filterEndpoint = filterEndpoint.concat('beakShapeId=', encodedBeakShapeId, '&');
       }
 
       if (this.advancedFilters.inputs.feetShapeId) {
-        filterEndpoint = filterEndpoint.concat(
-          'feetShapeId=',
-          this.advancedFilters.inputs.feetShapeId,
-          '&',
-        );
+        const encodedFeetShapeId = encodeURIComponent(this.advancedFilters.inputs.feetShapeId);
+        filterEndpoint = filterEndpoint.concat('feetShapeId=', encodedFeetShapeId, '&');
       }
 
       if (this.advancedFilters.inputs.sizeId) {
-        filterEndpoint = filterEndpoint.concat('sizeId=', this.advancedFilters.inputs.sizeId);
+        const encodedSizeId = encodeURIComponent(this.advancedFilters.inputs.sizeId);
+        filterEndpoint = filterEndpoint.concat('sizeId=', encodedSizeId);
       }
 
       this.$emit('filterEndpoint', filterEndpoint);
