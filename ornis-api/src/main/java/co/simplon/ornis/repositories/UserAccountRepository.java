@@ -9,10 +9,10 @@ public interface UserAccountRepository
 
     boolean existsByEmailAddress(String emailAddress);
 
-    boolean existsByNickname(String nickname);
+    boolean existsByUsername(String username);
 
     UserAccount findByEmailAddress(String emailAddress);
 
-    UserAccount findByNickname(String nickname);
+    UserAccount findByUsername(String username);
 
 }

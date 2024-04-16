@@ -1,6 +1,8 @@
 package co.simplon.ornis.services;
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -41,6 +43,20 @@ public class BirdServiceImpl implements BirdService {
     }
 
     @Override
+    public Collection<BirdView> filterBirds(
+	    Optional<Set<String>> colors,
+	    Optional<Long> beakShapeId,
+	    Optional<Long> feetShapeId,
+	    Optional<Long> sizeId) {
+
+	int colorCount = colors.map(Set::size).orElse(0);
+	return birds.findByHavingCharacteristics(colors,
+		colorCount, beakShapeId, feetShapeId,
+		sizeId);
+
+    }
+
+    @Override
     public BirdDetail getDetail(Long id) {
 	return birds.findProjectedDetailById(id);
     }
@@ -56,7 +72,7 @@ public class BirdServiceImpl implements BirdService {
 	MultipartFile file = inputs.getFile();
 	String baseName = UUID.randomUUID().toString();
 	String fileName = storage.store(file, baseName);
-	entity.setImageName(fileName);
+	entity.setImage(fileName);
 	birds.save(entity);
     }
 
@@ -75,11 +91,11 @@ public class BirdServiceImpl implements BirdService {
 	entity.setDescription(inputs.getDescription());
 	MultipartFile file = inputs.getFile();
 	if (file != null) {
-	    String original = entity.getImageName();
+	    String original = entity.getImage();
 	    String baseName = UUID.randomUUID().toString();
 	    String newFullName = storage.replace(file,
 		    baseName, original);
-	    entity.setImageName(newFullName);
+	    entity.setImage(newFullName);
 	}
     }
 
@@ -87,7 +103,7 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void delete(Long id) {
 	Bird entity = birds.findById(id).get();
-	String imageName = entity.getImageName();
+	String imageName = entity.getImage();
 	birds.delete(entity);
 	storage.delete(imageName);
     }

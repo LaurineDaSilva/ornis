@@ -32,7 +32,7 @@ public class UserAccountAuthenticationServiceImpl
     @Override
     public void signUp(UserAccountCreate inputs) {
 	UserAccount userAccount = new UserAccount();
-	userAccount.setNickname(inputs.getNickname());
+	userAccount.setUsername(inputs.getUsername());
 	userAccount
 		.setEmailAddress(inputs.getEmailAddress());
 	String hashedPassword = authenticationHelper
@@ -44,31 +44,31 @@ public class UserAccountAuthenticationServiceImpl
 
     @Override
     public TokenInfo signIn(UserAccountLogTo inputs) {
-	String nicknameOrEmailAddress = inputs
-		.getNicknameOrEmailAddress();
+	String usernameOrEmailAddress = inputs
+		.getUsernameOrEmailAddress();
 	String candidate = inputs.getPassword();
 
 	UserAccount userAccount = isEmailAddress(
-		nicknameOrEmailAddress)
+		usernameOrEmailAddress)
 			? userAccounts.findByEmailAddress(
-				nicknameOrEmailAddress)
-			: userAccounts.findByNickname(
-				nicknameOrEmailAddress);
+				usernameOrEmailAddress)
+			: userAccounts.findByUsername(
+				usernameOrEmailAddress);
 
 	if (userAccount != null) {
 	    boolean match = authenticationHelper.matches(
 		    candidate, userAccount.getPassword());
 
 	    if (match) {
-		String nickname = userAccount.getNickname();
+		String username = userAccount.getUsername();
 		String emailAddress = userAccount
 			.getEmailAddress();
 		String role = userAccount.getRole();
 		String token = authenticationHelper
-			.createJWT(role, nickname);
+			.createJWT(role, username);
 
 		TokenInfo tokenInfo = new TokenInfo();
-		tokenInfo.setNickname(nickname);
+		tokenInfo.setUsername(username);
 		tokenInfo.setEmailAddress(emailAddress);
 		tokenInfo.setToken(token);
 		tokenInfo.setRole(role);
@@ -93,11 +93,11 @@ public class UserAccountAuthenticationServiceImpl
     }
 
     @Override
-    public boolean nicknameExists(String nickname)
+    public boolean usernameExists(String username)
 	    throws UnsupportedOperationException {
 
 	return this.userAccounts
-		.existsByNickname(nickname.toString());
+		.existsByUsername(username.toString());
     }
 
     public boolean isEmailAddress(String input) {

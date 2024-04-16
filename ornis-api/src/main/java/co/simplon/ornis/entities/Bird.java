@@ -1,13 +1,21 @@
 package co.simplon.ornis.entities;
 
 import java.util.Objects;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "birds")
+@Table(name = "t_birds")
 public class Bird extends AbstractEntity {
 
     @Column(name = "scientific_name")
@@ -16,14 +24,31 @@ public class Bird extends AbstractEntity {
     @Column(name = "common_name")
     private String commonName;
 
-    @Column(name = "image_name")
-    private String imageName;
+    @Column(name = "image")
+    private String image;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "xeno_id")
     private int xenoId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "beak_shape_id")
+    private BeakShape beakShape;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "feet_shape_id")
+    private FeetShape feetShape;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "size_id")
+    private Size size;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @JoinTable(name = "t_birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
+    private Set<Color> colors;
 
     public Bird() {
     }
@@ -44,12 +69,12 @@ public class Bird extends AbstractEntity {
 	this.commonName = commonName;
     }
 
-    public String getImageName() {
-	return imageName;
+    public String getImage() {
+	return image;
     }
 
-    public void setImageName(String imageName) {
-	this.imageName = imageName;
+    public void setImage(String image) {
+	this.image = image;
     }
 
     public String getDescription() {
@@ -66,6 +91,30 @@ public class Bird extends AbstractEntity {
 
     public void setXenoId(int xenoId) {
 	this.xenoId = xenoId;
+    }
+
+    public Set<Color> getColors() {
+	return colors;
+    }
+
+    public void setColors(Set<Color> colors) {
+	this.colors = colors;
+    }
+
+    public BeakShape getBeakShape() {
+	return beakShape;
+    }
+
+    public void setBeakShape(BeakShape beakShape) {
+	this.beakShape = beakShape;
+    }
+
+    public FeetShape getFeetShape() {
+	return feetShape;
+    }
+
+    public void setFeetShape(FeetShape feetShape) {
+	this.feetShape = feetShape;
     }
 
     @Override
@@ -85,9 +134,10 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, scientificName=%s, commonName=%s, imageName=%s, description=%s, xenoId=%s}",
-		getId(), scientificName, commonName,
-		imageName, description, xenoId);
+		"{id=%s, scientificName=%s, commonName=%s, image=%s, description=%s, xenoId=%s, colors=%s, beakShape=%s, feetShape=%s}",
+		getId(), scientificName, commonName, image,
+		description, xenoId, colors, beakShape,
+		feetShape);
     }
 
 }

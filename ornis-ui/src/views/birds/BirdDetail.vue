@@ -32,6 +32,7 @@ export default {
       await this.$http
         .get(`/birds/${this.id}/detail`)
         .then((resp) => {
+          console.log(this.bird);
           this.bird = resp.body;
         })
         .catch(() => {});
@@ -50,7 +51,7 @@ export default {
       <div class="row g-0">
         <div class="col-md-4">
           <img
-            :src="baseUrl + bird.imageName"
+            :src="baseUrl + bird.image"
             class="img-fluid rounded-start bird-detail"
             :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
           />
@@ -58,7 +59,7 @@ export default {
 
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ $t('birdDetail.description.title') }}</h5>
+            <h5 class="card-title">{{ $t('birds.detail.description.title') }}</h5>
 
             <p class="card-text">
               {{ bird.description }}

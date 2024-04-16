@@ -3,8 +3,11 @@ package co.simplon.ornis.dtos.users;
 public class TokenInfo {
 
     private String token;
+
     private String role;
-    private String nickname;
+
+    private String username;
+
     private String emailAddress;
 
     public TokenInfo() {
@@ -26,12 +29,12 @@ public class TokenInfo {
 	this.role = role;
     }
 
-    public String getNickname() {
-	return nickname;
+    public String getUsername() {
+	return username;
     }
 
-    public void setNickname(String nickname) {
-	this.nickname = nickname;
+    public void setUsername(String username) {
+	this.username = username;
     }
 
     public String getEmailAddress() {
@@ -45,7 +48,7 @@ public class TokenInfo {
     @Override
     public String toString() {
 	return "{token=" + token + ", role=" + role
-		+ ", nickname=" + nickname
+		+ ", username=" + username
 		+ ", emailAddress=" + emailAddress + "}";
     }
 

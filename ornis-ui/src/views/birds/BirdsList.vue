@@ -1,12 +1,16 @@
 <script>
-import BirdActionsMenu from '@/components/birds/admin/BirdActionsMenu.vue';
+import ActionsMenu from '@/components/birds/admin/ActionsMenu.vue';
 import LoadingSpinner from '@/components/commons/LoadingSpinner.vue';
+import NameFilter from '@/components/birds/NameFilter.vue';
+import AdvancedFilter from '@/components/birds/AdvancedFilter.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 export default {
   components: {
-    BirdActionsMenu,
+    ActionsMenu,
     LoadingSpinner,
+    NameFilter,
+    AdvancedFilter,
   },
 
   setup() {
@@ -22,7 +26,6 @@ export default {
       baseUrl: import.meta.env.VITE_IMG_BASE_URL,
       birds: [],
       displayedBirds: [],
-      searchText: null,
       loaded: false,
     };
   },
@@ -43,12 +46,12 @@ export default {
         .catch(() => {});
     },
 
-    async filterBirds() {
-      if (!this.searchText) {
+    async filterBirdsByName(searchText) {
+      if (!searchText) {
         this.displayedBirds = this.birds;
       } else {
         await this.$http
-          .get(`/birds/search?searchText=${this.searchText}`)
+          .get(`/birds/search?searchText=${encodeURIComponent(searchText)}`)
           .then((resp) => {
             const results = resp.body;
             this.displayedBirds = results;
@@ -56,30 +59,33 @@ export default {
           .catch(() => {});
       }
     },
+
+    async filterBirdsByCharacteristics(filterEndpoint) {
+      await this.$http
+        .get(filterEndpoint)
+        .then((resp) => {
+          const results = resp.body;
+          this.displayedBirds = results;
+        })
+        .catch(() => {});
+    },
   },
 };
 </script>
 
 <template>
   <section>
-    <h1 class="mt-5 mb-4">{{ $t('birdsList.title') }}</h1>
+    <h1 class="mt-5 mb-4">{{ $t('birds.list.title') }}</h1>
 
-    <form class="input-group mb-3" role="search" novalidate @submit.prevent="filterBirds">
-      <input
-        v-model.trim="searchText"
-        type="search"
-        class="form-control"
-        :placeholder="$t('birdsList.filterPlaceholder')"
-        @keyup.enter="submit"
-      />
-      <button class="btn btn-outline-secondary" type="submit">
-        {{ $t('birdsList.filterButton') }}
-      </button>
-    </form>
+    <div>
+      <NameFilter @search="filterBirdsByName" />
+
+      <AdvancedFilter @filter-endpoint="filterBirdsByCharacteristics" />
+    </div>
 
     <div class="list-group birds-list-container">
       <p v-if="loaded && (!displayedBirds || displayedBirds.length === 0)">
-        {{ $t('birdsList.error') }}
+        {{ $t('birds.list.error') }}
       </p>
 
       <ul
@@ -93,8 +99,8 @@ export default {
         >
           <img
             class="col-4 bird-card-img"
-            :src="`src/assets/images/bird_pictures/${bird.imageName}`"
-            :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
+            :src="`src/assets/images/bird_pictures/${bird.image}`"
+            :alt="$t('birds.list.imageAlt', { name: bird.commonName })"
           />
 
           <div class="card-body col-md-8">
@@ -107,7 +113,7 @@ export default {
             >
 
             <div v-if="store.isAdmin" class="position-absolute top-0 end-0">
-              <BirdActionsMenu :bird="bird"></BirdActionsMenu>
+              <ActionsMenu :bird="bird"></ActionsMenu>
             </div>
           </div>
         </li>

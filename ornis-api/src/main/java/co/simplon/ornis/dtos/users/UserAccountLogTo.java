@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 public class UserAccountLogTo {
 
     @NotBlank
-    private String nicknameOrEmailAddress;
+    private String usernameOrEmailAddress;
 
     @NotBlank
     private String password;
@@ -13,13 +13,13 @@ public class UserAccountLogTo {
     public UserAccountLogTo() {
     }
 
-    public String getNicknameOrEmailAddress() {
-	return nicknameOrEmailAddress;
+    public String getUsernameOrEmailAddress() {
+	return usernameOrEmailAddress;
     }
 
-    public void setNicknameOrEmailAddress(
-	    String nicknameOrEmailAddress) {
-	this.nicknameOrEmailAddress = nicknameOrEmailAddress;
+    public void setUsernameOrEmailAddress(
+	    String usernameOrEmailAddress) {
+	this.usernameOrEmailAddress = usernameOrEmailAddress;
     }
 
     public String getPassword() {
@@ -32,8 +32,8 @@ public class UserAccountLogTo {
 
     @Override
     public String toString() {
-	return "{nicknameOrEmailAddress="
-		+ nicknameOrEmailAddress
+	return "{usernameOrEmailAddress="
+		+ usernameOrEmailAddress
 		+ ", password={protected} ";
     }
 

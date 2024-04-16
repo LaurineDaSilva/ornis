@@ -1,7 +1,7 @@
 package co.simplon.ornis.dtos.users;
 
 import co.simplon.ornis.dtos.users.validators.EmailUnicity;
-import co.simplon.ornis.dtos.users.validators.NicknameUnicity;
+import co.simplon.ornis.dtos.users.validators.UsernameUnicity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -17,8 +17,8 @@ public class UserAccountCreate {
 
     @NotBlank
     @Size(max = 20)
-    @NicknameUnicity
-    private String nickname;
+    @UsernameUnicity
+    private String username;
 
     @NotBlank
     @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[%*!]).{8,42}$")
@@ -35,12 +35,12 @@ public class UserAccountCreate {
 	this.emailAddress = emailAddress;
     }
 
-    public String getNickname() {
-	return nickname;
+    public String getUsername() {
+	return username;
     }
 
-    public void setNickname(String nickname) {
-	this.nickname = nickname;
+    public void setUsername(String username) {
+	this.username = username;
     }
 
     public String getPassword() {
@@ -54,7 +54,7 @@ public class UserAccountCreate {
     @Override
     public String toString() {
 	return "{emailAddress=" + emailAddress
-		+ ", nickname=" + nickname
+		+ ", username=" + username
 		+ ", password={protected} ";
     }
 

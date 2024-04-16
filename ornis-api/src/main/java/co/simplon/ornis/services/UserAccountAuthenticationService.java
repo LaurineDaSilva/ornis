@@ -12,6 +12,6 @@ public interface UserAccountAuthenticationService {
 
     public boolean emailAddressExists(String email);
 
-    public boolean nicknameExists(String nickname);
+    public boolean usernameExists(String username);
 
 }

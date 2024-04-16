@@ -36,3 +36,8 @@ a {
 .cstm-btn-text-secondary:hover {
   color: $primary;
 }
+
+.btn-outline-tertiary {
+  color: $primary;
+  border-color: $tertiary;
+}

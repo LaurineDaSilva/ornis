@@ -6,10 +6,16 @@ public interface BirdDetail {
 
     String getCommonName();
 
-    String getImageName();
+    String getImage();
 
     String getDescription();
 
     String getXenoId();
+
+    // String getBeakShapeName();
+
+    // String getFeetShapeName();
+
+    // Set<Color> getColors();
 
 }

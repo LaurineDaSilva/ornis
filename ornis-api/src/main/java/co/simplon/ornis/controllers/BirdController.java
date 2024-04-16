@@ -1,6 +1,8 @@
 package co.simplon.ornis.controllers;
 
 import java.util.Collection;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,6 +43,16 @@ public class BirdController {
     public Collection<BirdView> searchBirds(
 	    @RequestParam String searchText) {
 	return service.searchBirds(searchText);
+    }
+
+    @GetMapping("/filter")
+    public Collection<BirdView> filterBirds(
+	    @RequestParam(required = false) Optional<Set<String>> colors,
+	    @RequestParam(required = false) Optional<Long> beakShapeId,
+	    @RequestParam(required = false) Optional<Long> feetShapeId,
+	    @RequestParam(required = false) Optional<Long> sizeId) {
+	return service.filterBirds(colors, beakShapeId,
+		feetShapeId, sizeId);
     }
 
     @GetMapping("/{id}/detail")
