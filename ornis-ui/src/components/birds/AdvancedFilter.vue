@@ -89,7 +89,7 @@ export default {
   <div class="pb-5">
     <p class="d-flex justify-content-end">
       <button
-        class="btn btn-tertiary shadow-sm"
+        class="btn btn-outline-tertiary shadow-sm"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#advancedFilters"
@@ -121,7 +121,7 @@ export default {
               class="accordion-collapse collapse"
               data-bs-parent="#searchAccordion"
             >
-              <div :key="color" class="accordion-body" v-for="color in advancedFilters.colors">
+              <div v-for="color in advancedFilters.colors" :key="color" class="accordion-body">
                 <input
                   :id="color.id"
                   v-model="advancedFilters.inputs.colors"
@@ -129,6 +129,7 @@ export default {
                   class="form-check-input"
                   :value="color.name"
                 />
+
                 <label :for="color.id" class="form-check-label"> {{ color.name }} </label>
               </div>
             </div>
@@ -156,7 +157,7 @@ export default {
               class="accordion-collapse collapse"
               data-bs-parent="#searchAccordion"
             >
-              <div :key="size" class="accordion-body" v-for="size in advancedFilters.sizes">
+              <div v-for="size in advancedFilters.sizes" :key="size" class="accordion-body">
                 <input
                   :id="size.id"
                   v-model="advancedFilters.inputs.sizeId"
@@ -165,6 +166,7 @@ export default {
                   class="form-check-input"
                   :value="size.id"
                 />
+
                 <label class="form-check-label" for="size.id"> {{ size.name }} </label>
               </div>
             </div>
@@ -193,9 +195,9 @@ export default {
               data-bs-parent="#searchAccordion"
             >
               <div
+                v-for="beakShape in advancedFilters.beakShapes"
                 :key="beakShape"
                 class="accordion-body"
-                v-for="beakShape in advancedFilters.beakShapes"
               >
                 <input
                   :id="beakShape.id"
@@ -205,6 +207,7 @@ export default {
                   class="form-check-input"
                   :value="beakShape.id"
                 />
+
                 <label class="form-check-label" :for="beakShape.id">
                   {{ beakShape.name }}
                 </label>
@@ -235,9 +238,9 @@ export default {
               data-bs-parent="#searchAccordion"
             >
               <div
+                v-for="feetShape in advancedFilters.feetShapes"
                 :key="feetShape"
                 class="accordion-body"
-                v-for="feetShape in advancedFilters.feetShapes"
               >
                 <input
                   :id="feetShape.id"
@@ -247,6 +250,7 @@ export default {
                   class="form-check-input"
                   :value="feetShape.id"
                 />
+
                 <label class="form-check-label" :for="feetShape.id">
                   {{ feetShape.name }}
                 </label>
