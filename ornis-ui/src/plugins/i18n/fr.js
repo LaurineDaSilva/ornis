@@ -97,6 +97,8 @@ const messages = {
     },
   },
 
+  signOut: 'Déconnexion',
+
   // Admin components:
   birdActionsMenu: {
     edit: 'Mettre à jour',
