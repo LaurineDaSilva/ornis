@@ -20,8 +20,9 @@ export default {
   methods: {
     async deleteBird(id) {
       if (this.store.isAdmin) {
+        const headers = { Authorization: `Bearer ${this.store.getToken}` };
         await this.$http
-          .delete(`/birds/delete/${id}`)
+          .delete(`/birds/delete/${id}`, { headers })
           .then(
             this.$toast.success(
               'toast-global',

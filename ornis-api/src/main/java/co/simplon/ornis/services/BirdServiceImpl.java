@@ -118,10 +118,14 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void updateBird(Long id, BirdUpdate inputs) {
 	Bird entity = birds.findById(id).get();
+
 	entity.setScientificName(
 		inputs.getScientificName());
+
 	entity.setCommonName(inputs.getCommonName());
+
 	entity.setDescription(inputs.getDescription());
+
 	MultipartFile file = inputs.getFile();
 	if (file != null) {
 	    String original = entity.getImage();
@@ -129,6 +133,28 @@ public class BirdServiceImpl implements BirdService {
 	    String newFullName = storage.replace(file,
 		    baseName, original);
 	    entity.setImage(newFullName);
+	}
+
+	entity.setXenoId(inputs.getXenoId());
+
+	entity.setBeakShape(inputs.getBeakShape());
+
+	entity.setFeetShape(inputs.getFeetShape());
+
+	entity.setSize(inputs.getSize());
+
+	if (inputs.getColorIds() != null) {
+	    Set<Long> inputColors = inputs.getColorIds();
+	    Set<Color> birdColors = new HashSet<>();
+
+	    for (Long colorId : inputColors) {
+		Optional<Color> color = colors
+			.findById(colorId);
+		color.ifPresent(c -> birdColors.add(c));
+	    }
+
+	    entity.setColors(birdColors);
+
 	}
     }
 
