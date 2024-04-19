@@ -1,7 +1,6 @@
 package co.simplon.ornis.services;
 
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -16,9 +15,7 @@ import co.simplon.ornis.dtos.birds.BirdToUpdate;
 import co.simplon.ornis.dtos.birds.BirdUpdate;
 import co.simplon.ornis.dtos.birds.BirdView;
 import co.simplon.ornis.entities.Bird;
-import co.simplon.ornis.entities.Color;
 import co.simplon.ornis.repositories.BirdRepository;
-import co.simplon.ornis.repositories.ColorRepository;
 
 @Service
 @Transactional(readOnly = true)
@@ -26,15 +23,16 @@ public class BirdServiceImpl implements BirdService {
 
     private final FileStorage storage;
 
-    private BirdRepository birds;
+    private final BirdRepository birds;
 
-    private ColorRepository colors;
+    private final BirdColorService birdColorService;
 
     public BirdServiceImpl(FileStorage storage,
-	    BirdRepository birds, ColorRepository colors) {
+	    BirdRepository birds,
+	    BirdColorService birdColorService) {
 	this.storage = storage;
 	this.birds = birds;
-	this.colors = colors;
+	this.birdColorService = birdColorService;
     }
 
     @Override
@@ -72,10 +70,11 @@ public class BirdServiceImpl implements BirdService {
     public void createBird(BirdCreate inputs) {
 	Bird entity = new Bird();
 
+	String scientificName = inputs.getScientificName();
+
 	entity.setCommonName(inputs.getCommonName());
 
-	entity.setScientificName(
-		inputs.getScientificName());
+	entity.setScientificName(scientificName);
 
 	entity.setDescription(inputs.getDescription());
 
@@ -92,21 +91,27 @@ public class BirdServiceImpl implements BirdService {
 
 	entity.setSize(inputs.getSize());
 
+	birds.save(entity);
+
 	if (inputs.getColorIds() != null) {
-	    Set<Long> inputColors = inputs.getColorIds();
-	    Set<Color> birdColors = new HashSet<>();
+	    BirdToUpdate bird = birds
+		    .findProjectedByScientificName(
+			    scientificName);
 
-	    for (Long colorId : inputColors) {
-		Optional<Color> color = colors
-			.findById(colorId);
-		color.ifPresent(c -> birdColors.add(c));
+	    Long birdId = bird.getId();
+
+	    Set<Long> colorIds = inputs.getColorIds();
+
+	    for (Long colorId : colorIds) {
+
+		Long[] birdColorInputs = { birdId,
+			colorId };
+		birdColorService
+			.createBirdColor(birdColorInputs);
+
 	    }
-
-	    entity.setColors(birdColors);
-
 	}
 
-	birds.save(entity);
     }
 
     @Override
@@ -143,19 +148,6 @@ public class BirdServiceImpl implements BirdService {
 
 	entity.setSize(inputs.getSize());
 
-	if (inputs.getColorIds() != null) {
-	    Set<Long> inputColors = inputs.getColorIds();
-	    Set<Color> birdColors = new HashSet<>();
-
-	    for (Long colorId : inputColors) {
-		Optional<Color> color = colors
-			.findById(colorId);
-		color.ifPresent(c -> birdColors.add(c));
-	    }
-
-	    entity.setColors(birdColors);
-
-	}
     }
 
     @Transactional

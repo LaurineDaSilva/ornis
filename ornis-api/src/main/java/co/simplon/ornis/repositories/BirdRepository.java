@@ -22,6 +22,9 @@ public interface BirdRepository
 
     BirdToUpdate findProjectedById(Long id);
 
+    BirdToUpdate findProjectedByScientificName(
+	    String scientificName);
+
     boolean existsByScientificName(String scientificName);
 
     boolean existsByCommonName(String commonName);
