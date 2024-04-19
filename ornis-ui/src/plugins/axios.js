@@ -31,6 +31,10 @@ const handleGlobalErrors = (error, i18n, toast) => {
           messages.push(t('toastMessages.errors.commonName.unicity'));
           errorFields.push(errorField);
           break;
+        case 'E_UNQ_XN_ID':
+          messages.push(t('toastMessages.errors.xenoId.unicity'));
+          errorFields.push(errorField);
+          break;
         default:
           messages.push(t('toastMessages.errors.undefined'));
           errorFields.push(errorField);

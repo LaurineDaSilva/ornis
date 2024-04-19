@@ -60,8 +60,10 @@ export default {
     },
 
     async initInputs() {
+      const headers = { Authorization: `Bearer ${this.store.getToken}` };
+
       await this.$http
-        .get(`/birds/${this.id}/to-update`)
+        .get(`/birds/${this.id}/to-update`, { headers })
         .then((resp) => {
           this.inputs = resp.body;
           this.birdToUpdate.commonName = this.inputs.commonName;

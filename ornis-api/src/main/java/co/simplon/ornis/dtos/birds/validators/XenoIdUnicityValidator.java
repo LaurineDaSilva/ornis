@@ -4,21 +4,20 @@ import co.simplon.ornis.services.BirdService;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class CommonNameUnicityValidator implements
-	ConstraintValidator<CommonNameUnicity, String> {
+public class XenoIdUnicityValidator implements
+	ConstraintValidator<XenoIdUnicity, Integer> {
 
     private final BirdService service;
 
-    public CommonNameUnicityValidator(BirdService service) {
+    public XenoIdUnicityValidator(BirdService service) {
 	this.service = service;
     }
 
     @Override
-    public boolean isValid(String commonName,
+    public boolean isValid(Integer xenoId,
 	    ConstraintValidatorContext context) {
-	if (commonName != null) {
-	    return !this.service
-		    .commonNameExists(commonName);
+	if (xenoId != null) {
+	    return !this.service.xenoIdExists(xenoId);
 	}
 	return true;
 
