@@ -148,14 +148,36 @@ public class BirdServiceImpl implements BirdService {
 
 	entity.setSize(inputs.getSize());
 
+	if (inputs.getColorIds() != null) {
+
+	    Set<Long> colorIds = inputs.getColorIds();
+
+	    birdColorService.deleteBirdColors(id);
+
+	    for (Long colorId : colorIds) {
+
+		Long[] birdColorInputs = { id, colorId };
+
+		birdColorService
+			.createBirdColor(birdColorInputs);
+
+	    }
+
+	}
+
     }
 
     @Transactional
     @Override
     public void delete(Long id) {
 	Bird entity = birds.findById(id).get();
+
 	String imageName = entity.getImage();
+
+	birdColorService.deleteBirdColors(id);
+
 	birds.delete(entity);
+
 	storage.delete(imageName);
     }
 

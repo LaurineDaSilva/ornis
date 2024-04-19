@@ -21,6 +21,12 @@ public class BirdColorServiceImpl
 	this.birdColors = birdColors;
     }
 
+    @Override
+    public Collection<BirdColorDto> getOneBirdColors(
+	    Long birdId) {
+	return birdColors.findAllByBirdId(birdId);
+    };
+
     @Transactional
     @Override
     public void createBirdColor(Long[] inputs) {
@@ -33,9 +39,10 @@ public class BirdColorServiceImpl
 	birdColors.save(entity);
     }
 
+    @Transactional
     @Override
-    public Collection<BirdColorDto> getOneBirdColors(
-	    Long birdId) {
-	return birdColors.findAllByBirdId(birdId);
-    };
+    public void deleteBirdColors(Long birdId) {
+
+	birdColors.deleteByBirdId(birdId);
+    }
 }
