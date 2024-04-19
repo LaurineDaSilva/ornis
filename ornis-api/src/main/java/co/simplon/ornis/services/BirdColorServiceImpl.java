@@ -1,8 +1,11 @@
 package co.simplon.ornis.services;
 
+import java.util.Collection;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.ornis.dtos.birds.BirdColorDto;
 import co.simplon.ornis.entities.BirdColor;
 import co.simplon.ornis.repositories.BirdColorRepository;
 
@@ -29,4 +32,10 @@ public class BirdColorServiceImpl
 
 	birdColors.save(entity);
     }
+
+    @Override
+    public Collection<BirdColorDto> getOneBirdColors(
+	    Long birdId) {
+	return birdColors.findAllByBirdId(birdId);
+    };
 }
