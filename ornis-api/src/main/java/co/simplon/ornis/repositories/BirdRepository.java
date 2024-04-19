@@ -22,9 +22,14 @@ public interface BirdRepository
 
     BirdToUpdate findProjectedById(Long id);
 
-    boolean existsByScientificName(String string);
+    BirdToUpdate findProjectedByScientificName(
+	    String scientificName);
 
-    boolean existsByCommonName(String string);
+    boolean existsByScientificName(String scientificName);
+
+    boolean existsByCommonName(String commonName);
+
+    boolean existsByXenoId(int xenoId);
 
     @Query("SELECT b FROM Bird b WHERE "
 	    + "LOWER(b.scientificName) LIKE LOWER(CONCAT('%', :searchText, '%')) OR "

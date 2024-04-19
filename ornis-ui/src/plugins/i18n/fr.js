@@ -19,6 +19,9 @@ const messages = {
       commonName: {
         unicity: 'Ce nom commun est déjà enregistré.',
       },
+      xenoId: {
+        unicity: 'Ce Xeno Id est déjà utilisé',
+      },
     },
   },
 

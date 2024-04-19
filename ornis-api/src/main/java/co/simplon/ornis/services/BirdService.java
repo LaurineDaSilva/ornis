@@ -37,4 +37,6 @@ public interface BirdService {
 
     public boolean commonNameExists(String commonName);
 
+    public boolean xenoIdExists(int xenoId);
+
 }

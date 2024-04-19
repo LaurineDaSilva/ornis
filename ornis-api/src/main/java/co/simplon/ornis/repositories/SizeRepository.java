@@ -5,10 +5,10 @@ import java.util.Collection;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import co.simplon.ornis.dtos.birds.BirdPartView;
-import co.simplon.ornis.entities.Size;
+import co.simplon.ornis.entities.BirdSize;
 
 public interface SizeRepository
-	extends JpaRepository<Size, Long> {
+	extends JpaRepository<BirdSize, Long> {
 
     Collection<BirdPartView> findAllProjectedBy();
 

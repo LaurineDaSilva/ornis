@@ -57,7 +57,10 @@ public class SecurityConfig {
 				.requestMatchers(
 					"/birds/list",
 					"/birds/{id}/detail",
-					"join/sign-in")
+					"/birds/search",
+					"/birds/filter",
+					"join/sign-in",
+					"join/sign-up")
 				.permitAll()
 				.requestMatchers(
 					HttpMethod.DELETE)

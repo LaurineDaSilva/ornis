@@ -3,8 +3,6 @@ package co.simplon.ornis.entities;
 import java.util.Objects;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,7 +29,7 @@ public class Bird extends AbstractEntity {
     private String description;
 
     @Column(name = "xeno_id")
-    private int xenoId;
+    private Integer xenoId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "beak_shape_id")
@@ -43,10 +41,9 @@ public class Bird extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "size_id")
-    private Size size;
+    private BirdSize size;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JsonManagedReference
     @JoinTable(name = "t_birds_colors", joinColumns = @JoinColumn(name = "bird_id"), inverseJoinColumns = @JoinColumn(name = "color_id"))
     private Set<Color> colors;
 
@@ -85,11 +82,11 @@ public class Bird extends AbstractEntity {
 	this.description = description;
     }
 
-    public int getXenoId() {
+    public Integer getXenoId() {
 	return xenoId;
     }
 
-    public void setXenoId(int xenoId) {
+    public void setXenoId(Integer xenoId) {
 	this.xenoId = xenoId;
     }
 
@@ -117,6 +114,14 @@ public class Bird extends AbstractEntity {
 	this.feetShape = feetShape;
     }
 
+    public BirdSize getSize() {
+	return size;
+    }
+
+    public void setSize(BirdSize size) {
+	this.size = size;
+    }
+
     @Override
     public int hashCode() {
 	return Objects.hash(scientificName);
@@ -134,10 +139,10 @@ public class Bird extends AbstractEntity {
     @Override
     public String toString() {
 	return String.format(
-		"{id=%s, scientificName=%s, commonName=%s, image=%s, description=%s, xenoId=%s, colors=%s, beakShape=%s, feetShape=%s}",
+		"{id=%s, scientificName=%s, commonName=%s, image=%s, description=%s, xenoId=%s, colors=%s, beakShape=%s, feetShape=%s, size=%s}",
 		getId(), scientificName, commonName, image,
 		description, xenoId, colors, beakShape,
-		feetShape);
+		feetShape, size);
     }
 
 }

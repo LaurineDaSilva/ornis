@@ -23,12 +23,16 @@ public class BirdServiceImpl implements BirdService {
 
     private final FileStorage storage;
 
-    private BirdRepository birds;
+    private final BirdRepository birds;
+
+    private final BirdColorService birdColorService;
 
     public BirdServiceImpl(FileStorage storage,
-	    BirdRepository birds) {
+	    BirdRepository birds,
+	    BirdColorService birdColorService) {
 	this.storage = storage;
 	this.birds = birds;
+	this.birdColorService = birdColorService;
     }
 
     @Override
@@ -65,15 +69,49 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void createBird(BirdCreate inputs) {
 	Bird entity = new Bird();
+
+	String scientificName = inputs.getScientificName();
+
 	entity.setCommonName(inputs.getCommonName());
-	entity.setScientificName(
-		inputs.getScientificName());
+
+	entity.setScientificName(scientificName);
+
 	entity.setDescription(inputs.getDescription());
+
 	MultipartFile file = inputs.getFile();
 	String baseName = UUID.randomUUID().toString();
 	String fileName = storage.store(file, baseName);
 	entity.setImage(fileName);
+
+	entity.setXenoId(inputs.getXenoId());
+
+	entity.setBeakShape(inputs.getBeakShape());
+
+	entity.setFeetShape(inputs.getFeetShape());
+
+	entity.setSize(inputs.getSize());
+
 	birds.save(entity);
+
+	if (inputs.getColorIds() != null) {
+	    BirdToUpdate bird = birds
+		    .findProjectedByScientificName(
+			    scientificName);
+
+	    Long birdId = bird.getId();
+
+	    Set<Long> colorIds = inputs.getColorIds();
+
+	    for (Long colorId : colorIds) {
+
+		Long[] birdColorInputs = { birdId,
+			colorId };
+		birdColorService
+			.createBirdColor(birdColorInputs);
+
+	    }
+	}
+
     }
 
     @Override
@@ -85,10 +123,14 @@ public class BirdServiceImpl implements BirdService {
     @Override
     public void updateBird(Long id, BirdUpdate inputs) {
 	Bird entity = birds.findById(id).get();
+
 	entity.setScientificName(
 		inputs.getScientificName());
+
 	entity.setCommonName(inputs.getCommonName());
+
 	entity.setDescription(inputs.getDescription());
+
 	MultipartFile file = inputs.getFile();
 	if (file != null) {
 	    String original = entity.getImage();
@@ -97,14 +139,45 @@ public class BirdServiceImpl implements BirdService {
 		    baseName, original);
 	    entity.setImage(newFullName);
 	}
+
+	entity.setXenoId(inputs.getXenoId());
+
+	entity.setBeakShape(inputs.getBeakShape());
+
+	entity.setFeetShape(inputs.getFeetShape());
+
+	entity.setSize(inputs.getSize());
+
+	if (inputs.getColorIds() != null) {
+
+	    Set<Long> colorIds = inputs.getColorIds();
+
+	    birdColorService.deleteBirdColors(id);
+
+	    for (Long colorId : colorIds) {
+
+		Long[] birdColorInputs = { id, colorId };
+
+		birdColorService
+			.createBirdColor(birdColorInputs);
+
+	    }
+
+	}
+
     }
 
     @Transactional
     @Override
     public void delete(Long id) {
 	Bird entity = birds.findById(id).get();
+
 	String imageName = entity.getImage();
+
+	birdColorService.deleteBirdColors(id);
+
 	birds.delete(entity);
+
 	storage.delete(imageName);
     }
 
@@ -123,6 +196,13 @@ public class BirdServiceImpl implements BirdService {
 
 	return this.birds
 		.existsByCommonName(commonName.toString());
+    }
+
+    @Override
+    public boolean xenoIdExists(int xenoId)
+	    throws UnsupportedOperationException {
+
+	return this.birds.existsByXenoId(xenoId);
     }
 
 }

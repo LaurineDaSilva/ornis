@@ -55,9 +55,10 @@ CREATE TABLE t_birds (
 );
 
 CREATE TABLE t_birds_colors (
+    id SERIAL NOT NULL PRIMARY KEY,
     bird_id INTEGER,
     color_id INTEGER,
-    PRIMARY KEY (bird_id, color_id),
+    UNIQUE (bird_id, color_id),
     FOREIGN KEY (bird_id) REFERENCES t_birds(id),
     FOREIGN KEY (color_id) REFERENCES t_colors(id)
 );

@@ -1,13 +1,18 @@
 package co.simplon.ornis.dtos.birds;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.util.Set;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 import co.simplon.ornis.dtos.birds.validators.CommonNameUnicity;
 import co.simplon.ornis.dtos.birds.validators.ScientificNameUnicity;
+import co.simplon.ornis.dtos.birds.validators.XenoIdUnicity;
+import co.simplon.ornis.entities.BeakShape;
+import co.simplon.ornis.entities.BirdSize;
+import co.simplon.ornis.entities.FeetShape;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class BirdCreate {
 
@@ -26,6 +31,17 @@ public class BirdCreate {
 
     @NotNull
     private MultipartFile file;
+
+    @XenoIdUnicity
+    private Integer xenoId;
+
+    private BeakShape beakShape;
+
+    private FeetShape feetShape;
+
+    private BirdSize size;
+
+    private Set<Long> colorIds;
 
     public BirdCreate() {
     }
@@ -62,10 +78,50 @@ public class BirdCreate {
 	this.file = file;
     }
 
+    public Integer getXenoId() {
+	return xenoId;
+    }
+
+    public void setXenoId(Integer xenoId) {
+	this.xenoId = xenoId;
+    }
+
+    public BeakShape getBeakShape() {
+	return beakShape;
+    }
+
+    public void setBeakShape(BeakShape beakShape) {
+	this.beakShape = beakShape;
+    }
+
+    public FeetShape getFeetShape() {
+	return feetShape;
+    }
+
+    public void setFeetShape(FeetShape feetShape) {
+	this.feetShape = feetShape;
+    }
+
+    public BirdSize getSize() {
+	return size;
+    }
+
+    public void setSize(BirdSize size) {
+	this.size = size;
+    }
+
+    public Set<Long> getColorIds() {
+	return colorIds;
+    }
+
+    public void setColorIds(Set<Long> colorIds) {
+	this.colorIds = colorIds;
+    }
+
     @Override
     public String toString() {
 	return String.format(
-		"{scientificName=%s, commonName=%s, description=%s, file=%s}",
+		"{scientificName=%s, commonName=%s, description=%s, file=%s, xenoId=%s, beakShape=%s, feetShape=%s, size=%s, colorIds=%s}",
 		(file != null ? "[BLOB]" : null));
 
     }

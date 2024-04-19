@@ -8,12 +8,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "t_sizes")
-public class Size extends AbstractEntity {
+public class BirdSize extends AbstractEntity {
 
     @Column(name = "name")
     private String name;
 
-    public Size() {
+    public BirdSize() {
     }
 
     public String getName() {
@@ -34,7 +34,7 @@ public class Size extends AbstractEntity {
 	if (this == obj) {
 	    return true;
 	}
-	return obj instanceof Size other
+	return obj instanceof BirdSize other
 		&& Objects.equals(name, other.name);
     }
 

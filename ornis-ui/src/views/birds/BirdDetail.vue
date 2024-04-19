@@ -53,7 +53,7 @@ export default {
           <img
             :src="baseUrl + bird.image"
             class="img-fluid rounded-start bird-detail"
-            :alt="$t('birdsList.imageAlt', { name: bird.commonName })"
+            :alt="$t('birds.list.imageAlt', { name: bird.commonName })"
           />
         </div>
 
