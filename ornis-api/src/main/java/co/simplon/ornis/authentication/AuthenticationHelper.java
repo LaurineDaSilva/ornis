@@ -1,4 +1,4 @@
-package co.simplon.ornis.security;
+package co.simplon.ornis.authentication;
 
 import java.time.Instant;
 
@@ -10,8 +10,11 @@ import com.auth0.jwt.algorithms.Algorithm;
 public class AuthenticationHelper {
 
     private final String issuer;
+
     private final long expiration;
+
     private final Algorithm algorithm;
+
     private final PasswordEncoder encoder;
 
     public AuthenticationHelper(Builder builder) {
@@ -31,8 +34,10 @@ public class AuthenticationHelper {
 
     public String createJWT(String role, String name) {
 	Instant now = Instant.now();
+
 	Instant expirationTime = now
 		.plusSeconds(expiration);
+
 	return JWT.create().withIssuer(issuer)
 		.withSubject(name).withIssuedAt(now)
 		.withExpiresAt(expirationTime)
@@ -41,8 +46,11 @@ public class AuthenticationHelper {
 
     public static class Builder {
 	private String issuer;
+
 	private long expiration;
+
 	private Algorithm algorithm;
+
 	private PasswordEncoder passwordEncoder;
 
 	public Builder() {
@@ -73,6 +81,7 @@ public class AuthenticationHelper {
 	public AuthenticationHelper build() {
 	    return new AuthenticationHelper(this);
 	}
+
     }
 
 }

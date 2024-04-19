@@ -6,12 +6,12 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.simplon.ornis.authentication.AuthenticationHelper;
 import co.simplon.ornis.dtos.users.TokenInfo;
 import co.simplon.ornis.dtos.users.UserAccountCreate;
 import co.simplon.ornis.dtos.users.UserAccountLogTo;
 import co.simplon.ornis.entities.UserAccount;
 import co.simplon.ornis.repositories.UserAccountRepository;
-import co.simplon.ornis.security.AuthenticationHelper;
 
 @Service
 @Transactional(readOnly = true)

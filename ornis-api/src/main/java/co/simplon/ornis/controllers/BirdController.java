@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,11 +56,12 @@ public class BirdController {
 		feetShapeId, sizeId);
     }
 
-    @GetMapping("/{id}/detail")
+    @GetMapping("{id}/detail")
     public BirdDetail detail(@PathVariable("id") Long id) {
 	return service.getDetail(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void create(
@@ -67,12 +69,14 @@ public class BirdController {
 	service.createBird(inputs);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/{id}/to-update")
     public BirdToUpdate toUpdate(
 	    @PathVariable("id") Long id) {
 	return service.getBirdToUpdate(id);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Long id,
@@ -80,6 +84,7 @@ public class BirdController {
 	service.updateBird(id, inputs);
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @DeleteMapping("delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Long id) {
