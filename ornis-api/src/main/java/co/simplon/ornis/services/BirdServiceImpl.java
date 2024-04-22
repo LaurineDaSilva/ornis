@@ -140,6 +140,8 @@ public class BirdServiceImpl implements BirdService {
 	    entity.setImage(newFullName);
 	}
 
+    
+
     }
 
     @Transactional

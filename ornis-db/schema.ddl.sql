@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS t_user_accounts;
 
 CREATE TABLE t_colors (
     id SERIAL PRIMARY KEY, 
-    rgb_code VARCHAR(6) UNIQUE NOT NULL,
+    rgb_code CHAR(6) UNIQUE NOT NULL,
     name VARCHAR(100) UNIQUE NOT NULL
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE t_user_accounts (
     id SERIAL PRIMARY KEY, 
     email_address VARCHAR(100) UNIQUE NOT NULL, 
     username VARCHAR(20) UNIQUE NOT NULL, 
-    password VARCHAR(60), 
+    password CHAR(60), 
     role VARCHAR(11)
 );
 

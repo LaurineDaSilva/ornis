@@ -33,7 +33,6 @@ export const useAuthStore = defineStore('auth', {
 
     logout() {
       this.$reset();
-      // Clear local storage
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('emailAddress');
