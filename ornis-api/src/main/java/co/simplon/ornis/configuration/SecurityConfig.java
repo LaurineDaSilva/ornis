@@ -59,6 +59,9 @@ public class SecurityConfig {
 					"/birds/{id}/detail",
 					"/birds/search",
 					"/birds/filter",
+					"/beakShapes",
+					"/feetShapes",
+					"/sizes", "/colors",
 					"join/sign-in",
 					"join/sign-up")
 				.permitAll()
