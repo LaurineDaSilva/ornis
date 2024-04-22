@@ -15,8 +15,6 @@ CREATE TABLE t_colors (
     name VARCHAR(100) UNIQUE NOT NULL
 );
 
-
-
 create TABLE t_beak_shapes (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
@@ -57,8 +55,6 @@ CREATE TABLE t_birds_colors (
     FOREIGN KEY (bird_id) REFERENCES t_birds(id),
     FOREIGN KEY (color_id) REFERENCES t_colors(id)
 );
-
-
 
 CREATE TABLE t_user_accounts (
     id SERIAL PRIMARY KEY, 
