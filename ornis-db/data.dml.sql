@@ -1,8 +1,6 @@
 DELETE from t_birds;
 DELETE from t_colors;
 DELETE from t_birds_colors;
-DELETE from t_behaviors;
-DELETE from t_birds_behaviors;
 DELETE from t_beak_shapes;
 DELETE from t_feet_shapes;
 DELETE from t_sizes;
@@ -22,20 +20,7 @@ VALUES
 ('FF99CC', 'rose'),
 ('F9ECD2', 'beige');
 
-INSERT INTO t_behaviors (name)
-VALUES
-('en vol'),
-('au sol'),
-('dans les arbres'),
-('dans les buissons'),
-('sur l''eau'),
-('en ville'),
-('en montagne'),
-('à la campagne'),
-('à la mer'),
-('seul'),
-('en groupe'),
-('à deux');
+
 
 INSERT INTO t_beak_shapes (name)
 VALUES
@@ -211,158 +196,3 @@ VALUES
 (25, 6),
 (25, 1),
 (25, 3);
-
-INSERT INTO t_birds_behaviors (bird_id, behavior_id)
-VALUES
--- 'Pica pica', 'Pie bavarde'
-(1, 1), 
-(1, 2),
-(1, 3),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 10),
-(1, 12),
--- 'Prunella modularis', 'Accenteur mouchet'
-(2, 1), 
-(2, 2),
-(2, 4),
-(2, 6),
-(2, 8),
--- 'Cercotrichas galactotes', 'Agrobate roux'
-(3, 1), 
-(3, 2),
-(3, 4),
-(3, 8),
--- 'Clanga clanga', 'Aigle criard'
-(4, 1), 
-(4, 8),
-(4, 10),
--- 'Aquila fasciata', 'Aigle de Bonelli'
-(5, 1), 
-(5, 7),
-(5, 10),
--- 'Aquila nipalensis', 'Aigle des steppes'
-(6, 1), 
-(6, 7),
-(6, 10),
--- 'Aquila adalberti', 'Aigle ibérique'
-(7, 1), 
-(7, 7),
-(7, 10),
--- 'Aquila heliaca', 'Aigle impérial'
-(8, 1), 
-(8, 7),
-(8, 10),
--- 'Ciconia ciconia', 'Cigogne blanche'
-(9, 1), 
-(9, 2),
-(9, 5),
-(9, 8),
-(9, 11),
--- 'Cygnus cygnus', 'Cygne chanteur' 
-(10, 5), 
-(10, 6),
-(10, 8),
-(10, 10),
-(10, 12),
--- 'Phoenicopterus roseus', 'Flamant rose' 
-(11, 1), 
-(11, 2),
-(11, 5),
-(11, 8),
-(11, 11),
--- 'Larus glaucoides kumlieni', 'Goéland arctique (kumlieni)' 
-(12, 1), 
-(12, 2),
-(12, 5),
-(12, 6),
-(12, 9),
-(12, 10),
-(12, 11),
-(12, 12),
--- 'Ardea melanocephala', 'Héron mélanocéphale' 
-(13, 1), 
-(13, 5),
-(13, 6),
-(13, 8),
-(13, 10),
--- 'Alcedo atthis', 'Martin-pêcheur d''Europe' 
-(14, 1), 
-(14, 3),
-(14, 4),
-(14, 7),
-(14, 8),
-(14, 10),
--- 'Apus affinis', 'Martinet des maisons' 
-(15, 1), 
-(15, 6),
-(15, 8),
-(15, 11),
--- 'Aegithalos caudatus', 'Orite à longue queue'
-(16, 1),
-(16, 2),
-(16, 3),
-(16, 4),
-(16, 6),
-(16, 8),
-(16, 11),
--- 'Passer domesticus', 'Moineau domestique'
-(17, 1),
-(17, 2),
-(17, 3),
-(17, 4),
-(17, 6),
-(17, 8),
-(17, 11),
--- 'Dendrocopos major', 'Pic épeiche'
-(18, 1),
-(18, 2),
-(18, 3),
-(18, 6),
-(18, 8),
-(18, 10),
--- 'Picus viridis', 'Pic vert'
-(19, 1),
-(19, 2),
-(19, 3),
-(19, 6),
-(19, 8),
-(19, 10),
--- 'Columba livia', 'Pigeon biset'
-(20, 1),
-(20, 2),
-(20, 3),
-(20, 6),
-(20, 8),
-(20, 10),
-(20, 11),
-(20, 12),
--- 'Columba palumbus', 'Pigeon ramier'
-(21, 1),
-(21, 2),
-(21, 3),
-(21, 6),
-(21, 8),
-(21, 10),
-(21, 11),
-(21, 12),
--- 'Alca torda', 'Pingouin torda'
-(22, 2),
-(22, 5),
-(22, 9),
-(22, 11),
--- 'Luscinia megarhynchos', 'Rossignol philomèle'
-(23, 1),
-(23, 3),
--- 'Geronticus eremita', 'Ibis chauve'
-(24, 7),
--- 'Parus major', 'Mésange charbonnière'
-(25, 1),
-(25, 2),
-(25, 4),
-(25, 6),
-(25, 8),
-(25, 10),
-(25, 11);
