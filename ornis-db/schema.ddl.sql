@@ -1,13 +1,11 @@
 SET CLIENT_ENCODING TO 'UTF-8';
 
 DROP TABLE IF EXISTS t_birds_colors;
-DROP TABLE IF EXISTS t_birds_behaviors;
 DROP TABLE IF EXISTS t_birds;
 DROP TABLE IF EXISTS t_colors;
 DROP TABLE IF EXISTS t_beak_shapes;
 DROP TABLE IF EXISTS t_feet_shapes;
 DROP TABLE IF EXISTS t_sizes;
-DROP TABLE IF EXISTS t_behaviors;
 
 DROP TABLE IF EXISTS t_user_accounts;
 
@@ -17,10 +15,7 @@ CREATE TABLE t_colors (
     name VARCHAR(100) UNIQUE NOT NULL
 );
 
-CREATE TABLE t_behaviors (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL
-);
+
 
 create TABLE t_beak_shapes (
     id SERIAL PRIMARY KEY,
@@ -63,13 +58,7 @@ CREATE TABLE t_birds_colors (
     FOREIGN KEY (color_id) REFERENCES t_colors(id)
 );
 
-CREATE TABLE t_birds_behaviors (
-    bird_id INTEGER,
-    behavior_id INTEGER,
-    PRIMARY KEY (bird_id, behavior_id),
-    FOREIGN KEY (bird_id) REFERENCES t_birds(id),
-    FOREIGN KEY (behavior_id) REFERENCES t_behaviors(id)
-);
+
 
 CREATE TABLE t_user_accounts (
     id SERIAL PRIMARY KEY, 
