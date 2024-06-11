@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import BirdList from '@/views/birds/BirdsList.vue';
+import BirdsList from '@/views/birds/BirdsList.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 const router = createRouter({
@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: BirdList,
+      component: BirdsList,
     },
 
     {
