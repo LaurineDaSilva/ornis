@@ -6,7 +6,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
 
   routes: [
-    // Pages accessible without authentication:
+    // Pages accessible to all:
     {
       path: '/',
       name: 'home',
@@ -19,6 +19,7 @@ const router = createRouter({
       component: () => import('@/views/birds/BirdDetail.vue'),
     },
 
+    // Pages accessible without authentication:
     {
       path: '/sign-up',
       name: 'sign-up',
