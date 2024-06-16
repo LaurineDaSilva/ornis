@@ -64,8 +64,8 @@ public class SecurityConfig {
 					"/sizes", "/colors")
 				.permitAll()
 				.requestMatchers(
-					"join/sign-in",
-					"join/sign-up")
+					"/join/sign-in",
+					"/join/sign-up")
 				.anonymous()
 				.requestMatchers(
 					HttpMethod.DELETE)

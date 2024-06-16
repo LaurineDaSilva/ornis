@@ -1,11 +1,11 @@
 method§path§tokenName
 
 POST§/birds/create§admin
-GET§/birds/{id}/to-update§admin
-PUT§/birds/update/{id}§admin
-DELETE§birds/delete/{id}§admin
+GET§/birds/1/to-update§admin
+PUT§/birds/update/1§admin
+DELETE§/birds/delete/1§admin
 GET§/birds/list§admin
-GET§/birds/{id}/detail§admin
+GET§/birds/1/detail§admin
 GET§/birds/search§admin
 GET§/birds/filter§admin
 GET§/beakShapes§admin
@@ -14,7 +14,7 @@ GET§/sizes§admin
 GET§/colors§admin
 
 GET§/birds/list§user
-GET§/birds/{id}/detail§user
+GET§/birds/1/detail§user
 GET§/birds/search§user
 GET§/birds/filter§user
 GET§/beakShapes§user
@@ -22,13 +22,13 @@ GET§/feetShapes§user
 GET§/sizes§user
 GET§/colors§user
 
-POST§join/sign-in§anomynous
-POST§join/sign-up§anonymous
-GET§/birds/list§anomynous
-GET§/birds/{id}/detail§anomynous
-GET§/birds/search§anomynous
-GET§/birds/filter§anomynous
-GET§/beakShapes§anomynous
-GET§/feetShapes§anomynous
-GET§/sizes§anomynous
-GET§/colors§anomynous
+POST§/join/sign-in§anonymous
+POST§/join/sign-up§anonymous
+GET§/birds/list§anonymous
+GET§/birds/1/detail§anonymous
+GET§/birds/search§anonymous
+GET§/birds/filter§anonymous
+GET§/beakShapes§anonymous
+GET§/feetShapes§anonymous
+GET§/sizes§anonymous
+GET§/colors§anonymous

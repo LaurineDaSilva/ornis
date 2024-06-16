@@ -24,9 +24,9 @@ public class InputsValidationTests extends BaseMvcTests {
 	String jsonPath = null;
 	if (null != field) {
 	    jsonPath = String
-		    .format("$/errors.*.%s[*].code", field);
+		    .format("$.errors.*.%s[*].code", field);
 	} else {
-	    jsonPath = "$/errors.globals.code";
+	    jsonPath = "$.errors.globals.*.code";
 	}
 	perform(method, path, tokenName, json)
 		.andExpect(status().is(400)).andExpect(
