@@ -1,0 +1,12 @@
+method§path§tokenName§expectedStatus
+
+POST§/birds/create§anonymous§401
+GET§/birds/{id}/to-update§anonymous§401
+PUT§/birds/update/{id}§anonymous§401
+DELETE§birds/delete/{id}§anonymous§401
+
+POST§join/sign-in§admin§403
+POST§join/sign-up§admin§403
+
+POST§join/sign-in§user§403
+POST§join/sign-up§user§403

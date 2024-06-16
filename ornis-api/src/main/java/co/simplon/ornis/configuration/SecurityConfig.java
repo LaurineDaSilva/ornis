@@ -61,10 +61,12 @@ public class SecurityConfig {
 					"/birds/filter",
 					"/beakShapes",
 					"/feetShapes",
-					"/sizes", "/colors",
+					"/sizes", "/colors")
+				.permitAll()
+				.requestMatchers(
 					"join/sign-in",
 					"join/sign-up")
-				.permitAll()
+				.anonymous()
 				.requestMatchers(
 					HttpMethod.DELETE)
 				.hasRole("ADMIN")

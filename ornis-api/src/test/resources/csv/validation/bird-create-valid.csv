@@ -1,0 +1,6 @@
+method§path§tokenName§json
+
+POST§/birds/create§admin§{"scientificName": "a", "commonName": "a", "file": "a.jpg"}
+POST§/birds/create§admin§{"scientificName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "commonName": "a", "file": "a.jpg"}
+
+POST§/birds/create§admin§{"scientificName": "a", "commonName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "file": "a.jpg"}
