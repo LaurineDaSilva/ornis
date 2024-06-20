@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# ./run.sh username password host db 
 
 exit_code=0
 
