@@ -34,4 +34,4 @@ build/
 
 application-dev.properties
 application-test.properties
-secrets.properties
+secrets/
