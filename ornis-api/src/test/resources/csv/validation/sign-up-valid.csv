@@ -1,0 +1,7 @@
+method§path§tokenName§json
+
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.com", "username": "a", "password": "Aa!11111"}
+POST§/join/sign-up§anonymous§{"emailAddress": "b@c.com", "username": "b", "password": "Aa*11111"}
+POST§/join/sign-up§anonymous§{"emailAddress": "c@d.com", "username": "c", "password": "Aa%11111"}
+
+POST§/join/sign-up§anonymous§{"emailAddress": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccc", "username": "aaaaaaaaaaaaaaaaaaaa", "password": "AAAAAAAAAAAAAAbbbbbbbbbbbbbbbb!*%123456789"}

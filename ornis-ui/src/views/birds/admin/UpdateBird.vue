@@ -75,6 +75,7 @@ export default {
     async submit() {
       if (this.store.isAdmin) {
         const formData = new FormData();
+        const headers = { Authorization: `Bearer ${this.store.getToken}` };
 
         Object.keys(this.inputs).forEach((key) => {
           const value = this.inputs[key];
@@ -84,7 +85,7 @@ export default {
         });
 
         await this.$http
-          .put(`/birds/update/${this.id}`, formData)
+          .put(`/birds/update/${this.id}`, formData, { headers })
           .then(
             this.validator.$reset(),
             this.$toast.success('toast-global', this.$t('updateBird.toastMessages.success')),

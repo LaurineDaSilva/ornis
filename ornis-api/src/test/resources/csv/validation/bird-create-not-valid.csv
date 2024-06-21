@@ -1,0 +1,13 @@
+method§path§tokenName§json§field§error
+
+POST§/birds/create§admin§{"scientificName": null, "commonName": "a", "file": "a.jpg"}§scientificName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": "", "commonName": "a", "file": "a.jpg"}§scientificName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": " ", "commonName": "a", "file": "a.jpg"}§scientificName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "commonName": "a", "file": "a.jpg"}§scientificName§E_MUST_BE_SIZE_INCLUDED[1,100]
+
+POST§/birds/create§admin§{"scientificName": "a", "commonName": null, "file": "a.jpg"}§commonName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": "a", "commonName": "", "file": "a.jpg"}§commonName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": "a", "commonName": " ", "file": "a.jpg"}§commonName§E_MUST_NOT_BE_BLANK
+POST§/birds/create§admin§{"scientificName": "a", "commonName": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "file": "a.jpg"}§commonName§E_MUST_BE_SIZE_INCLUDED[1,200]
+
+POST§/birds/create§admin§{"scientificName": "a", "commonName": "a", "file": null}§file§E_MUST_NOT_BE_NULL

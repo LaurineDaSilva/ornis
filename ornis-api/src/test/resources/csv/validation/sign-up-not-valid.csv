@@ -1,0 +1,48 @@
+method§path§tokenName§json§field§error
+
+POST§/join/sign-up§anonymous§{"emailAddress": null, "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": " ", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_BE_EMAIL_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_BE_EMAIL_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_BE_EMAIL_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "@b.c", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_BE_EMAIL_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.ccc", "username": "a", "password": "Aa!11111"}§emailAddress§E_MUST_BE_SIZE_INCLUDED[1,100]
+
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": null, "password": "Aa!11111"}§username§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "", "password": "Aa!11111"}§username§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": " ", "password": "Aa!11111"}§username§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "aaaaaaaaaaaaaaaaaaaaa", "password": "Aa!11111"}§username§E_MUST_BE_SIZE_INCLUDED[1,20]
+
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": null}§password§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": ""}§password§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": " "}§password§E_MUST_NOT_BE_BLANK
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "a"}§password§E_MUST_BE_SIZE_INCLUDED[8,42]
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "aaaaaaaa"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "AAAAAAAA"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "00000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "********"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "%%%%%%%%"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "!!!!!!!!"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "a0000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "aA00000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "a*000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "a%000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "a!000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "A*000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "A%000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "A!000000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "Aa+00000"}§password§E_MUST_BE_PASSWORD_FORMED
+POST§/join/sign-up§anonymous§{"emailAddress": "a@b.c", "username": "a", "password": "AAAAAAAAAAAAAAbbbbbbbbbbbbbbbb!*%1234567890"}§password§E_MUST_BE_SIZE_INCLUDED[8,42]
+
+
+
+
+
+
+
+
+
+
+
+

@@ -49,8 +49,6 @@ export default {
             response.role,
           );
 
-          console.log(this.store.role);
-
           Object.assign(this.inputs, this.$options.data().inputs);
 
           this.validator.$reset();

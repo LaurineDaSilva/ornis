@@ -10,6 +10,7 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -27,12 +28,18 @@ import co.simplon.ornis.authentication.AuthenticationHelper;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+    @Value("${ornis.cors.enabled}")
+    private boolean corsEnabled;
+
     @Value("${ornis.auth.rounds}")
     private int rounds;
+
     @Value("${ornis.auth.issuer}")
     private String issuer;
+
     @Value("${ornis.auth.secret}")
     private String secret;
+
     @Value("${ornis.auth.tokenExpiration}")
     private long tokenExpiration;
 
@@ -50,7 +57,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http)
 	    throws Exception {
-	http.cors(Customizer.withDefaults())
+	http.cors(corsCustomizer())
 		.csrf(csrf -> csrf.disable())
 		.authorizeHttpRequests(
 			authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
@@ -59,9 +66,14 @@ public class SecurityConfig {
 					"/birds/{id}/detail",
 					"/birds/search",
 					"/birds/filter",
-					"join/sign-in",
-					"join/sign-up")
+					"/beakShapes",
+					"/feetShapes",
+					"/sizes", "/colors")
 				.permitAll()
+				.requestMatchers(
+					"/join/sign-in",
+					"/join/sign-up")
+				.anonymous()
 				.requestMatchers(
 					HttpMethod.DELETE)
 				.hasRole("ADMIN")
@@ -99,6 +111,11 @@ public class SecurityConfig {
 	SecretKeySpec key = new SecretKeySpec(
 		secret.getBytes(), "HmacSHA256");
 	return NimbusJwtDecoder.withSecretKey(key).build();
+    }
+
+    private Customizer<CorsConfigurer<HttpSecurity>> corsCustomizer() {
+	return corsEnabled ? Customizer.withDefaults()
+		: cors -> cors.disable();
     }
 
 }

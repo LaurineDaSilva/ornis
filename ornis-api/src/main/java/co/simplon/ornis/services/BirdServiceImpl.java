@@ -140,31 +140,6 @@ public class BirdServiceImpl implements BirdService {
 	    entity.setImage(newFullName);
 	}
 
-	entity.setXenoId(inputs.getXenoId());
-
-	entity.setBeakShape(inputs.getBeakShape());
-
-	entity.setFeetShape(inputs.getFeetShape());
-
-	entity.setSize(inputs.getSize());
-
-	if (inputs.getColorIds() != null) {
-
-	    Set<Long> colorIds = inputs.getColorIds();
-
-	    birdColorService.deleteBirdColors(id);
-
-	    for (Long colorId : colorIds) {
-
-		Long[] birdColorInputs = { id, colorId };
-
-		birdColorService
-			.createBirdColor(birdColorInputs);
-
-	    }
-
-	}
-
     }
 
     @Transactional

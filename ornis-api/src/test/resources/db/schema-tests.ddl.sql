@@ -1,4 +1,4 @@
-SET CLIENT_ENCODING TO 'UTF8';
+SET CLIENT_ENCODING TO 'UTF-8';
 
 DROP TABLE IF EXISTS t_birds_colors;
 DROP TABLE IF EXISTS t_birds;
@@ -63,6 +63,5 @@ CREATE TABLE t_user_accounts (
     password CHAR(60), 
     role VARCHAR(11)
 );
-
 
 
