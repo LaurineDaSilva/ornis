@@ -86,6 +86,18 @@ export default {
 
       this.$emit('filterEndpoint', filterEndpoint);
     },
+
+    clearFilters() {
+      const filterEndpoint = `/birds/filter?`;
+
+      this.advancedFilters.inputs = {
+        colors: [],
+        sizeId: null,
+        beakShapeId: null,
+        feetShapeId: null,
+      };
+      this.$emit('filterEndpoint', filterEndpoint);
+    },
   },
 };
 </script>
@@ -104,7 +116,7 @@ export default {
     </p>
 
     <div id="advancedFilters" class="collapse card card-body shadow-sm">
-      <form novalidate @submit.prevent="createFilterEndpoint">
+      <form id="advancedFiltersForm" novalidate @submit.prevent="createFilterEndpoint">
         <div id="searchAccordion" class="mb-3 accordion">
           <div class="accordion-item shadow-sm">
             <h2 class="accordion-header">
@@ -167,7 +179,7 @@ export default {
                   :id="size.id"
                   v-model="advancedFilters.inputs.sizeId"
                   type="radio"
-                  name="flexRadioDefault"
+                  name="radioSize"
                   class="form-check-input"
                   :value="size.id"
                 />
@@ -208,7 +220,7 @@ export default {
                   :id="beakShape.id"
                   v-model="advancedFilters.inputs.beakShapeId"
                   type="radio"
-                  name="flexRadioDefault"
+                  name="radioBeakShape"
                   class="form-check-input"
                   :value="beakShape.id"
                 />
@@ -251,7 +263,7 @@ export default {
                   :id="feetShape.id"
                   v-model="advancedFilters.inputs.feetShapeId"
                   type="radio"
-                  name="flexRadioDefault"
+                  name="radioFeetShape"
                   class="form-check-input"
                   :value="feetShape.id"
                 />
@@ -265,6 +277,9 @@ export default {
         </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-outline-tertiary shadow-sm" @click="clearFilters">
+            {{ $t('birds.advancedFilters.clear') }}
+          </button>
           <button type="submit" class="btn btn-outline-secondary shadow-sm">
             {{ $t('birds.advancedFilters.submit') }}
           </button>

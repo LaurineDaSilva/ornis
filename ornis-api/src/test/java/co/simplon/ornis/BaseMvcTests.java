@@ -22,10 +22,6 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 @Import(ControllerMocks.class)
 class BaseMvcTests {
 
-    /*
-     * @Test void shouldBeTrue() { mvc.perform(null) Assertions.assertTrue(false); }
-     */
-
     protected static final char DELIMITER = '§';
 
     protected static final int MAX_CHARS_PER_COLUMN = 8192;

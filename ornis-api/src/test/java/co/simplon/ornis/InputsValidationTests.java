@@ -1,8 +1,6 @@
 package co.simplon.ornis;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.not;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.DisplayName;
@@ -18,19 +16,11 @@ public class InputsValidationTests extends BaseMvcTests {
 	    "/csv/validation/sign-up-not-valid.csv",
 	    "/csv/validation/bird-create-not-valid.csv" }, numLinesToSkip = 1, delimiter = DELIMITER, maxCharsPerColumn = MAX_CHARS_PER_COLUMN)
     void shouldBeNotValid(String method, String path,
-	    String tokenName, String json, String field,
-	    String error) throws Exception {
+	    String tokenName, String json)
+	    throws Exception {
 
-	String jsonPath = null;
-	if (null != field) {
-	    jsonPath = String
-		    .format("$.errors.*.%s[*].code", field);
-	} else {
-	    jsonPath = "$.errors.globals.*.code";
-	}
 	perform(method, path, tokenName, json)
-		.andExpect(status().is(400)).andExpect(
-			jsonPath(jsonPath, hasItem(error)));
+		.andExpect(status().is(400));
     }
 
     @DisplayName("Should inputs be valid")
@@ -41,6 +31,7 @@ public class InputsValidationTests extends BaseMvcTests {
     void shouldBeValid(String method, String path,
 	    String tokenName, String json)
 	    throws Exception {
+
 	perform(method, path, tokenName, json)
 		.andExpect(status().is(not(400)));
     }

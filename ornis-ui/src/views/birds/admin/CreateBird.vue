@@ -1,6 +1,6 @@
 <script>
 import { useVuelidate } from '@vuelidate/core';
-import { required, requiredIf, maxLength } from '@vuelidate/validators';
+import { required, requiredIf, minLength, maxLength, numeric } from '@vuelidate/validators';
 import { removeInvalidStyles } from '@/utils/invalidStylesHandler';
 import { useAuthStore } from '@/stores/authStore';
 
@@ -17,11 +17,22 @@ export default {
 
   data() {
     return {
+      initData: {
+        beakShapes: null,
+        feetShapes: null,
+        sizes: null,
+        colors: [],
+      },
       inputs: {
         scientificName: null,
         commonName: null,
         description: null,
         file: undefined,
+        xenoId: null,
+        beakShape: null,
+        feetShape: null,
+        size: null,
+        colorIds: [],
       },
     };
   },
@@ -40,11 +51,59 @@ export default {
             return file ? file.size <= 1048576 : true;
           },
         },
+        xenoId: { minLength: minLength(6), maxLength: maxLength(6), numeric },
+        beakShape: { required },
+        feetShape: { required },
+        size: { required },
+        colorIds: { required },
       },
     };
   },
 
+  beforeMount() {
+    this.initColors();
+    this.initSizes();
+    this.initBeakShapes();
+    this.initFeetShapes();
+  },
+
   methods: {
+    async initColors() {
+      await this.$http
+        .get(`/colors`)
+        .then((resp) => {
+          this.initData.colors = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initSizes() {
+      await this.$http
+        .get(`/sizes`)
+        .then((resp) => {
+          this.initData.sizes = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initBeakShapes() {
+      await this.$http
+        .get(`/beakShapes`)
+        .then((resp) => {
+          this.initData.beakShapes = resp.body;
+        })
+        .catch(() => {});
+    },
+
+    async initFeetShapes() {
+      await this.$http
+        .get(`/feetShapes`)
+        .then((resp) => {
+          this.initData.feetShapes = resp.body;
+        })
+        .catch(() => {});
+    },
+
     fileSelected(event) {
       [this.inputs.file] = event.target.files;
     },
@@ -95,7 +154,7 @@ export default {
           type="text"
           class="form-control shadow-sm"
           :class="{
-            'is-invalid': validator.inputs.commonName.$error,
+            'is-invalid': validator.inputs.scientificName.$error,
           }"
           @input="removeInvalidStyles('scientificName')"
         />
@@ -172,6 +231,101 @@ export default {
         <p id="file-helpText" class="form-text">
           {{ $t('createBird.file.helpText') }}
         </p>
+      </div>
+
+      <div class="mb-3">
+        <label for="xenoId" class="form-label"
+          >{{ $t('createBird.xenoId.label')
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
+        >
+
+        <input
+          id="xenoId"
+          v-model.trim="inputs.xenoId"
+          name="xenoId"
+          type="number"
+          class="form-control shadow-sm"
+          :class="{
+            'is-invalid': validator.inputs.commonName.$error,
+          }"
+          @input="removeInvalidStyles('xenoId')"
+        />
+
+        <p id="xenoId-helpText" class="form-text">
+          {{ $t('createBird.xenoId.helpText') }}
+        </p>
+      </div>
+
+      <div class="mb-3">
+        <label for="beakShape" class="form-label"
+          >{{ $t('createBird.beakShape.label')
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
+        >
+        <select id="beakShape" v-model="inputs.beakShape" class="form-select shadow-sm">
+          <option
+            v-for="beakShape in initData.beakShapes"
+            :key="beakShape"
+            :value="beakShape.id"
+          >
+            {{ beakShape.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="feetShape" class="form-label"
+          >{{ $t('createBird.feetShape.label')
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
+        >
+        <select id="feetShape" v-model="inputs.feetShape" class="form-select shadow-sm">
+          <option selected>FeetShape</option>
+          <option
+            v-for="feetShape in initData.feetShapes"
+            :key="feetShape"
+            :value="feetShape.id"
+          >
+            {{ feetShape.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="size" class="form-label"
+          >{{ $t('createBird.size.label')
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
+        >
+        <select id="size" v-model="inputs.size" class="form-select shadow-sm">
+          <option selected>Size</option>
+          <option v-for="size in initData.sizes" :key="size" :value="size.id">
+            {{ size.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="colors" class="form-label"
+          >{{ $t('createBird.colors.label')
+          }}<span class="text-secondary">{{ $t('required') }}</span></label
+        >
+        <div class="list-group mx-0 w-auto">
+          <label class="list-group-item d-flex gap-2" for="colorsCheckbox">
+            <div
+              id="colors"
+              class="form-check shadow-sm"
+              v-for="color in initData.colors"
+              :key="color"
+            >
+              <input
+                v-model="inputs.colorIds"
+                class="form-check-input flex-shrink=0"
+                type="checkbox"
+                :value="color.id"
+                id="colorsCheckbox"
+              />
+              <span> {{ color.name }}</span>
+            </div>
+          </label>
+        </div>
       </div>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

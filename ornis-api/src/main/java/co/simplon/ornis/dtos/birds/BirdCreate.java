@@ -35,10 +35,13 @@ public class BirdCreate {
     @XenoIdUnicity
     private Integer xenoId;
 
+    @NotNull
     private BeakShape beakShape;
 
+    @NotNull
     private FeetShape feetShape;
 
+    @NotNull
     private BirdSize size;
 
     private Set<Long> colorIds;
@@ -122,7 +125,9 @@ public class BirdCreate {
     public String toString() {
 	return String.format(
 		"{scientificName=%s, commonName=%s, description=%s, file=%s, xenoId=%s, beakShape=%s, feetShape=%s, size=%s, colorIds=%s}",
-		(file != null ? "[BLOB]" : null));
+		scientificName, commonName, description,
+		(file != null ? "[BLOB]" : null), xenoId,
+		beakShape, feetShape, size, colorIds);
 
     }
 

@@ -68,32 +68,38 @@ public class BirdServiceImpl implements BirdService {
     @Transactional
     @Override
     public void createBird(BirdCreate inputs) {
-	Bird entity = new Bird();
 
-	String scientificName = inputs.getScientificName();
+	if ((inputs.getColorIds() == null)
+		|| (inputs.getColorIds().isEmpty())) {
+	    throw new IllegalArgumentException(
+		    "Color IDs must be provided");
+	} else {
+	    Bird entity = new Bird();
 
-	entity.setCommonName(inputs.getCommonName());
+	    String scientificName = inputs
+		    .getScientificName();
 
-	entity.setScientificName(scientificName);
+	    entity.setCommonName(inputs.getCommonName());
 
-	entity.setDescription(inputs.getDescription());
+	    entity.setScientificName(scientificName);
 
-	MultipartFile file = inputs.getFile();
-	String baseName = UUID.randomUUID().toString();
-	String fileName = storage.store(file, baseName);
-	entity.setImage(fileName);
+	    entity.setDescription(inputs.getDescription());
 
-	entity.setXenoId(inputs.getXenoId());
+	    MultipartFile file = inputs.getFile();
+	    String baseName = UUID.randomUUID().toString();
+	    String fileName = storage.store(file, baseName);
+	    entity.setImage(fileName);
 
-	entity.setBeakShape(inputs.getBeakShape());
+	    entity.setXenoId(inputs.getXenoId());
 
-	entity.setFeetShape(inputs.getFeetShape());
+	    entity.setBeakShape(inputs.getBeakShape());
 
-	entity.setSize(inputs.getSize());
+	    entity.setFeetShape(inputs.getFeetShape());
 
-	birds.save(entity);
+	    entity.setSize(inputs.getSize());
 
-	if (inputs.getColorIds() != null) {
+	    birds.save(entity);
+
 	    BirdToUpdate bird = birds
 		    .findProjectedByScientificName(
 			    scientificName);
