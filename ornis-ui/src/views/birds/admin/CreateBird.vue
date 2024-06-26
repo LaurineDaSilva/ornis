@@ -307,8 +307,8 @@ export default {
           >{{ $t('createBird.colors.label')
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
-        <div class="list-group mx-0 w-auto">
-          <label class="list-group-item d-flex gap-2" for="colorsCheckbox">
+        <div class="list-group mx-0 w-auto row justify-content-between">
+          <label class="list-group-item" for="color.name">
             <div
               id="colors"
               class="form-check shadow-sm"
@@ -320,23 +320,9 @@ export default {
                 class="form-check-input flex-shrink=0"
                 type="checkbox"
                 :value="color.id"
-                id="colorsCheckbox"
+                :id="color.name"
               />
-              <span> {{ color.name }}</span>
-
-              <div
-                class="btn-group"
-                role="group"
-                aria-label="Basic checkbox toggle button group"
-              >
-                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" />
-                <label
-                  class="btn btn-outline-primary"
-                  :style="{ backgroundColor: color.rgbCode, color: color.rgbCode }"
-                  for="btncheck1"
-                  >{{ color.rgbCode }}</label
-                >
-              </div>
+              {{ color.name }}
             </div>
           </label>
         </div>
