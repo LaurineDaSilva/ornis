@@ -323,6 +323,20 @@ export default {
                 id="colorsCheckbox"
               />
               <span> {{ color.name }}</span>
+
+              <div
+                class="btn-group"
+                role="group"
+                aria-label="Basic checkbox toggle button group"
+              >
+                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" />
+                <label
+                  class="btn btn-outline-primary"
+                  :style="{ backgroundColor: color.rgbCode, color: color.rgbCode }"
+                  for="btncheck1"
+                  >{{ color.rgbCode }}</label
+                >
+              </div>
             </div>
           </label>
         </div>
