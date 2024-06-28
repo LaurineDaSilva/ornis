@@ -7,18 +7,18 @@ DELETE from t_sizes;
 
 INSERT INTO t_colors (rgb_code, name)
 VALUES
-('FFFFFF', 'blanc'),
-('000000', 'noir'),
-('A0A0A0', 'gris'),
-('663300', 'marron'),
-('FF0000', 'rouge'),
-('FFFF00', 'jaune'),
-('FF9933', 'orange'),
-('0066CC', 'bleu'),
-('009900', 'vert'),
-('6600CC', 'violet'),
-('FF99CC', 'rose'),
-('F9ECD2', 'beige');
+('blanc'),
+('noir'),
+('gris'),
+('marron'),
+('rouge'),
+('jaune'),
+('orange'),
+('bleu'),
+('vert'),
+('violet'),
+('rose'),
+('beige');
 
 
 
@@ -55,7 +55,7 @@ VALUES
 
 INSERT INTO t_birds (scientific_name, common_name, image, beak_shape_id, feet_shape_id, size_id, xeno_id, description)
 VALUES
-('Pica pica', 'Pie bavarde', 'eurmag1.jpg', 1, 6, 2, 883303, 'La Pie bavarde est un grand corvidé noir et blanc à longue queue. L''adulte a la tête, la poitrine, le dos et le bas-ventre noirs. Les ailes et la queue présentent un plumage bleu-vert métallique. L''abdomen est d''un blanc pur.'),
+('Pica pica', 'Pie bavarde', 'eurmag1.jpg', 3, 6, 2, 883303, 'La Pie bavarde est un grand corvidé noir et blanc à longue queue. L''adulte a la tête, la poitrine, le dos et le bas-ventre noirs. Les ailes et la queue présentent un plumage bleu-vert métallique. L''abdomen est d''un blanc pur.'),
 ('Prunella modularis', 'Accenteur mouchet', 'dunnoc1.jpg', 2, 6, 1, 883313, 'L''Accenteur mouchet Prunella modularis est une espèce commune, comparable au Moineau domestique Passer domesticus. Les deux espèces sont souvent confondues. Buffon l''avait surnommé le « traîne-buisson ». Le mâle adulte a les parties supérieures brunes striées de brun clair et plus foncé sur le manteau et le croupion. Les ailes et la queue sont brun foncé. On distingue une barre alaire fine de couleur chamois.Les parties inférieures sont gris-bleu, excepté les flancs brunâtres striés de brun foncé. Le dessous des ailes est gris-bleu. Sur la tête, le front et la calotte sont bruns et striés de brun plus foncé, rejoignant ainsi la couleur du manteau. La face est gris-bleu avec les joues brunes striées comme la calotte. On peut voir un large sourcil gris-bleu. Le bec fin est noirâtre, avec la base de la mandibule inférieure rougeâtre. Les yeux sont brun-roux. Les pattes et les doigts sont brun-rouge. La femelle est très semblable, mais légèrement plus terne, avec des zones gris pâle sur la tête et les parties inférieures. Le juvénile a le corps brun intensément strié de noirâtre. La tête est plus brune que chez les adultes et ne présente pas du tout de gris. La barre alaire claire est évidente. Les yeux sont plutôt sombre.'), 
 ('Cercotrichas galactotes', 'Agrobate roux', 'rutscr1.jpg', 2, 6, 1, 861520, 'L''Agrobate roux est une espèce de petits passereaux dont la silhouette et l''attitude rappellent celles du Rossignol philomèle. C''est un oiseau rarement observé en France.'), 
 ('Clanga clanga', 'Aigle criard', 'grseag1.jpg', 6, 4, 3, 608441, 'Ce rapace au bec crochu et aux griffes puissantes et acérées peut être confondu avec son cousin l''Aigle pomarin. Les points de ressemblances entre ces deux espèces sont si nombreux qu''ils rendent bien souvent leur identification difficile. En effet, tout comme l''Aigle pomarin, il est entièrement brun noir avec des reflets cuivrés.'), 

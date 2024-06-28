@@ -10,8 +10,7 @@ DROP TABLE IF EXISTS t_sizes;
 DROP TABLE IF EXISTS t_user_accounts;
 
 CREATE TABLE t_colors (
-    id SERIAL PRIMARY KEY, 
-    rgb_code CHAR(6) UNIQUE NOT NULL,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL
 );
 
