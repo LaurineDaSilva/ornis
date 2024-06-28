@@ -278,7 +278,6 @@ export default {
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <select id="feetShape" v-model="inputs.feetShape" class="form-select shadow-sm">
-          <option selected>FeetShape</option>
           <option
             v-for="feetShape in initData.feetShapes"
             :key="feetShape"
@@ -295,7 +294,6 @@ export default {
           }}<span class="text-secondary">{{ $t('required') }}</span></label
         >
         <select id="size" v-model="inputs.size" class="form-select shadow-sm">
-          <option selected>Size</option>
           <option v-for="size in initData.sizes" :key="size" :value="size.id">
             {{ size.name }}
           </option>

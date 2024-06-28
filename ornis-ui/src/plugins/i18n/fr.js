@@ -131,8 +131,20 @@ const messages = {
       helpText: 'Format .jpg ou .png.',
     },
     xenoId: {
-      label: "Ajouter un identifiant xenoId pour le cri de l'oiseau",
+      label: "Ajouter un identifiant xenoId pour le cri de l'espèce.",
       helpText: 'Nombre de 6 chiffres. Identifiant récupérable sur xeno-canto.org.',
+    },
+    beakShape: {
+      label: "Sélectionner la forme de bec de l'espèce.",
+    },
+    feetShape: {
+      label: "Sélectionner la forme de pattes de l'espèce.",
+    },
+    size: {
+      label: "Sélectionner le gabarit de l'espèce.",
+    },
+    colors: {
+      label: "Sélectionner les couleurs de l'espèce.",
     },
     submit: "Ajouter l'espèce",
     toastMessages: {
