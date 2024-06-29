@@ -31,14 +31,14 @@ public interface BirdRepository
 
     boolean existsByXenoId(int xenoId);
 
-    @Query("SELECT b FROM Bird b WHERE "
+    @Query("SELECT bird FROM Bird b WHERE "
 	    + "LOWER(b.scientificName) LIKE LOWER(CONCAT('%', :searchText, '%')) OR "
 	    + "LOWER(b.commonName) LIKE LOWER(CONCAT('%', :searchText, '%'))")
     Collection<BirdView> findBirdsBySearchText(
 	    @Param("searchText") String searchText);
 
     @Query("""
-    	SELECT b FROM Bird b
+    	SELECT bird FROM Bird b
     	LEFT JOIN b.colors c
     	LEFT JOIN b.beakShape bs
     	LEFT JOIN b.feetShape fs
