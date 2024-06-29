@@ -83,7 +83,7 @@ export default {
       <AdvancedFilter @filter-endpoint="filterBirdsByCharacteristics" />
     </div>
 
-    <div class="list-group birds-list-container">
+    <div class="list-group">
       <p v-if="loaded && (!displayedBirds || displayedBirds.length === 0)">
         {{ $t('birds.list.error') }}
       </p>
@@ -144,12 +144,5 @@ export default {
   height: 100%;
   object-fit: cover;
   object-position: center center;
-}
-
-@media (min-width: 992px) {
-  .birds-list-container {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
 }
 </style>

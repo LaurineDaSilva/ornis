@@ -276,12 +276,12 @@ export default {
           </div>
         </div>
 
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="submit" class="btn btn-outline-tertiary shadow-sm" @click="clearFilters">
-            {{ $t('birds.advancedFilters.clear') }}
-          </button>
+        <div class="d-grid gap-2 justify-content-md-end">
           <button type="submit" class="btn btn-outline-secondary shadow-sm">
             {{ $t('birds.advancedFilters.submit') }}
+          </button>
+          <button type="submit" class="btn btn-outline-tertiary shadow-sm" @click="clearFilters">
+            {{ $t('birds.advancedFilters.clear') }}
           </button>
         </div>
       </form>

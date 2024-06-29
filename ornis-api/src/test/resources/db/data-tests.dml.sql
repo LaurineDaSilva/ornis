@@ -5,20 +5,20 @@ DELETE from t_beak_shapes;
 DELETE from t_feet_shapes;
 DELETE from t_sizes;
 
-INSERT INTO t_colors (rgb_code, name)
+INSERT INTO t_colors (name)
 VALUES
-('FFFFFF', 'blanc'),
-('000000', 'noir'),
-('A0A0A0', 'gris'),
-('663300', 'marron'),
-('FF0000', 'rouge'),
-('FFFF00', 'jaune'),
-('FF9933', 'orange'),
-('0066CC', 'bleu'),
-('009900', 'vert'),
-('6600CC', 'violet'),
-('FF99CC', 'rose'),
-('F9ECD2', 'beige');
+('blanc'),
+('noir'),
+('gris'),
+('marron'),
+('rouge'),
+('jaune'),
+('orange'),
+('bleu'),
+('vert'),
+('violet'),
+('rose'),
+('beige');
 
 
 

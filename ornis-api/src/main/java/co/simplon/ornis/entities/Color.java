@@ -10,21 +10,10 @@ import jakarta.persistence.Table;
 @Table(name = "t_colors")
 public class Color extends AbstractEntity {
 
-    @Column(name = "rgbCode")
-    private String rgbCode;
-
     @Column(name = "name")
     private String name;
 
     public Color() {
-    }
-
-    public String getRgbCode() {
-	return rgbCode;
-    }
-
-    public void setRgbCode(String rgbCode) {
-	this.rgbCode = rgbCode;
     }
 
     public String getName() {
@@ -37,7 +26,7 @@ public class Color extends AbstractEntity {
 
     @Override
     public int hashCode() {
-	return Objects.hash(rgbCode);
+	return Objects.hash(name);
     }
 
     @Override
@@ -46,13 +35,13 @@ public class Color extends AbstractEntity {
 	    return true;
 	}
 	return obj instanceof Color other
-		&& Objects.equals(rgbCode, other.rgbCode);
+		&& Objects.equals(name, other.name);
     }
 
     @Override
     public String toString() {
-	return String.format("{id=%s, rgbCode=%s, name=%s}",
-		getId(), rgbCode, name);
+	return String.format("{id=%s, name=%s}", getId(),
+		name);
     }
 
 }
