@@ -16,19 +16,17 @@ CREATE TABLE t_colors (
 
 create TABLE t_beak_shapes (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL,
-    image VARCHAR(41) UNIQUE 
+    name VARCHAR(100) UNIQUE NOT NULL 
 );
 
 create TABLE t_feet_shapes (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE,
-    image VARCHAR(41) UNIQUE 
+    name VARCHAR(100) UNIQUE NOT NULL
 );
 
 create TABLE t_sizes (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE
+    name VARCHAR(100) UNIQUE NOT NULL
 );
 
 CREATE TABLE t_birds (
@@ -36,9 +34,9 @@ CREATE TABLE t_birds (
     scientific_name VARCHAR(100) UNIQUE NOT NULL,
     common_name VARCHAR(200) UNIQUE NOT NULL,
     image VARCHAR(41) UNIQUE NOT NULL,
-    beak_shape_id INTEGER,
-    feet_shape_id INTEGER,
-    size_id INTEGER,
+    beak_shape_id INTEGER NOT NULL,
+    feet_shape_id INTEGER NOT NULL,
+    size_id INTEGER NOT NULL,
     xeno_id NUMERIC(6) UNIQUE,
     description VARCHAR(5000),
     FOREIGN KEY (beak_shape_id) REFERENCES t_beak_shapes(id),
@@ -48,8 +46,8 @@ CREATE TABLE t_birds (
 
 CREATE TABLE t_birds_colors (
     id SERIAL NOT NULL PRIMARY KEY,
-    bird_id INTEGER,
-    color_id INTEGER,
+    bird_id INTEGER NOT NULL,
+    color_id INTEGER NOT NULL,
     UNIQUE (bird_id, color_id),
     FOREIGN KEY (bird_id) REFERENCES t_birds(id),
     FOREIGN KEY (color_id) REFERENCES t_colors(id)
@@ -59,8 +57,8 @@ CREATE TABLE t_user_accounts (
     id SERIAL PRIMARY KEY, 
     email_address VARCHAR(100) UNIQUE NOT NULL, 
     username VARCHAR(20) UNIQUE NOT NULL, 
-    password CHAR(60), 
-    role VARCHAR(11)
+    password CHAR(60) NOT NULL, 
+    role VARCHAR(11) NOT NULL
 );
 
 
