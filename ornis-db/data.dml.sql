@@ -5,7 +5,7 @@ DELETE from t_beak_shapes;
 DELETE from t_feet_shapes;
 DELETE from t_sizes;
 
-INSERT INTO t_colors (rgb_code, name)
+INSERT INTO t_colors (name)
 VALUES
 ('blanc'),
 ('noir'),
