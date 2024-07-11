@@ -13,6 +13,9 @@ public class FeetShape extends AbstractEntity {
     @Column(name = "name", updatable = false)
     private String name;
 
+    @Column(name = "image", updatable = false)
+    private String image;
+
     public FeetShape() {
     }
 
@@ -24,6 +27,14 @@ public class FeetShape extends AbstractEntity {
     public void setName(String name) {
 	// Not updatable
 	this.name = name;
+    }
+
+    public String getImage() {
+	return image;
+    }
+
+    public void setImage(String image) {
+	this.image = image;
     }
 
     @Override
@@ -42,7 +53,7 @@ public class FeetShape extends AbstractEntity {
 
     @Override
     public String toString() {
-	return String.format("{id=%s, name=%s, }", getId(),
-		name);
+	return String.format("{id=%s, name=%s, image=%s}",
+		getId(), name, image);
     }
 }
