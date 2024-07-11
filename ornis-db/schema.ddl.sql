@@ -16,12 +16,14 @@ CREATE TABLE t_colors (
 
 create TABLE t_beak_shapes (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL 
+    name VARCHAR(100) UNIQUE NOT NULL,
+    image VARCHAR(41) UNIQUE
 );
 
 create TABLE t_feet_shapes (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) UNIQUE NOT NULL
+    name VARCHAR(100) UNIQUE NOT NULL,
+    image VARCHAR(41) UNIQUE
 );
 
 create TABLE t_sizes (
